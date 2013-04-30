@@ -41,6 +41,9 @@ local.properties
 *.user
 *.sln.docstates
 
+#Azure publish profiles
+*.pubxml
+
 # Build results
 [Dd]ebug/
 [Rr]elease/
