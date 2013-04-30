@@ -42,7 +42,7 @@ local.properties
 *.sln.docstates
 
 #Azure publish profiles
-*.pubxml
+PublishProfiles/
 
 # Build results
 [Dd]ebug/
