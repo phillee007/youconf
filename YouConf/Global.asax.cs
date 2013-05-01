@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Ninject;
+using Ninject.Web.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using YouConf.Data;
 
 namespace YouConf
 {
@@ -13,7 +17,9 @@ namespace YouConf
     // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
+
     {
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

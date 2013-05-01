@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>LucifureStash</id>
+    <version>1.2.5</version>
+    <title>Lucifure Stash - Azure Table Storage Client</title>
+    <authors>Code Superior, Inc.</authors>
+    <owners>Code Superior, Inc.</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>http://lucifurestash.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Runtime dll and tutorial</description>
+    <summary>Azure Table Stoage Client supports arrays, enumerations, large data, serialization, morphing and more</summary>
+    <releaseNotes>Includes runtime and tutorial and a readme.pdf
+
+1. Unicode Fix.
+2. Added IgnoreResourceNotFoundException option.
+3. Refactored and fixed miscellaneous defects in Retry Policy. Added interception example in tutorial file  99.Helper.cs
+4. Refactored context callback code to using a thread safe dictionary.</releaseNotes>
+    <copyright>Code Superior, Inc.</copyright>
+    <language />
+    <tags>Microsoft Azure Table Storage Client Enumeration Morphing Serialization</tags>
+    <references>
+      <reference file="Lucifure.Stash.dll" />
+    </references>
+  </metadata>
+</package>

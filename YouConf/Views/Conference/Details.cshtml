@@ -1,0 +1,126 @@
+﻿@model YouConf.Data.Entities.Conference
+
+<style>
+    .info-box {
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        display: block;
+        margin: 20px 0;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .one-third {
+        width: 25%;
+        float: left;
+    }
+
+    .info-box h3 {
+        font-size: 1.3em;
+    }
+
+    .info-box p {
+        font-size: 0.9em;
+    }
+
+    .notice {
+        background-color: #fbf9e9;
+        border: 1px solid #e3cf57;
+        color: #212121;
+    }
+
+    .info-grey {
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+</style>
+
+<fieldset>
+    <legend>Conference</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.HashTag)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HashTag)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Abstract)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Abstract)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.StartDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.EndTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndTime)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TimeZone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TimeZone)
+    </div>
+</fieldset>
+<div>
+    <h3>Speakers</h3>
+    @foreach (var speaker in Model.Speakers)
+    {
+        <div class="info-box one-third">
+            <h3>@speaker.Name</h3>
+            <p>@speaker.Bio <a href="@speaker.Url" title="@speaker.Name">More...</a></p>
+            <p>@Html.ActionLink("Edit", "Edit", "Speaker", new { id = speaker.Name, conference = Model.HashTag }) |
+    @Html.ActionLink("Remove", "Delete", "Speaker", new { id = speaker.Name, conference = Model.HashTag }) |
+            </p>
+        </div>
+    }
+
+    <p>@Html.ActionLink("Add new", "Add", "Speaker", new { id = Model.HashTag }, null)</p>
+</div>
+<div>
+    <h3>Presentations</h3>
+    @foreach (var presentation in Model.Presentations)
+    {
+        var speakerNames = String.Join(",", presentation.Speakers.Select(x => x.Name.ToArray()));
+        <h4>@presentation.Name by @speakerNames</h4>
+        <span class="event-time">@presentation.StartTime.ToShortDateString() - @presentation.StartTime.Add(TimeSpan.FromMinutes(@presentation.Duration)).ToShortDateString() @presentation.TimeZone (@presentation.StartTime.ToUniversalTime() - @presentation.StartTime.Add(TimeSpan.FromMinutes(@presentation.Duration)).ToUniversalTime().ToShortDateString()) UTC) </span>
+        <p>@presentation.Abstract</p>
+        <p>
+            <p>@Html.ActionLink("Edit", "Edit", "Presentation", new { id = presentation.Name, conference = Model.HashTag }) |
+    @Html.ActionLink("Remove", "Delete", "Presentation", new { id = presentation.Name, conference = Model.HashTag }) |
+            </p>
+        </p>
+    }
+    <p>@Html.ActionLink("Add new", "Add", "Presentation", new { id = Model.HashTag }, null)</p>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

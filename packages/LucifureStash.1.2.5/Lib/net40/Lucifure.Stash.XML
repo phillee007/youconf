@@ -1,0 +1,3138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Lucifure.Stash</name></assembly>
+<members>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Common.Functional">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Common.Misc">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Common.Seq">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Common.StringExtensions">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.CommitStrategy">
+ <summary>
+ Strategy to apply when committing.
+ Serial      - Process each item one at a time, stopping on the first error if any. This is the default strategy.
+ Parallel    - Process items in parallel in asynchronously fashion, returning a single aggregate exception on
+ one or more errors.
+ Batch       - Process all items in a single batch request.
+ Auto        - Process all items as single requests or in one or more batches depending on the partition key,
+ size of the item and the number of items. (Currently unimplemented).
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.ETagMatch">
+ <summary>
+ ETag Matching strategy to use for Updates and Deletes. Including all flavors of updates like merge, 
+ InsertOrReplace and InsertOrMerge
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:CodeSuperior.Lucifure.IStashKeyMediate.IsCompleteKeyValue(System.String)">
+ <summary>
+ True if the string represents the whole key and not just part of the key (composite key)
+ Used for Query modification.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="P:CodeSuperior.Lucifure.IStashMorph.IsCollationEquivalent">
+ <summary>
+ true if the collating sequence of the original and morphed is identical
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.IStashMorph.Outof(System.Object)">
+ <summary>
+ Morph Table property data to original Type member data
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.IStashMorph.Into(System.Object)">
+ <summary>
+ Morph from original Type member data to Table property data
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.IStashMorph.CanMorph(System.Type)">
+ <summary>
+ True if can morph the indicated type
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:CodeSuperior.Lucifure.RetryPolicies.GetNoRetry">
+ <summary>
+ No retry is performed.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.RetryPolicies.GetFixedInterval(System.Int32,System.TimeSpan)">
+ <summary>
+ A fixed interval policy which applies the same wait period across retries.
+ (Comparable with the Microsoft Storage Table Client implementation)
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="M:CodeSuperior.Lucifure.RetryPolicies.GetExponential(System.Int32,System.TimeSpan)">
+ <summary>
+ An retry policy which exponentially increases the waiting period with a random range delta, to avoid 
+ multi-instance collisions within time ranges. (Comparable with the Microsoft Storage Table Client implementation)
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.RetryPolicies.GetExponential(System.Int32,System.TimeSpan,System.TimeSpan,System.TimeSpan)">
+ <summary>
+ An retry policy which exponentially increases the waiting period with a random range delta, to avoid 
+ multi-instance collisions within time ranges. (Comparable with the Microsoft Storage Table Client implementation)
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.RetryPolicies">
+ <summary>
+ Contains retry policies which can be used as is or varied using the available parameters.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashAttribute">
+ <summary>
+ A Stash attribute is used to indicate that a member should be included for interacting with Azure storage.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashBaseAttribute">
+ <summary>
+ A StashPool attribute is used to indicate that a member should be included for interacting with Azure storage.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.UseNagleAlgorithm(CodeSuperior.Lucifure.TernarySwitch)">
+ <summary>
+ Use TernarySwitch.True to enable UseNagleAlgorithm. Default is TernarySwitch.False.
+ TernarySwitch.Unchanged implies the value is used as set in the ServicePointManager or configuration.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.UseHttps(System.Boolean)">
+ <summary>
+ Set to true to use Https. Defaults to false and Http.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.Timeout(System.TimeSpan)">
+ <summary>
+ Defaults to 30 seconds, which is the timeout on the storage server.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.SupportLargeObjectsInPool(System.Boolean)">
+ <summary>
+ Set to true to enable split/merge support for large strings and byte arrays. Default is false.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.SendFeedbackAsync(System.Boolean)">
+ <summary>
+ Set to true to send feedback asynchronously on another thread. Although this ensures that you request is 
+ processed without waiting for the feedback to complete, it is possible that during debugging the feedback 
+ is not processed in time to be helpfully for debugging. 
+ This value defaults to false to facilitate real-time debugging.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.RetryPolicy(CodeSuperior.Lucifure.RetryPolicy)">
+ <summary>
+ Defaults to RetryPolicies.GetExponentialDefault() retry policy.
+ Set this property to apply an alternate retry policy.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.OverrideEntitySetNameIsDynamic(System.Boolean)">
+ <summary>
+ Use in conjunction with OverrideEntitySetName.
+ Set to true to call OverrideEntitySetName at every StashClient invocation.
+ Defaults to true. 
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.OverrideEntitySetName(CodeSuperior.Lucifure.OverrideEntitySetName)">
+ <summary>
+ Use in conjunction with OverrideEntitySetNameIsDynamic.
+ Setup if you want to override the entity set name. 
+ If OverrideEntitySetNameIsDynamic this callback will be invoked at every StashClient invocation such that a 
+ determination can be made as to which azure table to perform the operation on.
+ This feature can be used to persist data one of many azure tables depending on the data itself. 
+ Defaults to unset. 
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.IgnoreResourceNotFoundException(System.Boolean)">
+ <summary>
+ Set to true to turn of throwing a, '(404) Not Found', exception on the Get() method and instead return null, 
+ when the entity is not found in table storage. Default is false.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.IgnoreMissingProperties(System.Boolean)">
+ <summary>
+ Set to true you do not want an exception to be thrown when the table has a property with is not defined 
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.Feedback(CodeSuperior.Lucifure.StashFeedback)">
+ <summary>
+ Setup such that a callback on every StashClient invocation returns an object with feedback related information
+ which could be useful for troubleshooting.
+ Feedback objects includes StashRequestResponse.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.Expect100Continue(CodeSuperior.Lucifure.TernarySwitch)">
+ <summary>
+ Use TernarySwitch.True to enable Expect100Continue. Default is TernarySwitch.False.
+ TernarySwitch.Unchanged implies the value is used as set in the ServicePointManager or configuration.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.UseNagleAlgorithm">
+ <summary>
+ Use TernarySwitch.True to enable UseNagleAlgorithm. Default is TernarySwitch.False.
+ TernarySwitch.Unchanged implies the value is used as set in the ServicePointManager or configuration.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.UseHttps">
+ <summary>
+ Set to true to use Https. Defaults to false and Http.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.Timeout">
+ <summary>
+ Defaults to 30 seconds, which is the timeout on the storage server.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.SupportLargeObjectsInPool">
+ <summary>
+ Set to true to enable split/merge support for large strings and byte arrays. Default is false.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.SendFeedbackAsync">
+ <summary>
+ Set to true to send feedback asynchronously on another thread. Although this ensures that you request is 
+ processed without waiting for the feedback to complete, it is possible that during debugging the feedback 
+ is not processed in time to be helpfully for debugging. 
+ This value defaults to false to facilitate real-time debugging.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.RetryPolicy">
+ <summary>
+ Defaults to RetryPolicies.GetExponentialDefault() retry policy.
+ Set this property to apply an alternate retry policy.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.OverrideEntitySetNameIsDynamic">
+ <summary>
+ Use in conjunction with OverrideEntitySetName.
+ Set to true to call OverrideEntitySetName at every StashClient invocation.
+ Defaults to true. 
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.OverrideEntitySetName">
+ <summary>
+ Use in conjunction with OverrideEntitySetNameIsDynamic.
+ Setup if you want to override the entity set name. 
+ If OverrideEntitySetNameIsDynamic this callback will be invoked at every StashClient invocation such that a 
+ determination can be made as to which azure table to perform the operation on.
+ This feature can be used to persist data one of many azure tables depending on the data itself. 
+ Defaults to unset. 
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.IgnoreResourceNotFoundException">
+ <summary>
+ Set to true to turn of throwing a, '(404) Not Found', exception on the Get() method and instead return null, 
+ when the entity is not found in table storage. Default is false.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.IgnoreMissingProperties">
+ <summary>
+ Set to true you do not want an exception to be thrown when the table has a property with is not defined 
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.Feedback">
+ <summary>
+ Setup such that a callback on every StashClient invocation returns an object with feedback related information
+ which could be useful for troubleshooting.
+ Feedback objects includes StashRequestResponse.
+ </summary>
+</member>
+<member name="P:CodeSuperior.Lucifure.StashClientOptions.Expect100Continue">
+ <summary>
+ Use TernarySwitch.True to enable Expect100Continue. Default is TernarySwitch.False.
+ TernarySwitch.Unchanged implies the value is used as set in the ServicePointManager or configuration.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.UpdateUnconditional(`0)">
+ <summary>
+ Updates an entity. ETag matching is disabled.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.UpdateETagMustMatch(`0)">
+ <summary>
+ Updates an entity. ETag matching is enforced.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Update(`0)">
+ <summary>
+ Updates an entity. ETag matching is enforced if the Type supports it.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Update(`0,CodeSuperior.Lucifure.ETagMatch)">
+ <summary>
+ Updates an entity. ETag matching is performed depending on the ETagMatch enumeration passed in.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.MergeUnconditional(`0)">
+ <summary>
+ Merges an entity. Only non-null parameters are merged into the existing entity.
+ ETag matching is disabled.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.MergeETagMustMatch(`0)">
+ <summary>
+ Merges an entity. Only non-null parameters are merged into the existing entity.
+ ETag matching is enforced.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Merge(`0)">
+ <summary>
+ Merges an entity. Only non-null parameters are merged into the existing entity.
+ ETag matching is enforced if the Type supports it.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Merge(`0,CodeSuperior.Lucifure.ETagMatch)">
+ <summary>
+ Merges an entity. Only non-null parameters are merged into the existing entity.
+ ETag matching is performed depending on the ETagMatch enumeration passed in.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.ListTables">
+ <summary>
+ Returns a list of a all the table names
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.ListTables(System.String)">
+ <summary>
+ Returns a list of a all the table names which match the supplied prefix
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.InsertOrUpdate(`0)">
+ <summary>
+ Inserts or Updates an entity.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.InsertOrMerge(`0)">
+ <summary>
+ Inserts or Merges an entity.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Insert(`0)">
+ <summary>
+ Inserts an entity into the table.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Get(System.String,System.String)">
+ <summary>
+ Retrieves an entity, identifying it with the PartitionKey and RowKey passed in.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DoesTableExist">
+ <summary>
+ Creates a table based on the resolved entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DoesTableExist(System.String)">
+ <summary>
+ Creates a table based on the supplied entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DeleteUnconditional(`0)">
+ <summary>
+ Deletes an entity, identifying it with the PartitionKey and RowKey of the entity passed in.
+ Not ETag matching is performed.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DeleteTableIfNotExists">
+ <summary>
+ Deletes a table based on the resolved entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DeleteTableIfNotExists(System.String)">
+ <summary>
+ Deletes a table based on the supplied entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DeleteTable">
+ <summary>
+ Deletes a table based on the resolved entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DeleteTable(System.String)">
+ <summary>
+ Deletes a table based on the supplied entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.DeleteETagMustMatch(`0)">
+ <summary>
+ Deletes an entity, identifying it with the PartitionKey and RowKey of the entity passed in.
+ ETag matching is enforced.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Delete(System.String,System.String)">
+ <summary>
+ Deletes an entity unconditionally, identifying it with the PartitionKey and RowKey passed in.
+ Not ETag match is performed
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Delete(`0)">
+ <summary>
+ Deletes an entity, identifying it with the PartitionKey and RowKey of the entity passed in.
+ ETag matching is enforced if the Type supports it.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.Delete(`0,CodeSuperior.Lucifure.ETagMatch)">
+ <summary>
+ Deletes an entity, identifying it with the PartitionKey and RowKey of the entity passed in.
+ Delete is performed based on the entity and the ETagMatch passed in.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.CreateTableIfNotExist">
+ <summary>
+ Creates a table based on the resolved entity table name, if it does not already exist.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.CreateTableIfNotExist(System.String)">
+ <summary>
+ Creates a table based on the supplied entity table name, if it does not already exist.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.CreateTable">
+ <summary>
+ Creates a table based on the resolved entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.CreateTable(System.String)">
+ <summary>
+ Creates a table based on the supplied entity table name.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.CreateQuery">
+ <summary>
+ Creates a query to retrieves one or more entities based on the query.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.#ctor(System.String,CodeSuperior.Lucifure.SignRequest)">
+ <summary>
+ Use this constructor when using the credentials from the Microsoft CloudStorageAccount class. 
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.#ctor(System.String,CodeSuperior.Lucifure.SignRequest,CodeSuperior.Lucifure.StashClientOptions)">
+ <summary>
+ Use this constructor when using the credentials from the Microsoft CloudStorageAccount class. 
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.#ctor(CodeSuperior.Lucifure.StashClientOptions)">
+ <summary>
+ No credentials specified defaults to the Storage Emulator
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashClient`1.#ctor">
+ <summary>
+ No credentials specified defaults to the Storage Emulator
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashClient`1">
+ <summary>
+ StashClient
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashCollectionAttribute">
+ <summary>
+ A StashCollection attribute is used to indicate that a member supporting the IList or IList<T<> should 
+ be included for interacting with Azure storage.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.Update(`0)">
+ <summary>
+ Places an entity into the context, such that a update is performed on commit.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.Merge(`0)">
+ <summary>
+ Places an entity into the context, such that a merge is performed on commit.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.InsertOrUpdate(`0)">
+ <summary>
+ Places an entity into the context, such that an insert or update is performed on commit.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.InsertOrMerge(`0)">
+ <summary>
+ Places an entity into the context, such that an insert or merge is performed on commit.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.Insert(`0)">
+ <summary>
+ Places an entity into the context, such that a insert is performed on commit.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.GetTrackedEntities">
+ <summary>
+ Returns an IEnumerable of entity descriptors being tracked in the context.
+ Entities are tracked by being uniquely identified by the Partition and the Row Key.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.GetTrackedEntities(CodeSuperior.Lucifure.EntityState)">
+ <summary>
+ Returns an IEnumerable of entity descriptors being tracked in the context.
+ Filtered by the EntityState. Multiple EntityStates can be ORed together. 
+ Entities are tracked by being uniquely identified by the Partition and the Row Key.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.DetachAll(`0)">
+ <summary>
+ Removes all entity being tracked from the context. Essentially clearing the context.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.Detach(`0)">
+ <summary>
+ Removes an entity being tracked from the context.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.Delete(`0)">
+ <summary>
+ Places an entity into the context, such that a delete is performed on commit.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.CreateQuery">
+ <summary>
+ Returns a query object suitable for querying entities such that they are tracked by the context.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.Commit">
+ <summary>
+ Commits all unchanged entities to the Azure table, employing to the default commit strategy. 
+ The default strategy is Serial.
+ </summary>
+</member>
+<member name="M:CodeSuperior.Lucifure.StashContext`1.Commit(CodeSuperior.Lucifure.CommitStrategy)">
+ <summary>
+ Commits all unchanged entities to the Azure table, employing to the desired commit strategy.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashETagAttribute">
+ <summary>
+ A StashETag attribute is used to provide optimistic concurrency for update operations.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashMode">
+ <summary>
+ Implicit - all public properties are used. 
+ Hybrid - all public properties and Stash annotated members.
+ Hybrid mode is default.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashPartitionKeyAttribute">
+ <summary>
+ A StashPartitionKey attribute is used to indicate that a member the Row Key of the Azure storage row.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashPoolAttribute">
+ <summary>
+ The StashPool attribute can only be applied to a member type which supports the IDictionary&lt;string, object&gt; interface.
+ A StashPool attribute can be used to decorate at the most one member of a type.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashRequestResponse">
+ <summary>
+ This type is returned if Feedback is setup on StashClientOptions.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashRowKeyAttribute">
+ <summary>
+ A StashRowKey attribute is used to indicate that a member the Row Key of the Azure storage row.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashTimestampAttribute">
+ <summary>
+ A StashTimestamp attribute is used to indicate that a member of type, DateTime, is the timestamp value of the Azure storage row.
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StorageAccountKey">
+ <summary>
+ Stash credentials encapsulating the table storage account name and key
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.TernarySwitch">
+ <summary>
+ Three way switch to indicate an unchanged state or a Boolean value 
+ </summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.AtbType">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.CommandType'">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.Constant">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.Converters">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.DictionaryHelper">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.Exp">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.Literal">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.MemberAccessor">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.MorphIntrinsic">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.Msg">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.ObjectComposer">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.ObjectConverter">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.Op">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.ReflectionHelper">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.Retryable">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashAtbHelper">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.StashError">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.TypeSystem">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.VectorHelper">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.XmlRequestBuilder">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:CodeSuperior.Lucifure.XmlResponseParser">
+
+</member>
+</members>
+</doc>
