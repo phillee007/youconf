@@ -23,7 +23,7 @@ namespace YouConf.Controllers
         //
         // GET: /Conference/
 
-        public ActionResult Index()
+        public ActionResult All()
         {
             var conferences = YouConfDataContext.GetAllConferences();
             return View(conferences);
@@ -56,65 +56,95 @@ namespace YouConf.Controllers
         [HttpPost]
         public ActionResult Create(Conference conference)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(conference);
+                YouConfDataContext.UpsertConference(conference.HashTag, conference);
+                return RedirectToAction("Details", new { hashTag = conference.HashTag });
             }
-
-            YouConfDataContext.UpsertConference(conference);
-            return RedirectToAction("Index");
+            return View(conference);
         }
 
         //
         // GET: /Conference/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string hashTag)
         {
-            return View();
+            var conference = YouConfDataContext.GetConference(hashTag);
+            if (conference == null)
+            {
+                return HttpNotFound();
+            }
+            return View(conference);
         }
 
         //
         // POST: /Conference/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, Conference conference)
         {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (ModelState.IsValid)
             {
-                return View();
+                var existingConference = YouConfDataContext.GetConference(id);
+                if (conference == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //Could use Automapper or similar to map the new conference details onto the old so we don't lose any child properties e.g. Speakers/Presentations.
+                //We'll do it manually for now
+                conference.Speakers = existingConference.Speakers;
+                conference.Presentations = existingConference.Presentations;
+
+                YouConfDataContext.UpsertConference(id, conference);
+
+                return RedirectToAction("Details", new { hashTag = conference.HashTag });
             }
+
+            return View(conference);
         }
 
         //
         // GET: /Conference/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string hashTag)
         {
-            return View();
+            var conference = YouConfDataContext.GetConference(hashTag);
+            if (conference == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(conference);
         }
 
         //
         // POST: /Conference/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirm(string hashTag)
         {
-            try
+            var conference = YouConfDataContext.GetConference(hashTag);
+            if (conference == null)
             {
-                // TODO: Add delete logic here
+                return HttpNotFound();
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            YouConfDataContext.DeleteConference(hashTag);
+
+            return RedirectToAction("All");
+        }
+
+        public ActionResult Live(string hashTag)
+        {
+            var conference = YouConfDataContext.GetConference(hashTag);
+            if (conference == null)
             {
-                return View();
+                return HttpNotFound();
             }
+            return View(conference);
         }
     }
 }

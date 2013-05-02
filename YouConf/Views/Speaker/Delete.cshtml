@@ -1,0 +1,11 @@
+﻿@model YouConf.Data.Entities.Speaker
+
+<h3>Are you sure you want to remove @Model.Name?</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Remove" /> |
+        @Html.ActionLink("Back to Conference", "Details", "Conference", new { hashTag = (string)ViewBag.ConferenceId }, null)
+    </p>
+}

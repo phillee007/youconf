@@ -47,7 +47,12 @@ namespace YouConf.Controllers
 
         public ActionResult Add(string id)
         {
-            var speaker = new Speaker();
+            var speaker = new Speaker()
+            {
+                Id = DateTime.Now.Ticks
+            };
+            //We want the id hidden field to be the SpeakerId, but if we don't remove it from ModelState here it will be the conference Id. See http://stackoverflow.com/questions/4710447/asp-net-mvc-html-hiddenfor-with-wrong-value
+            ModelState.Remove("id");
             ViewBag.ConferenceId = id;
             return View(speaker);
         }
@@ -67,63 +72,118 @@ namespace YouConf.Controllers
                 }
 
                 conference.Speakers.Add(speaker);
-                YouConfDataContext.UpsertConference(conference);
+                YouConfDataContext.UpsertConference(conference.HashTag, conference);
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
 
+            ViewBag.ConferenceId = conferenceHashTag;
             return View(speaker);
         }
 
         //
         // GET: /Speaker/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(long id, string conferenceHashTag)
         {
-            return View();
+            var conference = YouConfDataContext.GetConference(conferenceHashTag);
+            if (conference == null)
+            {
+                return HttpNotFound();
+            }
+
+            var speaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+            if (speaker == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.ConferenceId = conferenceHashTag;
+            return View(speaker);
         }
 
         //
         // POST: /Speaker/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(long id, string conferenceHashTag, Speaker speaker)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var conference = YouConfDataContext.GetConference(conferenceHashTag);
+                if (conference == null)
+                {
+                    return HttpNotFound();
+                }
 
-                return RedirectToAction("Index");
+                var currentSpeaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+                if (currentSpeaker == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //Overwrite the old speaker details with the new
+                conference.Speakers[conference.Speakers.IndexOf(currentSpeaker)] = speaker;
+
+                YouConfDataContext.UpsertConference(conferenceHashTag, conference);
+                return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
-            catch
-            {
-                return View();
-            }
+
+            ViewBag.ConferenceId = conferenceHashTag;
+            return View(speaker);
         }
 
         //
         // GET: /Speaker/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(long id, string conferenceHashTag)
         {
-            return View();
+            var conference = YouConfDataContext.GetConference(conferenceHashTag);
+            if (conference == null)
+            {
+                return HttpNotFound();
+            }
+
+            var currentSpeaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+            if (currentSpeaker == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.ConferenceId = conferenceHashTag;
+
+            return View(currentSpeaker);
         }
 
         //
         // POST: /Speaker/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirm(long id, string conferenceHashTag)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add delete logic here
+                var conference = YouConfDataContext.GetConference(conferenceHashTag);
+                if (conference == null)
+                {
+                    return HttpNotFound();
+                }
 
-                return RedirectToAction("Index");
+                var currentSpeaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+                if (currentSpeaker == null)
+                {
+                    return HttpNotFound();
+                }
+
+                //Remove the speaker
+                conference.Speakers.Remove(currentSpeaker);
+
+                YouConfDataContext.UpsertConference(conferenceHashTag, conference);
+                return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
-            catch
-            {
-                return View();
-            }
+
+            ViewBag.ConferenceId = conferenceHashTag;
+            return View();
         }
     }
 }

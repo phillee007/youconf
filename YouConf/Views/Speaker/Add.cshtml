@@ -4,7 +4,7 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.Hidden("conferenceHashTag", (string)ViewBag.ConferenceId)
-
+    @Html.Hidden("Id", Model.Id)
     <fieldset>
         <legend>Speaker</legend>
 
@@ -33,10 +33,18 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.AvatarUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AvatarUrl)
+            @Html.ValidationMessageFor(model => model.AvatarUrl)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Bio)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Bio, 10, 20, null)
+            @Html.EditorFor(model => model.Bio)
             @Html.ValidationMessageFor(model => model.Bio)
         </div>
         <p>
@@ -46,5 +54,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.ConferenceId })
+    @Html.ActionLink("Back to Conference", "Details", "Conference", new { hashTag = (string)ViewBag.ConferenceId }, null)
 </div>

@@ -39,6 +39,38 @@
             @Html.ValidationMessageFor(model => model.Abstract)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TimeZoneId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TimeZoneId)
+            @Html.ValidationMessageFor(model => model.TimeZoneId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HangoutUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HangoutUrl)
+            @Html.ValidationMessageFor(model => model.HangoutUrl)
+        </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>

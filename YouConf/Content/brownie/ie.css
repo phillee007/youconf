@@ -1,0 +1,28 @@
+a.button_small span {font-weight:normal;}
+a.button_medium span {font-weight:normal;}
+a.button_big span {font-weight:normal;}
+
+
+.footer_bottom .menu ul {list-style: none;padding:20px 0 0 0;margin:0;}
+.footer_bottom .menu ul li a {font-weight:400;}
+.footer_bottom  p a {font-weight:400;}
+.footer_bottom  .keep_in {font-weight:400;}
+h1,h2,h3,h4,h5,h6 {font-weight:400;}
+h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {font-weight:400;}
+.blog_post  a.post_title strong, .blog_post  span.post_title strong {font-weight:400;}
+
+.padding5 {padding:0;height:5px;}
+.padding10 {padding:0;height:10px;}
+.padding11 {padding:0;height:11px;}
+.padding12 {padding:0;height:12px;}
+.padding15 {padding:0;height:15px;}
+.padding17 {padding:0;height:17px;}
+.padding19 {padding:0;height:19px;}
+.padding20 {padding:0;height:20px;}
+.padding25 {padding:0;height:25px;}
+.padding30 {padding:0;height:30px;}
+.padding40 {padding:0;height:40px;}
+.padding50 {padding:0;height:50px;}
+.padding55 {padding:0;height:55px;}
+.padding60 {padding:0;height:60px;}
+.padding80 {padding:0;height:80px;}

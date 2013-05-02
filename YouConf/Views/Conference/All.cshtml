@@ -1,0 +1,58 @@
+﻿@model IEnumerable<YouConf.Data.Entities.Conference>
+
+@{
+    ViewBag.Title = "All conferences";
+}
+
+<h1>All of our conferences</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@foreach (var item in Model)
+{
+    <div style="border: 1px solid #e2e2e2; padding: 0.5em">
+        <h2 style="margin-top:0">@Html.ActionLink(String.Format("{0} - {1}", item.HashTag,  item.Name), "Details", new { hashTag = item.HashTag})</h2>
+        @{
+    var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(item.TimeZoneId);
+    var utcStartDate = TimeZoneInfo.ConvertTimeToUtc(item.StartDate, conferenceTimeZone);
+    var utcEndDate = TimeZoneInfo.ConvertTimeToUtc(item.EndDate, conferenceTimeZone);
+        }
+        <span class="event-time"><strong>When:</strong> @item.StartDate.ToShortDateString() - @item.EndDate.ToShortDateString() @conferenceTimeZone.DisplayName (@utcStartDate.ToShortDateString() - @utcEndDate.ToShortDateString() GMT) </span>
+        <p>@Html.Truncate(item.Abstract, 300) @Html.ActionLink("More", "Details", new { hashTag = item.HashTag})</p>
+    </div>
+}
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HashTag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abstract)
+        </th>
+        <th></th>
+    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HashTag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.Truncate(item.Abstract, 250)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { hashTag = item.HashTag }) |
+                @Html.ActionLink("Details", "Details", new { hashTag = item.HashTag }) |
+                @Html.ActionLink("Delete", "Delete", new { hashTag = item.HashTag })
+            </td>
+        </tr>
+    }
+
+</table>*@

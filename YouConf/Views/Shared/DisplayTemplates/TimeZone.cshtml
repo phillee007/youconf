@@ -1,0 +1,15 @@
+﻿@* Thanks to http://romikoderbynew.com/2012/03/12/working-with-time-zones-in-asp-net-mvc/*@
+@model string
+
+@{
+    var timeZoneList = TimeZoneInfo
+        .GetSystemTimeZones()
+        .Select(t => new SelectListItem
+        {
+            Text = t.DisplayName,
+            Value = t.Id,
+            Selected = Model != null && t.Id == Model
+        });
+}
+@Html.DropDownListFor(model => model, timeZoneList)
+@Html.ValidationMessageFor(model => model)

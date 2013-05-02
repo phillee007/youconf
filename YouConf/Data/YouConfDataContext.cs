@@ -10,7 +10,7 @@ using YouConf.Data.Entities;
 
 namespace YouConf.Data
 {
-    public class YouConfDataContext : YouConf.Data.IYouConfDataContext
+    public class YouConfDataContext : IYouConfDataContext
     {
 
         public YouConfDataContext()
@@ -65,10 +65,38 @@ namespace YouConf.Data
             return JsonConvert.DeserializeObject<Conference>(((AzureTableEntity)(retrievedResult.Result)).Entity);
         }
 
-        public void UpsertConference(Conference conference)
+        public void DeleteConference(string hashTag)
+        {
+            var table = GetTable("Conferences");
+            TableQuery<AzureTableEntity> query = new TableQuery<AzureTableEntity>();
+            TableOperation retrieveOperation = TableOperation.Retrieve<AzureTableEntity>("Conferences", hashTag);
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            if (retrievedResult.Result != null)
+            {
+                TableOperation deleteOperation = TableOperation.Delete((AzureTableEntity)retrievedResult.Result);
+                // Execute the operation.
+                table.Execute(deleteOperation);
+            }
+        }
+
+        /// <summary>
+        /// Inserts or updates a conference
+        /// </summary>
+        /// <param name="hashTag">The hashTag of the existing conference (for updates) or the hashTag of the new conference (for inserts)</param>
+        /// <param name="conference">The conference itself</param>
+        public void UpsertConference(string hashTag, Conference conference)
         {
             //Wrap the conference in our custom AzureTableEntity
             var table = GetTable("Conferences");
+
+            //We're using the HashTag as the RowKey, so if it gets changed we have to remove the existing record and insert a new one
+            //Yes I know that if the code fails after the deletion we could be left with no conference.... Maybe look at doing this in a batch operation instead?
+            //Once I move this over to SQL for part 3 we can wrap it in a transaction
+            if (hashTag != conference.HashTag)
+            {
+                DeleteConference(hashTag);
+            }
+
             var entity = new AzureTableEntity()
             {
                 PartitionKey = "Conferences",

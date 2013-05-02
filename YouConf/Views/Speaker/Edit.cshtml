@@ -1,0 +1,60 @@
+﻿@model YouConf.Data.Entities.Speaker
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Hidden("conferenceHashTag", (string)ViewBag.ConferenceId)
+    @Html.Hidden("Id", Model.Id)
+
+    <fieldset>
+        <legend>Speaker</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Url)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Url)
+            @Html.ValidationMessageFor(model => model.Url)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AvatarUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AvatarUrl)
+            @Html.ValidationMessageFor(model => model.AvatarUrl)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Bio)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Bio)
+            @Html.ValidationMessageFor(model => model.Bio)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Conference", "Details", "Conference", new { hashTag = (string)ViewBag.ConferenceId }, null)
+</div>

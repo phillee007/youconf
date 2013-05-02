@@ -5,8 +5,9 @@ namespace YouConf.Data
 {
     public interface IYouConfDataContext
     {
-        IEnumerable<Conference> GetAllConferences();
-        void UpsertConference(Conference conference);
         Conference GetConference(string hashtag);
+        IEnumerable<Conference> GetAllConferences();
+        void UpsertConference(string hashTag, Conference conference);
+        void DeleteConference(string hashTag);
     }
 }
