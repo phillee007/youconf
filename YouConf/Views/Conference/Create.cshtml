@@ -51,7 +51,7 @@
             @Html.LabelFor(model => model.StartDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.StartDate, )
+            @Html.EditorFor(model => model.StartDate)
             @Html.ValidationMessageFor(model => model.StartDate)
         </div>
 
@@ -78,5 +78,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Cancel", "Details", new { hashTag = Model.HashTag }) 
 </div>

@@ -41,8 +41,10 @@ namespace YouConf.Data.Entities
         [Required]
         [UIHint("TimeZone"), Display(Name = "Time Zone")]
         public string TimeZoneId { get; set; }
+        [Display(Name = "Hangout Url")]
         public string HangoutUrl { get; set; }
-        public string TwitterFeed { get; set; }
+        //[Display(Name = "Twitter Feed Url")]
+        //public string TwitterFeed { get; set; }
     }
 
     public class Presentation{
@@ -50,12 +52,24 @@ namespace YouConf.Data.Entities
         {
             Speakers = new List<Speaker>();
         }
+        [Required]
+        public long Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
+        [DataType(DataType.MultilineText)]  
         public string Abstract { get; set; }
+        [Required]
+        [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }
+        [Required]
+        [Display(Name = "Duration (minutes)")]
         public int Duration { get; set; }
+        [Required]
+        [UIHint("TimeZone"), Display(Name = "Time Zone")]
         public string TimeZone { get; set; }
-        public IEnumerable<Speaker> Speakers { get; set; }
+        [Display(Name="Speaker/s")]
+        public IList<Speaker> Speakers { get; set; }
     }
     public class Speaker{
         [Required]
@@ -67,6 +81,7 @@ namespace YouConf.Data.Entities
         public string Bio { get; set; }
         public string Url { get; set; }
         public string Email { get; set; }
+        [Display(Name = "Avatar Url")]
         public string AvatarUrl { get; set; }
     }
 

@@ -16,11 +16,11 @@
     <div style="border: 1px solid #e2e2e2; padding: 0.5em">
         <h2 style="margin-top:0">@Html.ActionLink(String.Format("{0} - {1}", item.HashTag,  item.Name), "Details", new { hashTag = item.HashTag})</h2>
         @{
-    var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(item.TimeZoneId);
-    var utcStartDate = TimeZoneInfo.ConvertTimeToUtc(item.StartDate, conferenceTimeZone);
-    var utcEndDate = TimeZoneInfo.ConvertTimeToUtc(item.EndDate, conferenceTimeZone);
+            var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(item.TimeZoneId);
+            var localStartDate = item.StartDate.UtcToLocal(conferenceTimeZone);
+            var localEndDate = item.EndDate.UtcToLocal(conferenceTimeZone);
         }
-        <span class="event-time"><strong>When:</strong> @item.StartDate.ToShortDateString() - @item.EndDate.ToShortDateString() @conferenceTimeZone.DisplayName (@utcStartDate.ToShortDateString() - @utcEndDate.ToShortDateString() GMT) </span>
+        <span class="event-time"><strong>When:</strong> @localStartDate.ToShortDateString() - @localEndDate.ToShortDateString() @conferenceTimeZone.DisplayName (@item.StartDate.ToShortDateString() - @item.EndDate.ToShortDateString() GMT) </span>
         <p>@Html.Truncate(item.Abstract, 300) @Html.ActionLink("More", "Details", new { hashTag = item.HashTag})</p>
     </div>
 }

@@ -1,0 +1,75 @@
+﻿@model YouConf.Data.Entities.Presentation
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Hidden("conferenceHashTag", ((YouConf.Data.Entities.Conference)ViewBag.Conference).HashTag)
+    @Html.Hidden("Id", Model.Id)    
+
+    <fieldset>
+        <legend>Presentation</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Abstract)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Abstract)
+            @Html.ValidationMessageFor(model => model.Abstract)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartTime)
+            @Html.ValidationMessageFor(model => model.StartTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TimeZone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TimeZone)
+            @Html.ValidationMessageFor(model => model.TimeZone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Duration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Duration)
+            @Html.ValidationMessageFor(model => model.Duration)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Speakers)
+        </div>
+        <div class="editor-field">
+            <fieldset class="checkboxgroup">
+                <legend>Speaker/s</legend>
+                @foreach (var speaker in (IEnumerable<YouConf.Data.Entities.Speaker>)ViewBag.Speakers)
+                {
+                    var isChecked = Model.Speakers.Contains(speaker);
+                    <label>
+                        <input id="speakerIds" name="speakerIds" type="checkbox" value="@speaker.Id" @(isChecked ? "checked=\"checked\"" : "")>@speaker.Name</label>
+                }
+            </fieldset>
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

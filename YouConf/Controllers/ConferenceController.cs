@@ -58,6 +58,10 @@ namespace YouConf.Controllers
         {
             if (ModelState.IsValid)
             {
+                var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(conference.TimeZoneId);
+                conference.StartDate = TimeZoneInfo.ConvertTimeToUtc(conference.StartDate, conferenceTimeZone);
+                conference.EndDate = TimeZoneInfo.ConvertTimeToUtc(conference.EndDate, conferenceTimeZone);
+
                 YouConfDataContext.UpsertConference(conference.HashTag, conference);
                 return RedirectToAction("Details", new { hashTag = conference.HashTag });
             }
@@ -91,6 +95,10 @@ namespace YouConf.Controllers
                 {
                     return HttpNotFound();
                 }
+
+                var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(conference.TimeZoneId);
+                conference.StartDate = TimeZoneInfo.ConvertTimeToUtc(conference.StartDate, conferenceTimeZone);
+                conference.EndDate = TimeZoneInfo.ConvertTimeToUtc(conference.EndDate, conferenceTimeZone);
 
                 //Could use Automapper or similar to map the new conference details onto the old so we don't lose any child properties e.g. Speakers/Presentations.
                 //We'll do it manually for now

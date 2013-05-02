@@ -1,6 +1,7 @@
 ﻿@model YouConf.Data.Entities.Conference
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.Hidden("Id", Model.HashTag)
@@ -43,8 +44,8 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.StartDate)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.StartDate)
+        <div class="editor-field">      
+            @Html.EditorFor(model => model.StartDate, "LocalDateTime", new { TimeZoneId = Model.TimeZoneId })
             @Html.ValidationMessageFor(model => model.StartDate)
         </div>
 
@@ -52,7 +53,7 @@
             @Html.LabelFor(model => model.EndDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.EndDate)
+            @Html.EditorFor(model => model.EndDate, "LocalDateTime", new { TimeZoneId = Model.TimeZoneId })
             @Html.ValidationMessageFor(model => model.EndDate)
         </div>
 
