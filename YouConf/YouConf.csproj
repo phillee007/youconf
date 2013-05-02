@@ -506,6 +506,7 @@
     <Content Include="Views\Conference\Live.cshtml" />
     <Content Include="Views\Conference\Edit.cshtml" />
     <Content Include="Views\Conference\Delete.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

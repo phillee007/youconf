@@ -1,0 +1,2 @@
+﻿@model DateTime
+@Html.TextBox("", Model.ToString(),  new { @class = "date", @Value = Model.Date.ToLocalTime().ToString("yyyy-MM-dd") })
