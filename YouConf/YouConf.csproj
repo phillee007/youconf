@@ -536,6 +536,7 @@
     <Content Include="Views\Presentation\Edit.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
     <Content Include="Views\Conference\ConferenceWhenAndWhere.cshtml" />
+    <Content Include="Views\Presentation\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

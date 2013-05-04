@@ -34,12 +34,14 @@ namespace YouConf.Data.Entities
         [DataType(DataType.MultilineText)]  
         public string Abstract { get; set; }
         [Required]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Start Date")]
-        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
         [Required]
+        [DataType(DataType.DateTime)]
         [Display(Name = "End Date")]
-        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
         [Required]
         [UIHint("TimeZone"), Display(Name = "Time Zone")]
@@ -63,8 +65,9 @@ namespace YouConf.Data.Entities
         [DataType(DataType.MultilineText)]  
         public string Abstract { get; set; }
         [Required]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Start Time")]
-        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime StartTime { get; set; }
         [Required]
         [Display(Name = "Duration (minutes)")]

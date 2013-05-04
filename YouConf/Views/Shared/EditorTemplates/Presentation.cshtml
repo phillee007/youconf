@@ -30,7 +30,7 @@
             @Html.LabelFor(model => model.StartTime)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.StartTime)
+            @Html.EditorFor(model => model.StartTime, "LocalDateTime", new { TimeZoneId = ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId })
             @Html.ValidationMessageFor(model => model.StartTime)
         </div>
 
@@ -73,7 +73,7 @@
             </fieldset>
         </div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

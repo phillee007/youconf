@@ -182,14 +182,15 @@ namespace YouConf.Controllers
                 foreach (var presentation in conference.Presentations)
                 {
                     var speaker = presentation.Speakers.FirstOrDefault(x => x.Id == currentSpeaker.Id);
-                    if (speaker != null)
-                    {
-                        var index = presentation.Speakers.IndexOf(speaker);
-                        if (index >= 0)
-                        {
-                            presentation.Speakers.RemoveAt(index);
-                        }
-                    }
+                    presentation.Speakers.Remove(speaker);
+                    //if (speaker != null)
+                    //{
+                    //    var index = presentation.Speakers.IndexOf(speaker);
+                    //    if (index >= 0)
+                    //    {
+                    //        presentation.Speakers.RemoveAt(index);
+                    //    }
+                    //}
                 }
 
                 YouConfDataContext.UpsertConference(conferenceHashTag, conference);

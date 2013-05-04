@@ -1,11 +1,7 @@
-﻿@model YouConf.Data.Entities.Speaker
-@{
-    ViewBag.Title = "Remove speaker";
-}
+﻿@model YouConf.Data.Entities.Presentation
 
 <h2>@Model.Name</h2>
-<h3>Are you sure you want to remove this speaker?</h3>
-
+<h3>Are you sure you want to remove this presentation?</h3>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -14,3 +10,4 @@
         @Html.ActionLink("Cancel", "Details", "Conference", new { hashTag = (string)ViewBag.ConferenceId }, null)
     </p>
 }
+

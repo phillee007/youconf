@@ -62,7 +62,8 @@ namespace YouConf.Data
                 return null;
             }
 
-            return JsonConvert.DeserializeObject<Conference>(((AzureTableEntity)(retrievedResult.Result)).Entity);
+            return JsonConvert.DeserializeObject<Conference>(((AzureTableEntity)(retrievedResult.Result)).Entity,
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
         }
 
         public void DeleteConference(string hashTag)
@@ -101,7 +102,8 @@ namespace YouConf.Data
             {
                 PartitionKey = "Conferences",
                 RowKey = conference.HashTag,
-                Entity = JsonConvert.SerializeObject(conference)
+                //When serializing we want to make sure that object references are preserved
+                Entity = JsonConvert.SerializeObject(conference, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects })
             };
 
             TableOperation upsertOperation = TableOperation.InsertOrReplace(entity);

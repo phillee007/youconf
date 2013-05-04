@@ -65,7 +65,7 @@ h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 2.4em;
 }
 
 h2 {
@@ -500,6 +500,8 @@ textarea {
     font-family: inherit;
     width: 500px;
 }
+
+.multi-line { height:15em; width:40em; }
 
     input:focus, textarea:focus {
         border: 1px solid #7ac0da;

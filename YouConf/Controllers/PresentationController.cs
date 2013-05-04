@@ -185,8 +185,8 @@ namespace YouConf.Controllers
 
                 //Remove the Presentation
                 conference.Presentations.Remove(currentPresentation);
-
                 YouConfDataContext.UpsertConference(conferenceHashTag, conference);
+
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
 

@@ -3,4 +3,4 @@
     var localTimeZone = TimeZoneInfo.FindSystemTimeZoneById((string)ViewBag.TimeZoneId);
     var localDateTime = Model.UtcToLocal(localTimeZone);
 }
-@Html.TextBox("", localDateTime.ToString(), new { @class = "date", @Value = localDateTime.ToString("yyyy-MM-dd HH:mm") })
+@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, new { @class = "date" })
