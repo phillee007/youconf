@@ -6,7 +6,6 @@
 
 body {
     background-color: #fff;
-    border-top: solid 10px #000;
     color: #555152;
     font-size: 15px;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -128,6 +127,7 @@ h5, h6 {
 .site-header {
     background-color: #2E2633;
     border-bottom: 20px solid #99173C;
+    padding-top: 0.5em;
 }
 
 .site-header, .site-footer {
