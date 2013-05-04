@@ -3,28 +3,25 @@
 @{
     ViewBag.Title = "All conferences";
 }
-
-<h1>All of our conferences</h1>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <p>
+        @Html.ActionLink("Create a conference", "Create")
+    </p>
 
 
-@foreach (var item in Model)
-{
-    <div style="border: 1px solid #e2e2e2; padding: 0.5em">
-        <h2 style="margin-top:0">@Html.ActionLink(String.Format("{0} - {1}", item.HashTag,  item.Name), "Details", new { hashTag = item.HashTag})</h2>
-        @{
-            var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(item.TimeZoneId);
-            var localStartDate = item.StartDate.UtcToLocal(conferenceTimeZone);
-            var localEndDate = item.EndDate.UtcToLocal(conferenceTimeZone);
-        }
-        <span class="event-time"><strong>When:</strong> @localStartDate.ToShortDateString() - @localEndDate.ToShortDateString() @conferenceTimeZone.DisplayName (@item.StartDate.ToShortDateString() - @item.EndDate.ToShortDateString() GMT) </span>
-        <p>@Html.Truncate(item.Abstract, 300) @Html.ActionLink("More", "Details", new { hashTag = item.HashTag})</p>
-    </div>
-}
-@*<table>
+    @foreach (var item in Model)
+    {
+        <article style="border: 1px solid #e2e2e2; padding: 0.5em">
+            <header>
+                <h2 style="margin-top: 0">@item.Name</h2>
+            </header>
+            @Html.Partial("ConferenceWhenAndWhere", item)
+            <p>@Html.Truncate(item.Abstract, 300) </p>
+            <div style="font-size:0.8em;">
+                @Html.ActionLink("More", "Details", new { hashTag = item.HashTag })
+            </div>
+        </article>
+    }
+    @*<table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.HashTag)
@@ -56,3 +53,7 @@
     }
 
 </table>*@
+
+
+
+@section Sidebar{}

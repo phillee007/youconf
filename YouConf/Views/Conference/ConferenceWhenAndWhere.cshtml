@@ -1,0 +1,11 @@
+﻿@model YouConf.Data.Entities.Conference
+@{
+    var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(Model.TimeZoneId);
+    var localStartDate = Model.StartDate.UtcToLocal(conferenceTimeZone);
+    var localEndDate = Model.EndDate.UtcToLocal(conferenceTimeZone);
+}
+<div>
+    <strong>When:</strong> @localStartDate.ToShortDateString() - @localEndDate.ToShortDateString() @conferenceTimeZone.DisplayName (@Model.StartDate.ToShortDateString() - @Model.EndDate.ToShortDateString() GMT)
+    <br />
+    <strong>Twitter HashTag: </strong>#@Model.HashTag
+</div>

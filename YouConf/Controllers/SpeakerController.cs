@@ -177,6 +177,20 @@ namespace YouConf.Controllers
 
                 //Remove the speaker
                 conference.Speakers.Remove(currentSpeaker);
+                //Also need to remove the speaker from any presentations they might be involved in
+                //Once we get to use Entity Framework this will be less verbose...
+                foreach (var presentation in conference.Presentations)
+                {
+                    var speaker = presentation.Speakers.FirstOrDefault(x => x.Id == currentSpeaker.Id);
+                    if (speaker != null)
+                    {
+                        var index = presentation.Speakers.IndexOf(speaker);
+                        if (index >= 0)
+                        {
+                            presentation.Speakers.RemoveAt(index);
+                        }
+                    }
+                }
 
                 YouConfDataContext.UpsertConference(conferenceHashTag, conference);
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });

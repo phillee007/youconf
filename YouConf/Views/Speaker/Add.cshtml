@@ -1,4 +1,7 @@
 ﻿@model YouConf.Data.Entities.Speaker
+@{
+    ViewBag.Title = "Add a speaker to your conference";
+}
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

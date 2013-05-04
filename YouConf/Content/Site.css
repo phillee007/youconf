@@ -7,7 +7,7 @@
 body {
     background-color: #fff;
     border-top: solid 10px #000;
-    color: #333;
+    color: #555152;
     font-size: 15px;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -60,7 +60,7 @@ mark {
 
 h1, h2, h3,
 h4, h5, h6 {
-    color: #000;
+    color: #555152;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -99,31 +99,59 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    background-color: #DCE9BE;
     clear: both;
-    padding-bottom: 35px;
 }
 
 .main-content {
-    background: url("../Images/accent.png") no-repeat;
-    padding-left: 10px;
-    padding-top: 30px;
+    background-color: #fff;
+    padding: 2%;
 }
 
 .featured + .main-content {
     background: url("../Images/heroAccent.png") no-repeat;
 }
 
-header .content-wrapper {
-    padding-top: 20px;
+.main-content .content {
+    float: left;
+    width: 75%;
+    word-break: break-word;
+    padding-right: 20px;
+    position: relative;
 }
 
-footer {
+.main-content aside.sidebar {
+    float: right;
+    width: 25%;
+}
+
+.site-header {
+    background-color: #2E2633;
+    border-bottom: 20px solid #99173C;
+}
+
+.site-header, .site-footer {
+    background-color: #2E2633;
+}
+
+.site-header,
+.aside.sidebar {
+    -webkit-box-shadow: 0 5px 10px #aaa;
+    -moz-box-shadow: 0 5px 10px #aaa;
+    box-shadow: 0 5px 10px #fff;
+}
+
+header .content-wrapper {
+    padding: 20px 0 15px;
+}
+
+
+/*footer {
     clear: both;
     background-color: #e2e2e2;
     font-size: .8em;
     height: 100px;
-}
+}*/
 
 
 /* site title
@@ -182,7 +210,7 @@ footer {
 ul#menu {
     font-size: 1.3em;
     font-weight: 600;
-    margin: 0 0 5px;
+    margin: 35px 0 0;
     padding: 0;
     text-align: right;
 }
@@ -195,12 +223,12 @@ ul#menu {
 
         ul#menu li a {
             background: none;
-            color: #999;
+            color: #fff;
             text-decoration: none;
         }
 
             ul#menu li a:hover {
-                color: #333;
+                color: #DCE9BE;
                 text-decoration: none;
             }
 
@@ -250,6 +278,40 @@ section.feature {
     width: 300px;
     float: left;
     padding: 10px;
+}
+
+/* Boxes */
+
+.speaker-box {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+    .speaker-box .inner {
+        padding-right: 1em;
+    }
+
+    .speaker-box h3 {
+        font-size: 1.3em;
+        background-color: #EFFFCD;
+    }
+
+.notice {
+    background-color: #fbf9e9;
+    border: 1px solid #e3cf57;
+    color: #212121;
+}
+
+.info-grey {
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+
+.presenters article:nth-of-type(even) {
+    background: #EFFFCD;
 }
 
 /* ordered list */
@@ -304,10 +366,10 @@ ol.round {
         }
 
 /* content */
-article {
+/*article {
     float: left;
     width: 70%;
-}
+}*/
 
 aside {
     float: right;
@@ -587,26 +649,25 @@ tr.pager td {
 }
 
 .blue-button {
-    -moz-box-shadow: inset 0px 1px 0px 0px #97c4fe;
+    /*-moz-box-shadow: inset 0px 1px 0px 0px #97c4fe;
     -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
-    box-shadow: inset 0px 1px 0px 0px #97c4fe;
-    background-color: #3d94f6;
-    -moz-border-radius: 6px;
+    box-shadow: inset 0px 1px 0px 0px #97c4fe;*/
+    background: none !important;
+    background-color: #555152 !important;
+    /*-moz-border-radius: 6px;
     -webkit-border-radius: 6px;
-    border-radius: 6px;
-    border: 1px solid #337fed;
-    display: inline-block;
-    color: #ffffff;
-    font-family: arial;
-    font-size: 16px;
+    border-radius: 6px;*/
+    border: 1px solid #2E2633;
+    /*display: inline-block;*/
+    color: #EFFFCD !important;
+    /*font-family: arial;*/
     font-weight: bold;
-    padding: 6px 34px;
-    text-decoration: none;
-    text-shadow: 1px 1px 0px #1570cd;
+    /*padding: 0.5em 2em;
+    text-decoration: none;*/
 }
 
     .blue-button:hover {
-        background-color: #1e62d0;
+        background-color: #2E2633 !important;
     }
 
     .blue-button:active {
@@ -786,3 +847,12 @@ tr.pager td {
             margin: 0;
         }
 }
+
+@media only screen and (max-width: 480px) {
+    .speaker-box {
+        float: none !important;
+        width: auto !important;
+    }
+}
+
+/* http://www.colourlovers.com/palette/444487/Curiosity_Killed */

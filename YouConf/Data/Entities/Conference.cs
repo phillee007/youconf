@@ -26,7 +26,8 @@ namespace YouConf.Data.Entities
         [Required]
         public string Name { get; set; }
         [Required]
-        [DataType(DataType.MultilineText)]  
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Full Description")]
         public string Description { get; set; }
         public IList<Presentation> Presentations { get; set; }
         public IList<Speaker> Speakers { get; set; }
@@ -34,15 +35,17 @@ namespace YouConf.Data.Entities
         public string Abstract { get; set; }
         [Required]
         [Display(Name = "Start Date")]
+        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime StartDate { get; set; }
         [Required]
         [Display(Name = "End Date")]
+        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime EndDate { get; set; }
         [Required]
         [UIHint("TimeZone"), Display(Name = "Time Zone")]
         public string TimeZoneId { get; set; }
-        [Display(Name = "Hangout Url")]
-        public string HangoutUrl { get; set; }
+        [Display(Name = "Hangout Id")]
+        public string HangoutId { get; set; }
         //[Display(Name = "Twitter Feed Url")]
         //public string TwitterFeed { get; set; }
     }
@@ -61,6 +64,7 @@ namespace YouConf.Data.Entities
         public string Abstract { get; set; }
         [Required]
         [Display(Name = "Start Time")]
+        [DisplayFormat(NullDisplayText = "", DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime StartTime { get; set; }
         [Required]
         [Display(Name = "Duration (minutes)")]
@@ -68,6 +72,8 @@ namespace YouConf.Data.Entities
         [Required]
         [UIHint("TimeZone"), Display(Name = "Time Zone")]
         public string TimeZone { get; set; }
+        [Display(Name = "YouTube Video Id")]
+        public string YouTubeVideoId { get; set; }
         [Display(Name="Speaker/s")]
         public IList<Speaker> Speakers { get; set; }
     }

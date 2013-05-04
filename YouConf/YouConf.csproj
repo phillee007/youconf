@@ -224,11 +224,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apple-touch-icon.png" />
     <Content Include="Content\brownie\flexslider.css" />
     <Content Include="Content\brownie\ie.css" />
     <Content Include="Content\brownie\prettyPhoto.css" />
     <Content Include="Content\brownie\style.css" />
+    <Content Include="Content\Copy of main.grids.css" />
+    <Content Include="Content\Site.jqueryUiOverrides.css" />
     <Content Include="Content\jquery.ui.timepicker.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\site.grids.css" />
+    <Content Include="Content\main.print.css" />
+    <Content Include="Content\normalize.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -283,7 +290,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon-play.ico" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\youconf - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\youconf - Web Deploy.pubxml" />
@@ -421,6 +428,15 @@
     <Content Include="Images\brownie\Untitled-1.png" />
     <Content Include="Images\brownie\zoom.png" />
     <Content Include="Images\brownie\zoom_icon.png" />
+    <Content Include="Images\Logo.png" />
+    <Content Include="Images\Logov2.png" />
+    <Content Include="Images\Logov3.png" />
+    <Content Include="Images\Logov4.png" />
+    <Content Include="Images\Logov5.png" />
+    <Content Include="Images\Logov6.png" />
+    <Content Include="Images\Logov7.png" />
+    <Content Include="Images\play.png" />
+    <Content Include="Images\Step-Forward-Pressed-icon.png" />
     <Content Include="js\all-in-one-min.js" />
     <Content Include="js\all-in-one.js" />
     <Content Include="js\contact-form.js" />
@@ -459,7 +475,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="favicon.ico" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -501,7 +519,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Conference\All.cshtml" />
     <Content Include="Views\Conference\Create.cshtml" />
-    <Content Include="Views\Speaker\Index.cshtml" />
     <Content Include="Views\Speaker\Add.cshtml" />
     <Content Include="Views\Conference\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutBrownie.cshtml" />
@@ -517,6 +534,8 @@
     <Content Include="Views\Shared\EditorTemplates\LocalDateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Presentation.cshtml" />
     <Content Include="Views\Presentation\Edit.cshtml" />
+    <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
+    <Content Include="Views\Conference\ConferenceWhenAndWhere.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

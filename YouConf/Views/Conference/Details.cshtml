@@ -1,165 +1,98 @@
 ﻿@model YouConf.Data.Entities.Conference
-
-<style>
-    .speaker-box {
-        -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
-        text-align: left;
-        padding: 0.5em;
-    }
-
-    .one-third {
-        width: 25%;
-        float: left;
-    }
-
-    .speaker-box h3 {
-        font-size: 1.3em;
-        background-color: lightgray;
-    }
-
-    .notice {
-        background-color: #fbf9e9;
-        border: 1px solid #e3cf57;
-        color: #212121;
-    }
-
-    .info-grey {
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-    }
-
-    * {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    .grid {
-        background: white;
-        margin: 0 0 20px 0;
-    }
-
-        .grid:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-    [class*='col-'] {
-        float: left;
-        padding-right: 20px;
-    }
-
-    .grid [class*='col-']:last-of-type {
-        padding-right: 0;
-    }
-
-    .col-2-3 {
-        width: 66.66%;
-    }
-
-    .col-1-3 {
-        width: 33.33%;
-    }
-
-    .col-1-2 {
-        width: 50%;
-    }
-
-    .col-1-4 {
-        width: 25%;
-    }
-
-    .col-1-8 {
-        width: 12.5%;
-    }
-
-    /* Opt-in outside padding */
-    .grid-pad {
-        padding: 20px 0 20px 20px;
-    }
-
-        .grid-pad [class*='col-']:last-of-type {
-            padding-right: 20px;
-        }
-</style>
-
-
-<h1>@Model.HashTag - @Model.Name</h1>
-<p><strong>@Model.Abstract</strong></p>
 @{
-    var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(Model.TimeZoneId);
-    var localStartDate = Model.StartDate.UtcToLocal(conferenceTimeZone);
-    var localEndDate = Model.EndDate.UtcToLocal(conferenceTimeZone);
+    ViewBag.Title = Model.Name;
 }
-<span class="event-time"><strong>When: </strong>@localStartDate.ToShortDateString() - @localEndDate.ToShortDateString() @conferenceTimeZone.Id (@Model.StartDate.ToShortDateString() - @Model.EndDate.ToShortDateString() GMT) </span>
-@if (!String.IsNullOrWhiteSpace(Model.HangoutUrl))
-{
-    <p><strong>@Html.ActionLink("View live stream", "Live", new { hashTag = Model.HashTag }, new { @class = "blue-button" })</strong></p>
+<article>
+    <header style="background-color: #EFFFCD; padding: 1em">
+        @section H1{}
+        <h1 style="margin:0">@Model.HashTag - @Model.Name</h1>
+        @Html.Partial("ConferenceWhenAndWhere", Model)
+        <p><strong>@Model.Abstract</strong></p>
+
+        @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
+        {
+            <p><strong>@Html.ActionLink("View live stream", "Live", new { hashTag = Model.HashTag }, new { @class = "blue-button" })</strong></p>
 @*<p><strong><a id="LiveStream" href="#">View live stream</a> </strong></p>*@
-}
-<p>@Model.Description</p>
-<div style="border: 1px solid #e2e2e2; border-radius: 4px; padding: 0 1em 1em 1em">
-    <h2>Speakers</h2>
-    <div class="grid">
-        @for (int i = 0; i < Model.Speakers.Count; i++)
-        {
-            var speaker = Model.Speakers[i];
-@*<div class='info-box col_1_4 @(((i + 1) % 4) == 0 ? "last" : "")'>*@
-            <div class="col-1-3 speaker-box">
-                <h3 style="line-height: 50px;">@if (!String.IsNullOrWhiteSpace(speaker.AvatarUrl))
-                                               {
-                    <img style="float: left; margin-right: 1em" src="@speaker.AvatarUrl" title="@speaker.Name Avatar image" />
-                                               }
-                    @speaker.Name
-                </h3>
-                <p>@speaker.Bio <a href="@speaker.Url" title="@speaker.Name">More...</a></p>
-                <p>@Html.ActionLink("Edit", "Edit", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null) |
-    @Html.ActionLink("Remove", "Delete", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null)
-                </p>
-            </div>@* 
-        if ((i + 1) % 4 == 0)
-        {
-        <div class="clear padding20"></div>
-        }*@
         }
-    </div>
-
-    <p>@Html.ActionLink("Add new", "Add", "Speaker", new { id = Model.HashTag }, null)</p>
-</div>
-<div style="border: 1px solid #e2e2e2; border-radius: 4px; padding: 0 1em 1em 1em">
-    <h2>Presentations</h2>
-    @foreach (var presentation in Model.Presentations.OrderBy(x => x.StartTime))
-    {
-        var presentationLocalStartTime = presentation.StartTime.UtcToLocal(conferenceTimeZone);
-        var presentationUtcEndDate = presentation.StartTime.Add(TimeSpan.FromMinutes(@presentation.Duration));
-        var presentationLocalEndDate = presentationUtcEndDate.UtcToLocal(conferenceTimeZone);
-        var speakerNames = String.Join(", ", presentation.Speakers.Select(x => x.Name).ToArray());
+    </header>
+    <p>@Model.Description</p>
+    <section style="border: 1px solid #e2e2e2; border-radius: 4px; padding: 0 1em 1em 1em">
+        <h2>Speakers</h2>
         <div>
-            <h4>@presentation.Name</h4>
-            <span class="event-time">@presentationLocalStartTime.ToString() - @presentationLocalEndDate @presentation.TimeZone (@presentation.StartTime.ToString() - @presentationUtcEndDate) UTC) </span>
-            <br />
-            <span class="event-time"><strong>Speakers: </strong>@speakerNames</span>
-            <p>@presentation.Abstract</p>
-            <p>
-                <p>@Html.ActionLink("Edit", "Edit", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null) |
-    @Html.ActionLink("Remove", "Delete", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null)
-                </p>
-            </p>
-        </div>
-        <hr style="border-top: 1px solid #e2e2e2;" />
-    }
-    <p>@Html.ActionLink("Add new", "Add", "Presentation", new { id = Model.HashTag }, null)</p>
-</div>
+            @for (int i = 0; i < Model.Speakers.Count; i++)
+            {
+                var speaker = Model.Speakers[i];
 
-<p>
-    @Html.ActionLink("Edit", "Edit") |
+                if (i % 2 == 0)
+                {
+                @:<div class="grid" style="margin:0">
+}
+            @*<div class='info-box col_1_4 @(((i + 1) % 4) == 0 ? "last" : "")'>*@
+                <article class="col-1-2 speaker-box">
+                    <div class="inner">
+                        <header>
+                            <h3 style="line-height: 60px;">@if (!String.IsNullOrWhiteSpace(speaker.AvatarUrl))
+                                                           {
+                                <img style="float: left; margin: 5px; width: 50px; height: 50px;" src="@speaker.AvatarUrl" title="@speaker.Name Avatar image" />
+                                                           }
+                                @speaker.Name
+                            </h3>
+                        </header>
+                        <p>@speaker.Bio <a href="@speaker.Url" title="@speaker.Name" class="no-button">Website</a></p>
+                        <footer>
+                            <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null) |
+        @Html.ActionLink("Remove", "Delete", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null)
+                            </p>
+                        </footer>
+                        </div>
+                </article>
+                                                           if ((i + 1) % 2 == 0 || i == Model.Speakers.Count - 1)
+                                                           {
+            @:</div><hr style="border-top: 1px solid #e2e2e2;" />
+                                                                                                                    }
+            }
+        </div>
+
+        <p>@Html.ActionLink("Add a speaker", "Add", "Speaker", new { id = Model.HashTag }, null)</p>
+    </section>
+    <section class="presenters" style="border: 1px solid #e2e2e2; border-radius: 4px; padding: 0 1em 1em 1em; margin-top: 1em;">
+        <h2>Presentations</h2>
+        @foreach (var presentation in Model.Presentations.OrderBy(x => x.StartTime))
+        {
+            var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(Model.TimeZoneId);
+            var presentationLocalStartTime = presentation.StartTime.UtcToLocal(conferenceTimeZone);
+            var presentationUtcEndDate = presentation.StartTime.Add(TimeSpan.FromMinutes(@presentation.Duration));
+            var presentationLocalEndDate = presentationUtcEndDate.UtcToLocal(conferenceTimeZone);
+            var speakerNames = String.Join(", ", presentation.Speakers.Select(x => x.Name).ToArray());
+            <article>
+                <header>
+                    <h4>@presentation.Name</h4>
+                    <span class="event-time">@presentationLocalStartTime.ToString() - @presentationLocalEndDate @presentation.TimeZone (@presentation.StartTime.ToString() - @presentationUtcEndDate) UTC) </span>
+                </header>
+                <span class="event-time"><strong>Speakers: </strong>@speakerNames</span>
+                <p>@presentation.Abstract</p>
+                <footer>
+                    <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null) |
+    @Html.ActionLink("Remove", "Delete", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null)
+                        @if (!String.IsNullOrWhiteSpace(presentation.YouTubeVideoId))
+                        {
+                            @:| <a href="//www.youtube.com/watch?v=@presentation.YouTubeVideoId" title="View on YouTube" target="_blank" class="blue-button">View on YouTube</a>
+                    }
+                    </p>
+                </footer>
+            </article>
+            <hr style="border-top: 1px solid #e2e2e2;" />
+        }
+        <p>@Html.ActionLink("Add a presentation", "Add", "Presentation", new { id = Model.HashTag }, null)</p>
+    </section>
+
+    <div style="margin-top: 1em;">
+        @Html.ActionLink("Edit", "Edit") |
     @Html.ActionLink("Delete", "Delete") |
     @Html.ActionLink("Back to List", "All")
-</p>
+    </div>
 
+</article>
 @*@section scripts{
     <script>
         $(function () {
@@ -171,3 +104,6 @@
     });
     </script>
 }*@
+
+
+@section Sidebar{}

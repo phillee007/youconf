@@ -32,6 +32,7 @@ namespace YouConf.Controllers
                 return HttpNotFound();
             }
 
+            ModelState.Remove("id");
             var presentation = new Presentation()
             {
                 Id = DateTime.Now.Ticks
