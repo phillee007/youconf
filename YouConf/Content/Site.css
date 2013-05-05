@@ -143,7 +143,7 @@ h5, h6 {
 }
 
 header .content-wrapper {
-    padding: 20px 0 15px;
+    padding: 25px 0 15px;
 }
 
 .site-footer a {
@@ -703,13 +703,18 @@ tr.pager td {
 /********************
 *   Mobile Styles   *
 ********************/
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 760px) {
+
+    img {
+        max-width: 100% !important;
+    }
 
     /* header
     ----------------------------------------------------------*/
     header .float-left,
     header .float-right {
         float: none;
+        text-align: center;
     }
 
     /* logo */
