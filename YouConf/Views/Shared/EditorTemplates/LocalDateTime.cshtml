@@ -1,6 +1,10 @@
 ﻿@model DateTime
-@{
+@if (Model != null && ViewBag.TimeZoneId != null)
+{
     var localTimeZone = TimeZoneInfo.FindSystemTimeZoneById((string)ViewBag.TimeZoneId);
     var localDateTime = Model.UtcToLocal(localTimeZone);
+    @Html.TextBox("", String.Format(ViewData.ModelMetadata.DisplayFormatString, localDateTime), new { @class = "date", @title = ViewBag.Tooltip })
 }
-@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, new { @class = "date" })
+else{
+    @Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, new { @class = "date", @title = ViewBag.Tooltip })
+}

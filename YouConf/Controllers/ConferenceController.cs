@@ -47,7 +47,8 @@ namespace YouConf.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var model = new Conference();
+            return View(model);
         }
 
         //

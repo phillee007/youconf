@@ -30,23 +30,15 @@
             @Html.LabelFor(model => model.StartTime)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.StartTime, "LocalDateTime", new { TimeZoneId = ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId })
+            @Html.EditorFor(model => model.StartTime, "LocalDateTime", new { TimeZoneId = ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId, Tooltip = String.Format("This should be specified in local time for your chosen conference timezone ({0})", ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId) })
             @Html.ValidationMessageFor(model => model.StartTime)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TimeZone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TimeZone)
-            @Html.ValidationMessageFor(model => model.TimeZone)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Duration)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Duration)
+            @Html.TextBoxFor(model => model.Duration, new { title = "The duration of your presentation in minutes" })
             @Html.ValidationMessageFor(model => model.Duration)
         </div>
 
@@ -54,7 +46,7 @@
             @Html.LabelFor(model => model.YouTubeVideoId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.YouTubeVideoId)
+            @Html.TextBoxFor(model => model.YouTubeVideoId, new { title = "The unique youtube video id from YouTube. Only available once you've recorded your hangout and the video for this part of the hangout is on YouTube." })
             @Html.ValidationMessageFor(model => model.YouTubeVideoId)
         </div>
 
@@ -79,5 +71,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Conference", "Details", "Conference", new { hashTag = ((YouConf.Data.Entities.Conference)ViewBag.Conference).HashTag }, null)
 </div>

@@ -3,25 +3,27 @@
 @{
     ViewBag.Title = "All conferences";
 }
-    <p>
-        @Html.ActionLink("Create a conference", "Create")
-    </p>
+<p style="font-size: 1.5em">
+    @Html.ActionLink("Add your conference", "Create")
+</p>
 
-
+<div style="border: 1px solid #e2e2e2; padding: 0.5em">
     @foreach (var item in Model)
     {
-        <article style="border: 1px solid #e2e2e2; padding: 0.5em">
+        <article>
             <header>
                 <h2 style="margin-top: 0">@item.Name</h2>
             </header>
             @Html.Partial("ConferenceWhenAndWhere", item)
             <p>@Html.Truncate(item.Abstract, 300) </p>
-            <div style="font-size:0.8em;">
+            <div style="font-size: 0.8em;">
                 @Html.ActionLink("More", "Details", new { hashTag = item.HashTag })
             </div>
         </article>
+        <hr style="border-top: 1px solid #e2e2e2;" />
     }
-    @*<table>
+</div>
+@*<table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.HashTag)

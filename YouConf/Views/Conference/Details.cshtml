@@ -3,17 +3,20 @@
     ViewBag.Title = Model.Name;
 }
 <article>
-    <header style="background-color: #EFFFCD; padding: 1em">
+    <header style="background-color: #DCE9BE; padding: 1em">
         @section H1{}
-        <h1 style="margin:0">@Model.Name</h1>
+        <h1 style="margin: 0">@Model.Name</h1>
         @Html.Partial("ConferenceWhenAndWhere", Model)
         <p><strong>@Model.Abstract</strong></p>
-
-        @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
-        {
-            <p><strong>@Html.ActionLink("View live stream", "Live", new { hashTag = Model.HashTag }, new { @class = "blue-button" })</strong></p>
+        <p>
+            @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
+            {
+                <strong>@Html.ActionLink("View live stream", "Live", new { hashTag = Model.HashTag }, new { @class = "blue-button" })</strong>
 @*<p><strong><a id="LiveStream" href="#">View live stream</a> </strong></p>*@
-        }
+            }
+            @Html.ActionLink("Edit", "Edit") 
+    @Html.ActionLink("Delete", "Delete")
+        </p>
     </header>
     <p>@Model.Description</p>
     <section style="border: 1px solid #e2e2e2; border-radius: 4px; padding: 0 1em 1em 1em">
@@ -49,7 +52,7 @@
                                                            if ((i + 1) % 2 == 0 || i == Model.Speakers.Count - 1)
                                                            {
             @:</div><hr style="border-top: 1px solid #e2e2e2;" />
-                                                                                                                    }
+                                                                                                                                            }
             }
         </div>
 
@@ -67,7 +70,7 @@
             <article>
                 <header>
                     <h4>@presentation.Name</h4>
-                    <span class="event-time">@presentationLocalStartTime.ToString() - @presentationLocalEndDate @presentation.TimeZone (@presentation.StartTime.ToString() - @presentationUtcEndDate) UTC) </span>
+                    <span class="event-time">@presentationLocalStartTime.ToString() - @presentationLocalEndDate @Model.TimeZoneId (@presentation.StartTime.ToString() - @presentationUtcEndDate) UTC) </span>
                 </header>
                 <span class="event-time"><strong>Speakers: </strong>@speakerNames</span>
                 <p>@presentation.Abstract</p>
@@ -76,8 +79,9 @@
     @Html.ActionLink("Remove", "Delete", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null)
                         @if (!String.IsNullOrWhiteSpace(presentation.YouTubeVideoId))
                         {
-                            @:| <a href="//www.youtube.com/watch?v=@presentation.YouTubeVideoId" title="View on YouTube" target="_blank" class="blue-button">View on YouTube</a>
-                    }
+@*@:| <a href="//www.youtube.com/watch?v=@presentation.YouTubeVideoId" title="View on YouTube" target="_blank" class="blue-button">View on YouTube</a>*@
+                            @Html.ActionLink("View", "Live", null, new { hashTag = Model.HashTag, @class = "blue-button" })
+                        }
                     </p>
                 </footer>
             </article>
@@ -88,8 +92,7 @@
 
     <div style="margin-top: 1em;">
         @Html.ActionLink("Edit", "Edit") |
-    @Html.ActionLink("Delete", "Delete") |
-    @Html.ActionLink("Back to List", "All")
+    @Html.ActionLink("Delete", "Delete")
     </div>
 
 </article>

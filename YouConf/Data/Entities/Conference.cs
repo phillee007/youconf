@@ -72,9 +72,6 @@ namespace YouConf.Data.Entities
         [Required]
         [Display(Name = "Duration (minutes)")]
         public int Duration { get; set; }
-        [Required]
-        [UIHint("TimeZone"), Display(Name = "Time Zone")]
-        public string TimeZone { get; set; }
         [Display(Name = "YouTube Video Id")]
         public string YouTubeVideoId { get; set; }
         [Display(Name="Speaker/s")]

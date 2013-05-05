@@ -58,6 +58,8 @@ namespace YouConf.Controllers
 
             if (ModelState.IsValid)
             {
+                //Convert the start time to UTC before storing
+                presentation.StartTime = ConvertToUtc(presentation.StartTime, conference.TimeZoneId);
 
                 PopulateSpeakers(conference, presentation, speakerIds);
                 conference.Presentations.Add(presentation);
@@ -127,6 +129,9 @@ namespace YouConf.Controllers
                     return HttpNotFound();
                 }
 
+                //Convert the start time to UTC before storing
+                presentation.StartTime = ConvertToUtc(presentation.StartTime, conference.TimeZoneId);
+
                 PopulateSpeakers(conference, presentation, speakerIds);
                 //Overwrite the old Presentation details with the new
                 conference.Presentations[conference.Presentations.IndexOf(currentPresentation)] = presentation;
@@ -192,6 +197,13 @@ namespace YouConf.Controllers
 
             ViewBag.ConferenceId = conferenceHashTag;
             return View();
+        }
+
+        private DateTime ConvertToUtc(DateTime dateTime, string timeZoneId)
+        {
+            DateTime startTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Unspecified);
+            var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+            return TimeZoneInfo.ConvertTimeToUtc(startTime, conferenceTimeZone);
         }
     }
 }

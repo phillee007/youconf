@@ -27,7 +27,7 @@ a {
     }
 
     a:hover {
-        background-color: #c7d1d6;
+        text-decoration: none;
     }
 
 header, footer, hgroup,
@@ -132,6 +132,7 @@ h5, h6 {
 
 .site-header, .site-footer {
     background-color: #2E2633;
+    color: #fff;
 }
 
 .site-header,
@@ -145,6 +146,9 @@ header .content-wrapper {
     padding: 20px 0 15px;
 }
 
+.site-footer a {
+    color: #EFFFCD;
+}
 
 /*footer {
     clear: both;
@@ -477,7 +481,6 @@ fieldset {
         }
 
 label {
-    display: block;
     font-size: 1.2em;
     font-weight: 600;
 }
@@ -498,7 +501,7 @@ input, textarea {
 
 textarea {
     font-family: inherit;
-    width: 500px;
+    width: 60%;
 }
 
 .multi-line { height:15em; width:40em; }
@@ -558,6 +561,21 @@ td button {
 
 .error {
     color: #e80c4d;
+}
+
+.tooltip {
+    background-color: #e8e8e8;
+    padding: 0.5em;
+    margin-left: 0.5em;
+    width: 20%;
+}
+.help-icon {
+    width: 25px;
+    height: 25px;
+}
+.label-required:after 
+{
+    content: "*";
 }
 
 /* styles for validation helpers */
@@ -661,7 +679,7 @@ tr.pager td {
     border-radius: 6px;*/
     border: 1px solid #2E2633;
     /*display: inline-block;*/
-    color: #EFFFCD !important;
+    color: #fff !important;
     /*font-family: arial;*/
     font-weight: bold;
     /*padding: 0.5em 2em;

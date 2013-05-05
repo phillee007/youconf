@@ -11,5 +11,5 @@
             Selected = Model != null && t.Id == Model
         });
 }
-@Html.DropDownListFor(model => model, timeZoneList)
+@Html.DropDownListFor(model => model, timeZoneList, new { @title = ViewBag.Tooltip })
 @Html.ValidationMessageFor(model => model)
