@@ -313,6 +313,9 @@ section.feature {
     background-color: #f1f1f1;
 }
 
+.separator {
+    border-top: 1px solid #e2e2e2;
+}
 
 .presenters article:nth-of-type(even) {
     background: #EFFFCD;
@@ -501,14 +504,18 @@ input, textarea {
 
 textarea {
     font-family: inherit;
-    width: 60%;
+    width: 70%;
+    height: 15em;
 }
 
-.multi-line { height:15em; width:40em; }
+.multi-line {
+    height: 15em;
+    width: 40em;
+}
 
-    input:focus, textarea:focus {
-        border: 1px solid #7ac0da;
-    }
+input:focus, textarea:focus {
+    border: 1px solid #7ac0da;
+}
 
 input[type="checkbox"] {
     background: transparent;
@@ -569,12 +576,13 @@ td button {
     margin-left: 0.5em;
     width: 20%;
 }
+
 .help-icon {
     width: 25px;
     height: 25px;
 }
-.label-required:after 
-{
+
+.label-required:after {
     content: "*";
 }
 

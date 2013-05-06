@@ -11,7 +11,7 @@
         <legend>Presentation</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Name)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -19,7 +19,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Abstract)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Abstract)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Abstract)
@@ -27,7 +27,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StartTime)
+            @Html.LabelWithRequiredAsteriskFor(model => model.StartTime)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StartTime, "LocalDateTime", new { TimeZoneId = ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId, Tooltip = String.Format("This should be specified in local time for your chosen conference timezone ({0})", ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId) })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Duration)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Duration)
         </div>
         <div class="editor-field">
             @Html.TextBoxFor(model => model.Duration, new { title = "The duration of your presentation in minutes" })
@@ -43,7 +43,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.YouTubeVideoId)
+            @Html.LabelWithRequiredAsteriskFor(model => model.YouTubeVideoId)
         </div>
         <div class="editor-field">
             @Html.TextBoxFor(model => model.YouTubeVideoId, new { title = "The unique youtube video id from YouTube. Only available once you've recorded your hangout and the video for this part of the hangout is on YouTube." })
@@ -51,7 +51,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Speakers)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Speakers)
         </div>
         <div class="editor-field">
             <fieldset class="checkboxgroup">

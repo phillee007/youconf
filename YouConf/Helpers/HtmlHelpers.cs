@@ -23,7 +23,7 @@ namespace YouConf.Helpers
         }
 
         //Inspiration from http://weblogs.asp.net/gunnarpeipman/archive/2012/06/17/asp-net-mvc-how-to-show-asterisk-after-required-field-label.aspx
-        public static MvcHtmlString LabelWithRequiredAsterisk<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, IDictionary<string, object> htmlAttributes = null)
+        public static MvcHtmlString LabelWithRequiredAsteriskFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, IDictionary<string, object> htmlAttributes = null)
         {
             var metaData = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
 

@@ -3,17 +3,20 @@
     ViewBag.Title = "Edit speaker";
 }
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.Hidden("conferenceHashTag", (string)ViewBag.ConferenceId)
     @Html.Hidden("Id", Model.Id)
 
+    <p>Please enter details for the speaker below. Note that whilst it is not mandatory to provide an avatar for a speaker, it can be helpful for users to help recognise the speaker on the conference details page. See <a href="http://avatars.io" target="_blank" class="no-button">Avatars.io</a> for more details on how to use a Twitter, Facebook, or Instagram avatar. In future we'll also add the option to upload your own image for the speaker.</p>
+
     <fieldset>
         <legend>Speaker</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Name)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -21,34 +24,34 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Url)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Url)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Url)
+            @Html.TextBoxFor(model => model.Url, new { title = "The full url for further information on the speaker. E.g. A profile page, blog page, or company page." })
             @Html.ValidationMessageFor(model => model.Url)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Email)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, "This will not be displayed to the public on the conference details page.")
             @Html.ValidationMessageFor(model => model.Email)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AvatarUrl)
+            @Html.LabelWithRequiredAsteriskFor(model => model.AvatarUrl)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.AvatarUrl)
+            @Html.TextBoxFor(model => model.AvatarUrl, new { title = "The non-qualified url for the speaker's avatar to display on the conference page. E.g. //avatars.io/twitter/speakername" })
             @Html.ValidationMessageFor(model => model.AvatarUrl)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Bio)
+            @Html.LabelWithRequiredAsteriskFor(model => model.Bio)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Bio)
+            @Html.TextAreaFor(model => model.Bio, new { title = "A brief biography of the speaker's background and areas of expertise." })
             @Html.ValidationMessageFor(model => model.Bio)
         </div>
 
