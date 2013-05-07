@@ -4,3 +4,8 @@
 }
 
 @Html.EditorFor(x => Model)
+
+@section Sidebar{
+    <p>To enable a live YouTube video feed, you'll need to setup a hangout in Google Hangouts, and then copy the hangout id into the <i>hangout id</i> field on this form. You can find the hangout id at the top of your Hangout window in Google Hangouts. E.g. If the Hangout URL is http://youtu.be/QveFMhmdcA7, the Hangout ID will be QveFMhmdcA7.</p>
+    <p>To enable Twitter chat, you'll need to setup a Twitter widget on the https://twitter.com/settings/widgets page for your chosen hashtag, and then copy the Widget Id into the <i>Twitter widget id</i> field on this form. You can find your Twitter widget Id by going to the Twitter page for your widget, navigating to the section which says "<i>Copy and paste the code into the HTML of your site</i>" and copying the value in the <i>data-widget-id</i> field. It should be a long number such as 331557908192051202.</p>
+}

@@ -48,8 +48,8 @@ namespace YouConf.Data.Entities
         public string TimeZoneId { get; set; }
         [Display(Name = "Hangout Id")]
         public string HangoutId { get; set; }
-        //[Display(Name = "Twitter Feed Url")]
-        //public string TwitterFeed { get; set; }
+        [Display(Name = "Twitter Widget Id")]
+        public long TwitterWidgetId { get; set; }
     }
 
     public class Presentation{

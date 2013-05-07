@@ -6,7 +6,6 @@
 }
 
 .grid {
-    background: white;
     margin: 0 0 20px 0;
 }
 
@@ -44,6 +43,13 @@
 
 .col-1-8 {
     width: 12.5%;
+}
+
+.col-3-10 {
+    width: 30%;
+}
+.col-7-10 {
+    width: 70%;
 }
 
 /* Opt-in outside padding */

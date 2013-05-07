@@ -7,12 +7,12 @@
     @Html.ActionLink("Add your conference", "Create")
 </p>
 
-<div style="border: 1px solid #e2e2e2; padding: 0.5em">
+<div class="box striped">
     @foreach (var item in Model)
     {
         <article>
             <header>
-                <h2 style="margin-top: 0">@item.Name</h2>
+                <h2>@item.Name</h2>
             </header>
             @Html.Partial("ConferenceWhenAndWhere", item)
             <p>@Html.Truncate(item.Abstract, 300) </p>
@@ -20,7 +20,6 @@
                 @Html.ActionLink("More", "Details", new { hashTag = item.HashTag })
             </div>
         </article>
-        <hr style="border-top: 1px solid #e2e2e2;" />
     }
 </div>
 @*<table>

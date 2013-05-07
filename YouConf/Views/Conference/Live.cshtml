@@ -3,21 +3,34 @@
     ViewBag.Title = @Model.Name + " Live Broadcast";
 }
 <div class="grid">
-    <div>
-        <h2 style="padding-bottom: 1em;">YouTube Live Video</h2>
-
-        <div id="video">
-            <iframe width="630" height="473" src="//youtube.com/embed/@Model.HangoutId" frameborder="0" allowfullscreen></iframe>
+    <h2 style="padding-bottom: 1em;">YouTube Live Video</h2>
+    @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
+    {
+        <div>
+            <div id="video">
+                <iframe width="630" height="473" src="//youtube.com/embed/@Model.HangoutId" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
-    </div>
-    <div>
-        <h2 style="padding-bottom: 1em;">Twitter Live chat</h2>
+    }
+    else
+    {
+        <p>A video feed has not been setup yet. Please check back again closer to the conference start time as hangouts are often not setup till just before the conference commences.</p>
+    }
 
-        <div id="chat">
-            <a class="twitter-timeline" href="https://twitter.com/search?q=%23@Model.HashTag" data-widget-id="329778632119697408">Tweets about #@Model.HashTag</a>
-            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+    <h2>Twitter Live chat</h2>
+    @if (Model.TwitterWidgetId > 0)
+    {
+        <div style="margin-top: 1em;">
+            <div id="chat">
+                <a class="twitter-timeline" href="https://twitter.com/search?q=%23@Model.HashTag" data-widget-id="@Model.TwitterWidgetId">Tweets about #@Model.HashTag</a>
+                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <p>Twitter live chat has not been setup for this conference.</p>
+    }
 </div>
 <p>
     @Html.ActionLink("Back to conference page", "Details", new { hashTag = Model.HashTag })

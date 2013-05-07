@@ -64,14 +64,16 @@
             }
             else
             {
-                <aside class="sidebar"></aside>
+                <aside class="sidebar">
+                    @RenderSection("SidebarContent", false)
+                </aside>
             }
         </section>
     </div>
     <footer class="site-footer">
         <div class="content-wrapper clear-fix">
             <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - YouConf (Made by Phil Lee). Play icon courtesy of <a href="http://www.iconarchive.com/show/play-stop-pause-icons-by-icons-land/Step-Forward-Disabled-icon.html">Icon Archive.</a> Video camera icon courtesy of <a href="http://findicons.com/icon/222109/video_camera?id=330197">Find Icons.</a> </p>
+                <p>&copy; @DateTime.Now.Year - YouConf (Made by Phil Lee). Play icon courtesy of <a href="http://www.iconarchive.com/show/play-stop-pause-icons-by-icons-land/Step-Forward-Disabled-icon.html">Icon Archive.</a> Video camera icon courtesy of <a href="http://findicons.com/icon/222109/video_camera?id=330197">Find Icons.</a> Info icon http://findicons.com/icon/55411/info?width=32. Arrow http://findicons.com/icon/51020/next?width=32</p>
             </div>
         </div>
     </footer>
@@ -97,6 +99,10 @@
                 .button();
 
             $("#main-content form [title]").toolstooltip({ position: "center right" });
+
+            //Add pretty dividers to the relevant articles. We could use a CSS :last-child attribute for this, but it will not work in as many browsers
+            $("<hr class='separator' />")
+                .insertAfter("#main-content .box article:not(:last)");
 
             //HACK - Wait 5 seconds till showing the social buttons...
             //They seem to take an age to load, so why not hide them till they're all visible (hopefully 5 seconds is enough)

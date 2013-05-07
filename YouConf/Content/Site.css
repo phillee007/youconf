@@ -263,6 +263,89 @@ ul#menu {
         font-size: 1.1em;
     }
 
+.hero-wrapper {
+    padding: 1% 0;
+}
+
+.hero {
+    padding: 5% 5% 3% 5%;
+    background-color: #fff;
+}
+
+    .hero .teaser {
+        font-size: 3em;
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .hero h1 {
+        font-weight: 300;
+        margin-top: 0.2em;
+    }
+
+    .hero ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-top: 3%;
+    }
+
+    .hero a {
+        display: block;
+        width: 100%;
+        font-size: 1.4em;
+        margin-bottom: 0.2em;
+    }
+
+    .hero .blue-button {
+        background-color: #2E2633 !important;
+    }
+
+
+    .hero .button {
+        display: inline-block;
+        background-image: -moz-linear-gradient(top, #2E2633, #555152);
+        background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #2E2633),color-stop(1, #555152));
+        filter: progid:DXImageTransform.Microsoft.gradient (startColorStr='#2E2633', EndColorStr='#555152');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient (startColorStr='#2E2633', EndColorStr='#555152')"; color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 800;
+        outline: 0;
+        transition: background-color .25s ease-in-out;
+        padding: 5%;
+    }
+
+        .hero .button:hover {
+            background-image: -moz-linear-gradient(top, #2E2633, #c2c2c2);
+            background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #2E2633),color-stop(1, #c2c2c2));
+            filter: progid:DXImageTransform.Microsoft.gradient (startColorStr='#2E2633', EndColorStr='#c2c2c2');
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient (startColorStr='#2E2633', EndColorStr='#c2c2c2')"; color: #fff;
+        }
+
+        .hero .button span {
+            padding-right: 40px;
+            line-height: 32px;
+            display: block;
+        }
+
+            .hero .button span.info {
+                background: url(/images/icons/rsz_info_1.png) no-repeat right center;
+            }
+
+            .hero .button span.arrow {
+                background: url(/images/icons/next.png) no-repeat right center;
+            }
+
+
+
+.landing-panels .box {
+    background-color: #fff;
+    padding: 4px;
+    height: 420px;
+}
+
+
 /* page titles */
 hgroup.title {
     margin-bottom: 10px;
@@ -299,7 +382,29 @@ section.feature {
 
     .speaker-box h3 {
         font-size: 1.3em;
-        background-color: #EFFFCD;
+        background-color: #DCE9BE;
+    }
+
+.underlined {
+    border-bottom: 1px solid #c2c2c2;
+}
+
+.box {
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    border-radius: 6px;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.015);
+    box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.05);
+}
+
+    .box h2 {
+        margin: 0;
+    }
+
+    .box article {
+        margin: 0.5em;
+        padding: 0 0.5em 0.5em 0.5em;
     }
 
 .notice {
@@ -317,7 +422,7 @@ section.feature {
     border-top: 1px solid #e2e2e2;
 }
 
-.presenters article:nth-of-type(even) {
+.striped article:nth-of-type(even) {
     background: #EFFFCD;
 }
 
@@ -708,184 +813,199 @@ tr.pager td {
     }
 
 
-/********************
-*   Mobile Styles   *
-********************/
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 930px) {
 
     img {
         max-width: 100% !important;
     }
 
-    /* header
+    /********************
+*   Mobile Styles   *
+********************/
+    @media only screen and (max-width: 760px) {
+
+        /* header
     ----------------------------------------------------------*/
-    header .float-left,
-    header .float-right {
-        float: none;
-        text-align: center;
-    }
-
-    /* logo */
-    header .site-title {
-        margin: 10px;
-        text-align: center;
-    }
-
-    /* login */
-    #login {
-        font-size: .85em;
-        margin: 0 0 12px;
-        text-align: center;
-    }
-
-        #login ul {
-            margin: 5px 0;
-            padding: 0;
+        header .float-left,
+        header .float-right {
+            float: none;
+            text-align: center;
         }
 
-        #login li {
-            display: inline;
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        /* logo */
+        header .site-title {
+            margin: 10px;
+            text-align: center;
         }
 
-        #login a {
-            background: none;
-            color: #999;
-            font-weight: 600;
-            margin: 2px;
-            padding: 0;
+
+
+        .hero .grid div {
+            width: auto;
+            float: none;
         }
 
-            #login a:hover {
-                color: #333;
+
+        h1 {
+            font-size: 2em;
+        }
+
+
+        /* login */
+        #login {
+            font-size: .85em;
+            margin: 0 0 12px;
+            text-align: center;
+        }
+
+            #login ul {
+                margin: 5px 0;
+                padding: 0;
             }
 
-    /* menu */
-    nav {
-        margin-bottom: 5px;
-    }
+            #login li {
+                display: inline;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
 
-    ul#menu {
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
-
-        ul#menu li {
-            margin: 0;
-            padding: 0;
-        }
-
-
-    /* main layout
-    ----------------------------------------------------------*/
-    .main-content,
-    .featured + .main-content {
-        background-position: 10px 0;
-    }
-
-    .content-wrapper {
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-
-    .featured .content-wrapper {
-        padding: 10px;
-    }
-
-    /* page content */
-    article, aside {
-        float: none;
-        width: 100%;
-    }
-
-    /* ordered list */
-    ol.round {
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-        ol.round li {
-            padding-left: 10px;
-            margin: 25px 0;
-        }
-
-            ol.round li.zero,
-            ol.round li.one,
-            ol.round li.two,
-            ol.round li.three,
-            ol.round li.four,
-            ol.round li.five,
-            ol.round li.six,
-            ol.round li.seven,
-            ol.round li.eight,
-            ol.round li.nine {
+            #login a {
                 background: none;
+                color: #999;
+                font-weight: 600;
+                margin: 2px;
+                padding: 0;
             }
 
-    /* features */
-    section.feature {
-        float: none;
-        padding: 10px;
-        width: auto;
-    }
+                #login a:hover {
+                    color: #333;
+                }
 
-        section.feature img {
-            color: #999;
-            content: attr(alt);
-            font-size: 1.5em;
-            font-weight: 600;
+        /* menu */
+        nav {
+            margin-bottom: 5px;
         }
 
-    /* forms */
-    input {
-        width: 90%;
-    }
-
-    /* login page */
-    #loginForm {
-        border-right: none;
-        float: none;
-        width: auto;
-    }
-
-        #loginForm .validation-error {
-            display: block;
-            margin-left: 15px;
-        }
-
-    #socialLoginForm {
-        margin-left: 0;
-        float: none;
-        width: auto;
-    }
-
-
-    /* footer
-    ----------------------------------------------------------*/
-    footer .float-left,
-    footer .float-right {
-        float: none;
-    }
-
-    footer {
-        text-align: center;
-        height: auto;
-        padding: 10px 0;
-    }
-
-        footer p {
+        ul#menu {
             margin: 0;
+            padding: 0;
+            text-align: center;
         }
-}
 
-@media only screen and (max-width: 480px) {
-    .speaker-box {
-        float: none !important;
-        width: auto !important;
+            ul#menu li {
+                margin: 0;
+                padding: 0;
+            }
+
+
+        /* main layout
+    ----------------------------------------------------------*/
+        .main-content,
+        .featured + .main-content {
+            background-position: 10px 0;
+        }
+
+        .content-wrapper {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+
+        .featured .content-wrapper {
+            padding: 10px;
+        }
+
+        /* page content */
+        article, aside {
+            float: none;
+            width: 100%;
+        }
+
+        /* ordered list */
+        ol.round {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+            ol.round li {
+                padding-left: 10px;
+                margin: 25px 0;
+            }
+
+                ol.round li.zero,
+                ol.round li.one,
+                ol.round li.two,
+                ol.round li.three,
+                ol.round li.four,
+                ol.round li.five,
+                ol.round li.six,
+                ol.round li.seven,
+                ol.round li.eight,
+                ol.round li.nine {
+                    background: none;
+                }
+
+        /* features */
+        section.feature {
+            float: none;
+            padding: 10px;
+            width: auto;
+        }
+
+            section.feature img {
+                color: #999;
+                content: attr(alt);
+                font-size: 1.5em;
+                font-weight: 600;
+            }
+
+        /* forms */
+        input {
+            width: 90%;
+        }
+
+        /* login page */
+        #loginForm {
+            border-right: none;
+            float: none;
+            width: auto;
+        }
+
+            #loginForm .validation-error {
+                display: block;
+                margin-left: 15px;
+            }
+
+        #socialLoginForm {
+            margin-left: 0;
+            float: none;
+            width: auto;
+        }
+
+
+        /* footer
+    ----------------------------------------------------------*/
+        footer .float-left,
+        footer .float-right {
+            float: none;
+        }
+
+        footer {
+            text-align: center;
+            height: auto;
+            padding: 10px 0;
+        }
+
+            footer p {
+                margin: 0;
+            }
     }
-}
 
-/* http://www.colourlovers.com/palette/444487/Curiosity_Killed */
+    @media only screen and (max-width: 480px) {
+        .speaker-box {
+            float: none !important;
+            width: auto !important;
+        }
+    }
+
+    /* http://www.colourlovers.com/palette/444487/Curiosity_Killed */

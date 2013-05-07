@@ -428,6 +428,10 @@
     <Content Include="Images\brownie\Untitled-1.png" />
     <Content Include="Images\brownie\zoom.png" />
     <Content Include="Images\brownie\zoom_icon.png" />
+    <Content Include="Images\icons\info.png" />
+    <Content Include="Images\icons\next.png" />
+    <Content Include="Images\icons\rsz_info_1.png" />
+    <Content Include="Images\icons\toolbar_get_info.png" />
     <Content Include="Images\logo-full.png" />
     <Content Include="Images\Logo.png" />
     <Content Include="Images\logov10.png" />
