@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Help Getting Started";
+}
+
+<p>In order to create a great online conference experience, there are a number of steps to follow:</p>
+<ol class="round">
+    <li class="one">
+        <h3>Add your conference</h3>
+        Start by adding your conference, along with your presentation and speaker details. Once you're ready for your conference to be displayed to the public, tick the <i>Available to public</i> checkbox on the Edit conference page, and your conference will be displayed on the @Html.ActionLink("conference listing page", "All", "Conference", new { @class = "no-button" }). You can send out links to the conference page using the friendly url of your conference page, just make sure to update them if you change your conference hashtag.
+        <br />
+        @Html.ActionLink("Add your conference now", "Create", "Conference")
+    </li>
+
+    <li class="two">
+        <h3>Get started with Google Hangouts</h3>
+        You'll need to use Google Hangouts to record your conference, and update both your conference and individual presentations with links to your hangout as the conference progresses. We display both conference live feeds, and individual presentations, using the embedded features from Google Hangouts / YouTube, allowing viewers to view your conference without having to navigate away.
+        <br />
+        <a href="http://www.google.com/+/learnmore/hangouts/" title="Get started with Google Hangouts">Get started with Google Hangouts</a>
+    </li>
+
+    <li class="three">
+        <h3>Get started with Twitter</h3>
+        We use an embedded Twitter timeline to host live chat for your conference. If you'd like to enable live chat, you'll need to setup a Twitter widget with your chosen hashtag for your conference. You can then update your conference with the widget id so both speakers and your audience can chat in realtime.
+        <br />
+        <a href="https://dev.twitter.com/docs/embedded-timelines">Learn more</a> | <a href="https://twitter.com/settings/widgets">Create a Twitter widget</a>
+    </li>
+    <li class="four">
+        <h3>Run your conference</h3>
+        Once you've setup your Google Hangout, go to the <i>Edit Conference page</i>, update your conference with the id of your Google Hangout, and start broadcasting. If you break your conference into a separate video for each presentation (recommended), <strong>make sure you keep your conference up-to-date with the current Hangout Id so viewers can continue to view in realtime.</strong> You can also chat with your audience in realtime using the Twitter feed (if you've enabled this).<br />
+    </li>
+    <li class="five">
+        <h3>Update your presentations with YouTube links</h3>
+        It is recommended that you break your Google Hangout into multiple videos by starting/stopping broadcasting at the beginning/end of each presentation. As you start broadcasting for each presentation, the hangout id will change in Google Hangouts. As this happens, you can update each presentation with the specific hangout id for that section of the conference. Also make sure to keep the hangout id for your conference update with the most up-to-date hangout id as your conference is underway.
+        <br />
+    </li>
+</ol>
+
+<h2>Still can't find what you're looking for?</h2>
+<p>Check our @Html.ActionLink("FAQ page", "Index", "About", null, new { @class = "no-button" }). Or post a question on the <a href="http://www.codeproject.com/Articles/584534/YouConf-An-Online-Conferencing-Presentation-Tool" title="CodeProject forum" class="no-button" target="_blank">CodeProject forum</a> and we'll try to answer it as soon as possible.</p>
+
+@section Sidebar{}

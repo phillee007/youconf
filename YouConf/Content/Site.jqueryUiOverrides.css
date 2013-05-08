@@ -1,4 +1,4 @@
 ﻿/*** Use this stylesheet for any jQuery UI overrides (makes it easier to manage them this way) */
 .ui-widget {
-    font-family: "Open Sans" !important;
+     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif !important;
 }

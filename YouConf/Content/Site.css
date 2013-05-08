@@ -119,6 +119,14 @@ h5, h6 {
     position: relative;
 }
 
+.content h1 {
+    border-bottom: 1px solid #555152;
+}
+
+.main-content p {
+    word-break: break-word;
+}
+
 .main-content aside.sidebar {
     float: right;
     width: 25%;
@@ -314,7 +322,6 @@ ul#menu {
         border-radius: 6px;
         font-weight: 800;
         outline: 0;
-        transition: background-color .25s ease-in-out;
         padding: 5%;
     }
 
@@ -325,6 +332,14 @@ ul#menu {
             background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #2E2633),color-stop(1, #c2c2c2));
             -ms-filter: "progid:DXImageTransform.Microsoft.gradient (startColorStr='#2E2633', EndColorStr='#c2c2c2')";
             color: #fff;
+        }
+
+        .hero .button:active {
+            background-image: -ms-linear-gradient(top, #2E2633, #e2e2e2);
+            background-image: -moz-linear-gradient(top, #2E2633, #e2e2e2);
+            background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, #2E2633),color-stop(1, #e2e2e2));
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient (startColorStr='#2E2633', EndColorStr='#e2e2e2')";
+            text-shadow: 0px -1px 0 #555152;
         }
 
         .hero .button span {
@@ -347,6 +362,10 @@ ul#menu {
     background-color: #fff;
     padding: 4px;
     height: 420px;
+}
+
+.landing-panels .box div {
+    padding: 5%;
 }
 
 
@@ -613,7 +632,7 @@ input, textarea {
 
 textarea {
     font-family: inherit;
-    width: 70%;
+    width: 80%;
     height: 15em;
 }
 
@@ -684,6 +703,7 @@ td button {
     padding: 0.5em;
     margin-left: 0.5em;
     width: 20%;
+    word-break: break-word;
 }
 
 .help-icon {
@@ -786,21 +806,12 @@ tr.pager td {
 }
 
 .blue-button {
-    /*-moz-box-shadow: inset 0px 1px 0px 0px #97c4fe;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
-    box-shadow: inset 0px 1px 0px 0px #97c4fe;*/
     background: none !important;
     background-color: #555152 !important;
-    /*-moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;*/
     border: 1px solid #2E2633;
-    /*display: inline-block;*/
+    display: inline-block;
     color: #fff !important;
-    /*font-family: arial;*/
     font-weight: bold;
-    /*padding: 0.5em 2em;
-    text-decoration: none;*/
 }
 
     .blue-button:hover {
@@ -854,7 +865,6 @@ tr.pager td {
     h1 {
         font-size: 2em;
     }
-
 
     /* login */
     #login {

@@ -25,7 +25,10 @@ namespace YouConf.Controllers
 
         public ActionResult All()
         {
-            var conferences = YouConfDataContext.GetAllConferences();
+            var conferences = YouConfDataContext
+                .GetAllConferences()
+                .Where(x => x.AvailableToPublic)
+                .ToList();
             return View(conferences);
         }
 

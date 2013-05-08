@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@section featured {
+@section MainContent {
     <section class="content-wrapper hero-wrapper clear-fix">
         <div id="hero" class="hero box">
             <div class="grid">
@@ -11,11 +11,12 @@
                 </div>
                 <div class="col-3-10">
                     <ul>
-                        <li><a href="@Url.Action("All", "Conference")" class = "button"><span class="arrow">Get started</span></a></li>
+                        <li><a href="@Url.Action("Index", "Help")" class = "button"><span class="arrow">Get started</span></a></li>
                         <li><a href="@Url.Action("All", "Conference")" class = "button"><span class="info">More info</span></a></li>
                     </ul>
                 </div>
             </div>
+        </div>
     </section>
     <section class="content-wrapper clear-fix">
         <div class="grid landing-panels">
@@ -33,7 +34,7 @@
                     <img src="/images/vsscreenshot.png" />
                     <div style="padding-top: 0.5em">
                         <h2>Present</h2>
-                        <p>Broadcast live using Google Hangouts. Embed your live video feed on your conference page, and embed the video for each presentation once you're finished.</p>
+                        <p>Broadcast live using Google Hangouts. With YouConf you can embed your live video feeds for both conferences and individual presentations, providing an integrated viewing experience.</p>
                     </div>
                 </div>
             </div>
@@ -48,10 +49,12 @@
             </div>
         </div>
     </section>
+
+    <section class="content-wrapper hero-wrapper clear-fix">
+        <div class="hero box" style="padding-bottom:5%">
+           <h2><a href="@Url.Action("Index", "Help")" class = "button"><span class="arrow">Get started today</span></a></h2>
+        </div>
+    </section>
 }
 
-<h2>Get started and create your conference today</h2>
 
-
-@section Sidebar{}
-@section H1{}

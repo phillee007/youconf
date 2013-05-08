@@ -50,6 +50,8 @@ namespace YouConf.Data.Entities
         public string HangoutId { get; set; }
         [Display(Name = "Twitter Widget Id")]
         public long TwitterWidgetId { get; set; }
+        [Display(Name = "Available to public")]
+        public bool AvailableToPublic { get; set; }
     }
 
     public class Presentation{

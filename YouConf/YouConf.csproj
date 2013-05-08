@@ -204,8 +204,10 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PresentationController.cs" />
     <Compile Include="Controllers\SpeakerController.cs" />
@@ -428,6 +430,7 @@
     <Content Include="Images\brownie\Untitled-1.png" />
     <Content Include="Images\brownie\zoom.png" />
     <Content Include="Images\brownie\zoom_icon.png" />
+    <Content Include="Images\ConferenceScreenshot.png" />
     <Content Include="Images\icons\info.png" />
     <Content Include="Images\icons\next.png" />
     <Content Include="Images\icons\rsz_info_1.png" />
@@ -443,6 +446,8 @@
     <Content Include="Images\Logov7.png" />
     <Content Include="Images\play.png" />
     <Content Include="Images\Step-Forward-Pressed-icon.png" />
+    <Content Include="Images\TwitterScreenshot.png" />
+    <Content Include="Images\VSScreenshot.png" />
     <Content Include="js\all-in-one-min.js" />
     <Content Include="js\all-in-one.js" />
     <Content Include="js\contact-form.js" />
@@ -546,6 +551,8 @@
     <Content Include="Views\Presentation\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Conference.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Speaker.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

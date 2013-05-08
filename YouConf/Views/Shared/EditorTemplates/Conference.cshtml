@@ -21,7 +21,7 @@
             @Html.LabelWithRequiredAsteriskFor(model => model.HashTag)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.HashTag, new { title = "This should be a unique hashtag that identifies your conference. It will be used in the friendly url for the conference e.g. http://youconf.azurewebsites.net/hashtag" })
+            @Html.TextBoxFor(model => model.HashTag, new { title = "This should be a unique hashtag that identifies your conference. It will be used in the friendly url for the conference (e.g. http://youconf.azurewebsites.net/hashtag). If you change it, make sure to update any external links to your conference page." })
             @Html.ValidationMessageFor(model => model.HashTag)
         </div>
 
@@ -85,8 +85,16 @@
             @Html.LabelWithRequiredAsteriskFor(model => model.TwitterWidgetId)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.TwitterWidgetId, new { title = "The ID of your Twitter widget (only applies if you'd like to enable chat. See https://dev.twitter.com/docs/embedded-timelines to create a widget and enable chat." })
+            @Html.TextBoxFor(model => model.TwitterWidgetId, new { title = "The ID of your Twitter widget (only fill this in if you'd like to enable chat). See <a href=\"https://dev.twitter.com/docs/embedded-timelines\" title=\"How to create a Twitter Widget\">https://dev.twitter.com/docs/embedded-timelines</a> to create a widget and enable chat." })
             @Html.ValidationMessageFor(model => model.TwitterWidgetId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelWithRequiredAsteriskFor(model => model.AvailableToPublic)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.AvailableToPublic, new { title = "Check this to allow your conference to be displayed on the conference listings page" })
+            @Html.ValidationMessageFor(model => model.AvailableToPublic)
         </div>
 
         <p>

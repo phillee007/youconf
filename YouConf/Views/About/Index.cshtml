@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Frequently asked questions";
+}
+
+<h2>What is YouConf all about?</h2>
+<p>YouConf is an online video-conferencing platform that allows you to create conferences, complete with embedded live video and chat feeds. We don't host the video feed ourselves, but rather let you use the power of Google Hangouts to record your conference, and provide you with an easy way to embed your video feed directly into your conference page/s. For chat we use embedded Twitter feeds in order to encourage maximum audience participation.</p>
+<p>YouConf is currently under active development as part of the <a href="http://www.codeproject.com/KB/azure/#Windows+Azure+Developer+Contest" title="Windows Azure Developer Contest" class="no-button">Windows Azure Developer Contest</a>.</p>
+
+<h2>Why use Google Hangouts for recording/embedding video?</h2> 
+<p>Live video recording is a complex task, and Google have already done an amazing job of providing a free service for this. Rather than re-inventing the wheel, we add value by allowing you to record your conference details, giving you friendly url to direct participants to, and providing an integrated experience to encourage maximum engagement.</p>
+
+<h2>Why use Twitter for chat?</h2>
+<p>As with live video, creating a platform that enables live chat is complex, and we thought we'd use Twitter embedded timelines for this as it's a well-respected and familiar application that can be used for live chat. It has the added bonus of being very widely-used, and as a result is easy for conference participants to get started with, particularly those who already have Twitter accounts.</p>
+
+<h2>What's coming up with YouConf?</h2>
+<p>Loads of new features! We're currently looking at:</p>
+<ul>
+    <li>Registration - so only you will be able to edit and update your conference details</li>
+    <li>Live slideshow feeds - so your audience can keep up with the presenter's slideshow in realtime</li>
+    <li>Builtin chat. This depends on the popularity of the embedded Twitter widgets. Stay tuned...</li>
+</ul>
+
+@section Sidebar{}
+
+<h2>Want to find out more?</h2>
+<p>@Html.ActionLink("Get started now", "Index", "Help")</p>
+<p>Check out my article on the <a href="http://www.codeproject.com/Articles/584534/YouConf-An-Online-Conferencing-Presentation-Tool" title="CodeProject forum" class="no-button" target="_blank">CodeProject forum</a> to see how the site build progresses.</p>
