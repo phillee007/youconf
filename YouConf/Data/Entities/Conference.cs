@@ -19,6 +19,7 @@ namespace YouConf.Data.Entities
         {
             Presentations = new List<Presentation>();
             Speakers = new List<Speaker>();
+            AvailableToPublic = true;
         }
 
         [Required]
