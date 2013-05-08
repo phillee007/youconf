@@ -89,13 +89,13 @@
             @Html.ValidationMessageFor(model => model.TwitterWidgetId)
         </div>
 
-        <div class="editor-label">
+       @* <div class="editor-label">
             @Html.LabelWithRequiredAsteriskFor(model => model.AvailableToPublic)
         </div>
         <div class="editor-field">
             @Html.CheckBoxFor(model => model.AvailableToPublic, new { title = "Check this to allow your conference to be displayed on the conference listings page" })
             @Html.ValidationMessageFor(model => model.AvailableToPublic)
-        </div>
+        </div>*@
 
         <p>
             <input type="submit" value="Save" />
