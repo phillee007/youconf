@@ -8,15 +8,10 @@
             clearTimeout(wait);
             //Wait a second in case the user keeps typing before doing the lookup
             wait = setTimeout(function () {
-                var url = '/conference/lookup?conferenceHashTag=' + hashtag;
+                var url = '@Url.Action("Lookup", "Conference")?conferenceHashTag=' + hashtag;
                 $.getJSON(url, function (isAvailable) {
                     var validator = $("#main-content form").validate();
                     if (!isAvailable === true) {
-                        //alert("Unfortunately that hashtag is not available");
-                        //Hide any tooltip -HACK - this will hide all tooltips (only one should be visible at a time anyway) as I can't figure out how to hide just the hashtag one at the moment
-                        $(".tooltip").hide();
-
-
                         validator.showErrors({ "HashTag": "Unfortunately that hashtag is not available." });
                     }
                 });
