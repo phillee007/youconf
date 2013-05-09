@@ -226,6 +226,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\Logging\TableErrorLog.cs" />
     <Compile Include="ModelBinders\DateAndTimeModelBinder.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\PresentationModels.cs" />
@@ -496,7 +497,9 @@
     <Content Include="Scripts\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="favicon.ico" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
