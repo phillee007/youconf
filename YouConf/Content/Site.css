@@ -727,13 +727,14 @@ td button {
 .field-validation-error {
     color: #e80c4d;
     font-weight: bold;
+    display: block;
 }
 
 .field-validation-valid {
     display: none;
 }
 
-input.input-validation-error {
+input.input-validation-error, textarea.input-validation-error {
     border: 1px solid #e80c4d;
 }
 
