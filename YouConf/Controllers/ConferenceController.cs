@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YouConf.Data;
 using YouConf.Data.Entities;
+using YouConf.SignalRHubs;
 
 namespace YouConf.Controllers
 {
@@ -60,6 +63,11 @@ namespace YouConf.Controllers
         [HttpPost]
         public ActionResult Create(Conference conference)
         {
+            if (!IsConferenceHashTagAvailable(conference.HashTag))
+            {
+                ModelState.AddModelError("HashTag", "Unfortunately that hashtag is not available.");
+            }
+
             if (ModelState.IsValid)
             {
                 var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(conference.TimeZoneId);
@@ -91,6 +99,10 @@ namespace YouConf.Controllers
         [HttpPost]
         public ActionResult Edit(string id, Conference conference)
         {
+            if (!IsConferenceHashTagAvailable(conference.HashTag))
+            {
+                ModelState.AddModelError("HashTag", "Unfortunately that hashtag is not available.");
+            }
 
             if (ModelState.IsValid)
             {
@@ -110,6 +122,17 @@ namespace YouConf.Controllers
                 conference.Presentations = existingConference.Presentations;
 
                 YouConfDataContext.UpsertConference(id, conference);
+
+
+                if (existingConference.HangoutId != conference.HangoutId)
+                {
+                    //User has changed the conference hangout id, so notify any listeners/viewers out there if they're watching (e.g. during the live conference streaming)
+                    //DefaultHubManager hd = new DefaultHubManager(GlobalHost.DependencyResolver);
+                    //var hub = hd.ResolveHub("YouConfHub") as YouConfHub;
+                    //hub.UpdateConferenceVideoUrl(conference.HashTag, conference.HangoutId);
+                    var context = GlobalHost.ConnectionManager.GetHubContext<YouConfHub>();
+                    context.Clients.Group(conference.HashTag).updateConferenceVideoUrl(conference.HangoutId);
+                }
 
                 return RedirectToAction("Details", new { hashTag = conference.HashTag });
             }
@@ -157,6 +180,17 @@ namespace YouConf.Controllers
                 return HttpNotFound();
             }
             return View(conference);
+        }
+
+        public ActionResult Lookup(string conferenceHashTag)
+        {
+            return Json(IsConferenceHashTagAvailable(conferenceHashTag), JsonRequestBehavior.AllowGet);
+        }
+
+        private bool IsConferenceHashTagAvailable(string hashTag)
+        {
+            var conference = YouConfDataContext.GetConference(hashTag);
+            return conference == null;
         }
     }
 }

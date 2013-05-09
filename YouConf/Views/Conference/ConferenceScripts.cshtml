@@ -1,0 +1,25 @@
+﻿<script>
+    $(function () {
+        var wait = 0;
+        //Do a lookup to see if the hashtag is taken, and if so, let the user know
+        //Helpful to do it dynamically rather than the user having to wait till they submit the form to find out...
+        $("#HashTag").keyup(function () {
+            var hashtag = $("#HashTag").val();
+            clearTimeout(wait);
+            //Wait a second in case the user keeps typing before doing the lookup
+            wait = setTimeout(function () {
+                var url = '/conference/lookup?conferenceHashTag=' + hashtag;
+                $.getJSON(url, function (isAvailable) {
+                    if (!isAvailable === true) {
+                        //alert("Unfortunately that hashtag is not available");
+                        //Hide any tooltip -HACK - this will hide all tooltips (only one should be visible at a time anyway) as I can't figure out how to hide just the hashtag one at the moment
+                        $(".tooltip").hide();
+
+                        var validator = $("#main-content form").validate();
+                        validator.showErrors({ "HashTag": "Unfortunately that hashtag is not available." });
+                    }
+                });
+            }, 1000);
+        });
+    });
+</script>

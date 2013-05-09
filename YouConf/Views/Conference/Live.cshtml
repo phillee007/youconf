@@ -37,3 +37,33 @@
 </p>
 
 @section SideBar{}
+
+@section Scripts{
+    <script src="~/scripts/jquery.signalr-1.0.1.min.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $.connection.hub.logging = true;
+
+            var youConfHub = $.connection.youConfHub;
+
+            youConfHub.client.updateConferenceVideoUrl = function (hangoutId) {
+                $("#video iframe").attr("src", "http://youtube.com/embed/" + hangoutId + "?autoplay=1");
+            };
+
+            var joinGroup = function () {
+                youConfHub.server.join("@Model.HashTag");
+            }
+            //Once connected, join the group for the current conference.
+            $.connection.hub.start(function () {
+                joinGroup();
+            });
+
+            $.connection.hub.disconnected(function () {
+                setTimeout(function () {
+                    $.connection.hub.start();
+                }, 5000);
+            });
+        });
+    </script>
+}
