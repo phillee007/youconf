@@ -37,7 +37,7 @@
             @Html.LabelWithRequiredAsteriskFor(model => model.Abstract)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Abstract, new { title = "The short description for your conference. This will be shown on the conference list page." })
+            @Html.TextAreaFor(model => model.Abstract, new { title = "The short description for your conference. This will be shown on the conference listing page." })
             @Html.ValidationMessageFor(model => model.Abstract)
         </div>
 
