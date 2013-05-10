@@ -96,64 +96,7 @@
     <script src="/scripts/jquery.tools.min.js"></script>
     @RenderSection("scripts", required: false)
 
-    <script>
-        $(function () {
-            //Add datetime picker for all fields marked up with the relevant .date class
-            $("#main-content input.date").datetimepicker({ dateFormat: 'yy-mm-dd' });
-
-            //Make our links look fancy with jQuery UI buttons
-            $("#main-content input[type=submit], #main-content a:not(.no-button):not([id^=recaptcha]), #main-content button")
-                .button();
-
-            //Add the helper tooltip for form input fields
-            $("#main-content form [title]").toolstooltip({ position: "center right" });
-
-            //Add pretty dividers to the relevant articles. We could use a CSS :last-child attribute for this, but it will not work in as many browsers
-            $("<hr class='separator' />")
-                .insertAfter("#main-content .box article:not(:last)");
-
-            //HACK - Wait 5 seconds till showing the social buttons...
-            //They seem to take an age to load, so why not hide them till they're all visible (hopefully 5 seconds is enough)
-            //Thanks to http://www.noamdesign.com/3-ways-to-integrate-social-media/ for the idea
-            setTimeout(function () {
-                $("#social").show();
-            }, 5000);
-
-            //And for the second spot prize - make the Code Project man go wild!
-            if(window.location.search.indexOf("crazymaneasteregg") > 0){
-                $("img")
-                .attr("id", "crazyman")
-                .attr("src", "http://www.codeproject.com/images/bob.png")
-                .css("width", "278px")
-                .css("height", "384px")
-                .css("position", "absolute")
-                .css("top", "0")
-                .css("left", $(window).width() / 2 - 278 / 2)
-                .css("display", "none")
-                .appendTo("body");
-
-                $("#crazyman")
-                .animate({
-                    width: 'toggle',
-                    height: 'toggle'
-                }, {
-                    duration: 5000,
-                    specialEasing: {
-                        width: 'linear',
-                        height: 'easeOutBounce'
-                    },
-                    complete: function () {
-                        $("#crazyman").hide("explode", 3000, function () {;
-                            $("<div style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center;background-color:#fff;font-size:50px;'>Easter egg time!</div>")
-                            .appendTo("body")
-                            .slideDown(1500)
-                            .slideUp(1500);
-                        });
-                    }
-                });
-            }
-        });
-    </script>
+    @Scripts.Render("~/bundles/main")
 
 
     <!-- Javascript for social buttons -->
