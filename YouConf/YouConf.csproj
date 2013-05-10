@@ -232,6 +232,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PresentationController.cs" />
@@ -579,7 +580,6 @@
     <Content Include="Views\Shared\EditorTemplates\LocalDateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Presentation.cshtml" />
     <Content Include="Views\Presentation\Edit.cshtml" />
-    <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
     <Content Include="Views\Conference\ConferenceWhenAndWhere.cshtml" />
     <Content Include="Views\Presentation\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Conference.cshtml" />
@@ -587,6 +587,8 @@
     <Content Include="Views\Help\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Conference\ConferenceScripts.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
