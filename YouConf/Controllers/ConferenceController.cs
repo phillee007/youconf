@@ -99,7 +99,8 @@ namespace YouConf.Controllers
         [HttpPost]
         public ActionResult Edit(string id, Conference conference)
         {
-            if (!IsConferenceHashTagAvailable(conference.HashTag))
+            //If the user has changed the conference hashtag we have to make sure that the new one hasn't already been taken
+            if (id != conference.HashTag && !IsConferenceHashTagAvailable(conference.HashTag))
             {
                 ModelState.AddModelError("HashTag", "Unfortunately that hashtag is not available.");
             }
@@ -127,9 +128,6 @@ namespace YouConf.Controllers
                 if (existingConference.HangoutId != conference.HangoutId)
                 {
                     //User has changed the conference hangout id, so notify any listeners/viewers out there if they're watching (e.g. during the live conference streaming)
-                    //DefaultHubManager hd = new DefaultHubManager(GlobalHost.DependencyResolver);
-                    //var hub = hd.ResolveHub("YouConfHub") as YouConfHub;
-                    //hub.UpdateConferenceVideoUrl(conference.HashTag, conference.HangoutId);
                     var context = GlobalHost.ConnectionManager.GetHubContext<YouConfHub>();
                     context.Clients.Group(conference.HashTag).updateConferenceVideoUrl(conference.HangoutId);
                 }

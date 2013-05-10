@@ -39,7 +39,8 @@
 @section SideBar{}
 
 @section Scripts{
-    <script src="~/scripts/jquery.signalr-1.0.1.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-1.0.1.min.js"></script>
+    <script>$.signalR || document.write('<scr' + 'ipt src="~/scripts/jquery.signalr-1.0.1.min.js")></sc' + 'ript>');</script>
     <script src="~/signalr/hubs" type="text/javascript"></script>
     <script>
         $(function () {
