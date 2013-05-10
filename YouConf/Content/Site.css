@@ -863,7 +863,18 @@ tr.pager td {
         text-align: center;
     }
 
+    .main-content aside.sidebar, .main-content .content {
+        float: none;
+        width: auto;
+    }
 
+    .main-content .content {
+        padding-right: 0;
+    }
+
+    .main-content .sidebar {
+        margin-top: 1em;
+    }
 
     .hero .grid div {
         width: auto;
