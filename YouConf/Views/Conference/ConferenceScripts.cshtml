@@ -13,6 +13,7 @@
                     var validator = $("#main-content form").validate();
                     if (!isAvailable === true) {
                         validator.showErrors({ "HashTag": "Unfortunately that hashtag is not available." });
+                        $('.tooltip').hide();
                     }
                 });
             }, 1000);
