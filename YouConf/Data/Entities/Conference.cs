@@ -26,12 +26,10 @@ namespace YouConf.Data.Entities
         public string HashTag { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Full Description")]
         public string Description { get; set; }
-        public IList<Presentation> Presentations { get; set; }
-        public IList<Speaker> Speakers { get; set; }
+        [Required]
         [DataType(DataType.MultilineText)]  
         public string Abstract { get; set; }
         [Required]
@@ -53,6 +51,8 @@ namespace YouConf.Data.Entities
         public long TwitterWidgetId { get; set; }
         [Display(Name = "Available to public")]
         public bool AvailableToPublic { get; set; }
+        public IList<Presentation> Presentations { get; set; }
+        public IList<Speaker> Speakers { get; set; }
     }
 
     public class Presentation{
