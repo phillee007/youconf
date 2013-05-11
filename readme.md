@@ -14,6 +14,6 @@ It's an MVC 4 website designed to be hosted in Azure, including usage of:
 
 To use the source code, please download the whole source repository and open the YouConf.sln file in Visual Studio 2012. From there you can play to your heart's content...
 
-The site is currently live on Azure at http://youconf.azurewebsites.net/ so feel free to browse it and create your own conference.
+The site is currently live on Azure at http://youconf.azurewebsites.net/ so feel free to browse it and create your own conference. 
 
-If you have any questions or would like to see my take on many of the day-to-day tasks and issues associated with building YouConf, please see my article on CodeProject - http://www.codeproject.com/Articles/584534/YouConf-Your-Live-Online-Conferencing-Tool
+If you have any questions or would like to see my take on many of the day-to-day tasks and issues associated with building YouConf, please see my article on CodeProject - http://www.codeproject.com/Articles/584534/YouConf-Your-Live-Online-Conferencing-Tool. If you like it, please vote for me, or like my article using the buttons at the bottom on CodeProject.
