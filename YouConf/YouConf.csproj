@@ -541,7 +541,6 @@
     <Content Include="Views\Conference\Create.cshtml" />
     <Content Include="Views\Speaker\Add.cshtml" />
     <Content Include="Views\Conference\Details.cshtml" />
-    <Content Include="Views\Shared\_LayoutBrownie.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\TimeZone.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TimeZone.cshtml" />
     <Content Include="Views\Speaker\Edit.cshtml" />
