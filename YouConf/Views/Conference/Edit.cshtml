@@ -5,6 +5,10 @@
 
 @Html.EditorFor(x => Model)
 
+<div>
+    @Html.ActionLink("Cancel", "Details", new { hashTag = Model.HashTag })
+</div>
+
 @section SidebarContent{
     <div class="box" style="padding: 0.5em">
         <h2>Tips</h2>
