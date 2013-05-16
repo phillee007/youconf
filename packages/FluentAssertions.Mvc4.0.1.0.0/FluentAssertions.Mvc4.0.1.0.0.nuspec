@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>FluentAssertions.Mvc4</id>
+    <version>0.1.0.0</version>
+    <title>Fluent Assertions Mvc4</title>
+    <authors>Casey Burns,  Kevin Kuszyk</authors>
+    <owners>Casey Burns,  Kevin Kuszyk</owners>
+    <licenseUrl>http://fluentassertionsmvc.codeplex.com/license</licenseUrl>
+    <projectUrl>http://fluentassertionsmvc.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FluentAssertions MVC is a set of MVC focused assertions and helper extensions to the excellent FluentAssertions library.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <language />
+    <tags>TDD, Fluent, Mvc, AspNetMvc</tags>
+    <dependencies>
+      <dependency id="FluentAssertions" version="2.0.0.1" />
+    </dependencies>
+    <references>
+      <reference file="FluentAssertions.Mvc4.dll" />
+    </references>
+  </metadata>
+</package>

@@ -1,0 +1,45 @@
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for YouConf.AuthConfig: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for YouConf.App_Start.NinjectWebCommon: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for YouConf.WebApiConfig: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for YouConf.Extensions.DateTimeExtensions: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for YouConf.Filters.InitializeSimpleMembershipAttribute: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for YouConf.Helpers.HtmlHelpers: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for <>f__AnonymousType0`2: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for <>f__AnonymousType1`1: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for <>f__AnonymousType2`3: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate stub for <>f__AnonymousType3`1: type is sealed.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.IsNotAControllerNameConstraint+<>c__DisplayClass2: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.ConferenceController+<Edit>o__SiteContainer2: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.HomeController+<About>o__SiteContainer2: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.HomeController+<Contact>o__SiteContainer4: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.HomeController+<Index>o__SiteContainer0: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<>c__DisplayClass16: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<>c__DisplayClass1b: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<>c__DisplayClass21: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<>c__DisplayClass9: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<>c__DisplayClassf: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<Add>o__SiteContainer1: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<Add>o__SiteContainer4: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<Delete>o__SiteContainer18: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<DeleteConfirm>o__SiteContainer1d: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<Edit>o__SiteContainer11: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.PresentationController+<Edit>o__SiteContainerb: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<>c__DisplayClass13: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<>c__DisplayClass1a: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<>c__DisplayClass1d: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<>c__DisplayClass8: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<>c__DisplayClasse: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<Add>o__SiteContainer1: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<Add>o__SiteContainer3: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<Delete>o__SiteContainer10: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<DeleteConfirm>o__SiteContainer15: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<Edit>o__SiteContainer5: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Controllers.SpeakerController+<Edit>o__SiteContainera: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Data.IYouConfDataContext: type is an interface.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.Filters.InitializeSimpleMembershipAttribute+SimpleMembershipInitializer: type is not visible to exported or assembly(YouConf.Fakes).
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : skipping method System.Nullable`1<!!0> YouConf.ModelBinders.DateAndTimeModelBinder.GetA(System.Web.Mvc.ModelBindingContext bindingContext, System.String key), method System.Nullable`1<!!0> YouConf.ModelBinders.DateAndTimeModelBinder.GetA(System.Web.Mvc.ModelBindingContext bindingContext, System.String key) unstubbable: unsupported constraint type
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for YouConf.SignalRHubs.YouConfHub+<UpdateConferenceVideoUrl>o__SiteContainer0: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for <>f__AnonymousType0`2: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for <>f__AnonymousType1`1: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for <>f__AnonymousType2`3: type is not supported because of internal limitations.
+C:\Development\youconf\YouConf.Tests\Fakes\YouConf.fakes : warning : Cannot generate shim for <>f__AnonymousType3`1: type is not supported because of internal limitations.
