@@ -7,7 +7,7 @@
         .button();
 
     //Add the helper tooltip for form input fields
-    $("#main-content form [title]").toolstooltip({ position: "center right" });
+    $("#main-content form:not(.no-tooltip) [title]").toolstooltip({ position: "center right" });
 
     //Add pretty dividers to the relevant articles. We could use a CSS :last-child attribute for this, but it will not work in as many browsers
     $("<hr class='separator' />")

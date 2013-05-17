@@ -3,22 +3,27 @@
 @if (Model.Count == 0)
 {
     <div class="message-info">
-        <p>There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=252166">this article</a>
-        for details on setting up this ASP.NET application to support logging in via external services.</p>
+        <p>
+            There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=252166">this article</a>
+            for details on setting up this ASP.NET application to support logging in via external services.
+        </p>
     </div>
 }
 else
 {
-    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "no-tooltip" }))
     {
     @Html.AntiForgeryToken()
     <fieldset id="socialLoginList">
         <legend>Log in using another service</legend>
         <p>
-        @foreach (AuthenticationClientData p in Model)
-        {
-            <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">@p.DisplayName</button>
-        }
+            @foreach (AuthenticationClientData p in Model)
+            {
+@*<button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">@p.DisplayName</button>*@
+                <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Log in using your @p.DisplayName account">
+                    <img style="width:40px;height:40px" src="@p.ExtraData["Icon"]" title="Log in using your @p.DisplayName account" />
+                </button>
+            }
         </p>
     </fieldset>
     }

@@ -465,6 +465,8 @@
     <Content Include="Images\icons\info.png" />
     <Content Include="Images\icons\next.png" />
     <Content Include="Images\icons\rsz_info_1.png" />
+    <Content Include="Images\icons\social\google.png" />
+    <Content Include="Images\icons\social\microsoft.png" />
     <Content Include="Images\icons\toolbar_get_info.png" />
     <Content Include="Images\logo-full.png" />
     <Content Include="Images\Logo.png" />
