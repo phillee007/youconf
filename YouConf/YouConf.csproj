@@ -240,8 +240,10 @@
     <Compile Include="Controllers\PresentationController.cs" />
     <Compile Include="Controllers\SpeakerController.cs" />
     <Compile Include="Data\Entities\Conference.cs" />
+    <Compile Include="Data\Entities\UserProfile.cs" />
     <Compile Include="Data\IYouConfDataContext.cs" />
     <Compile Include="Data\YouConfDataContext.cs" />
+    <Compile Include="Data\YouConfDbContext.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -322,6 +324,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon-play.ico" />
     <Content Include="Global.asax" />
+    <Content Include="HiddenSettings.config" />
     <None Include="Properties\PublishProfiles\youconf - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\youconf - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />

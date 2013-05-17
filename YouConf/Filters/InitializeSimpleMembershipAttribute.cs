@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
+using YouConf.Data;
 using YouConf.Models;
 
 namespace YouConf.Filters
@@ -25,11 +26,11 @@ namespace YouConf.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<YouConfDbContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new YouConfDbContext())
                     {
                         if (!context.Database.Exists())
                         {

@@ -13,10 +13,10 @@
     $("<hr class='separator' />")
         .insertAfter("#main-content .box article:not(:last)");
 
-    //HACK - Wait 5 seconds till showing the social buttons...
-    //They seem to take an age to load, so why not hide them till they're all visible (hopefully 5 seconds is enough)
+    //HACK - Wait 3 seconds till showing the social buttons...
+    //They seem to take an age to load, so why not hide them till they're all visible (hopefully 3 seconds is enough)
     //Thanks to http://www.noamdesign.com/3-ways-to-integrate-social-media/ for the idea
     setTimeout(function () {
         $("#social").show();
-    }, 5000);
+    }, 3000);
 });
