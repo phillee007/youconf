@@ -45,7 +45,7 @@ local.properties
 PublishProfiles/
 
 #Hidden app settings
-YouConf/Hidden*
+YouConf/HiddenSettings.config
 
 #App_Data e.g. local db databases
 App_Data/
