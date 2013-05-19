@@ -61,8 +61,8 @@ namespace YouConf.Helpers
             //    output += asteriskTag.ToString(TagRenderMode.SelfClosing);
             //}
 
-            if (!string.IsNullOrEmpty(metaData.DisplayName))
-                tag.Attributes.Add("title", metaData.DisplayName);
+            //if (!string.IsNullOrEmpty(metaData.DisplayName))
+            //    tag.Attributes.Add("title", metaData.DisplayName);
 
             tag.SetInnerText(labelText);
 

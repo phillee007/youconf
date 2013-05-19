@@ -4,41 +4,49 @@
     ViewBag.Title = "Log in";
 }
 
-<section id="loginForm">
-<h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<div class="grid">
+    <div class="col-1-2">
+        <section id="loginForm">
+            <h2 style="margin: 0">Use a local account to log in</h2>
+            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Log in Form</legend>
-        <ol>
-            <li>
-                @Html.LabelWithRequiredAsteriskFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelWithRequiredAsteriskFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
-    </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account, or use the Google or Windows Live buttons to log in and register using an existing account.
-    </p>
-}
-</section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Use another service.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
+                <fieldset>
+                    <legend>Log in Form</legend>
+                    <div class="editor-label">
+                        @Html.LabelWithRequiredAsteriskFor(m => m.UserName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.UserName)
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelWithRequiredAsteriskFor(m => m.Password)
+                    </div>
+                    <div class="editor-field">
+                        @Html.PasswordFor(m => m.Password)
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="editor-label">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                    </div>
+                    <input type="submit" value="Log in" />
+                </fieldset>
+                <p>
+                    @Html.ActionLink("Register", "Register", null, new { @class = "no-button" }) if you don't have an account. @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>
+            }
+        </section>
+    </div>
+    <div class="col-1-2">
+        <section class="social" id="socialLoginForm">
+            <h2 style="margin: 0">Use another service</h2>
+            @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
 
 @section Sidebar{}

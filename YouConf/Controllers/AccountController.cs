@@ -12,6 +12,7 @@ using YouConf.Filters;
 using YouConf.Models;
 using YouConf.Data;
 using YouConf.Data.Entities;
+using YouConf.Mailers;
 
 namespace YouConf.Controllers
 {
@@ -300,6 +301,82 @@ namespace YouConf.Controllers
         {
             return View();
         }
+
+        [AllowAnonymous]
+        public virtual ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public virtual ActionResult ForgotPassword(string email, bool captchaValid, string captchaErrorMessage)
+        {
+            if (!captchaValid)
+            {
+                ModelState.AddModelError("captcha", captchaErrorMessage);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var userId = WebSecurity.GetUserId(email);
+                if (userId > 0 && OAuthWebSecurity.HasLocalAccount(userId))
+                {
+                    string token = WebSecurity.GeneratePasswordResetToken(email);
+
+                    //Send them an email
+                    //UserMailer mailer = new UserMailer();
+                    //var mvcMailMessage = mailer.PasswordReset(email, token);
+                    //var mailMessage = new SendEmailMessage()
+                    //{
+                    //    From = "info@the-kangaroo-court.com",
+                    //    To = email,
+                    //    Subject = "Password reset request from The Kangaroo Court",
+                    //    Body = mvcMailMessage.Body
+                    //};
+                    //SendQueueMessage(mailMessage);
+                    return View("PasswordResetEmailSent");
+                }
+            }
+            return View();
+        }
+
+        [AllowAnonymous]
+        public virtual ActionResult ResetPassword(string key)
+        {
+            var userId = WebSecurity.GetUserIdFromPasswordResetToken(key);
+            if (userId <= 0)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.Token = key;
+
+            return View(new ResetPasswordModel());
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        public virtual ActionResult ResetPassword(ResetPasswordModel model, string key)
+        {
+            var userId = WebSecurity.GetUserIdFromPasswordResetToken(key.ToString());
+            if (userId <= 0)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                WebSecurity.ResetPassword(key, model.NewPassword);
+                return RedirectToAction("Login");
+            }
+
+            ViewBag.Token = key;
+
+            return View(model);
+        }
+
 
         [AllowAnonymous]
         [ChildActionOnly]

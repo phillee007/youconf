@@ -1,4 +1,6 @@
-﻿using Ninject;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.WindowsAzure;
+using Ninject;
 using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,12 @@ namespace YouConf
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            //SignalR
+            var serviceBusConnectionString = CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+            GlobalHost.DependencyResolver.UseServiceBus(serviceBusConnectionString, "YouConf");
             RouteTable.Routes.MapHubs();
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
