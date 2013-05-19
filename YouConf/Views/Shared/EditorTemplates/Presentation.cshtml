@@ -5,7 +5,8 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.Hidden("conferenceHashTag", ((YouConf.Data.Entities.Conference)ViewBag.Conference).HashTag)
-    @Html.Hidden("Id", Model.Id)    
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ConferenceId) 
 
     <fieldset>
         <legend>Presentation</legend>

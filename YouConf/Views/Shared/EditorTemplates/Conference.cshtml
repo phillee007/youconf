@@ -9,14 +9,11 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    if (Model != null)
-    {
-    @Html.Hidden("Id", Model.HashTag)
-    }
     
     <fieldset>
         <legend>Conference</legend>
 
+        @Html.HiddenFor(model => model.Id)
         <div class="editor-label">
             @Html.LabelWithRequiredAsteriskFor(model => model.HashTag)
         </div>

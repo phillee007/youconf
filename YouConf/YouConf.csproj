@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
@@ -255,6 +258,7 @@
     <Compile Include="Data\Entities\Conference.cs" />
     <Compile Include="Data\Entities\UserProfile.cs" />
     <Compile Include="Data\IYouConfDataContext.cs" />
+    <Compile Include="Data\IYouConfDbContext.cs" />
     <Compile Include="Data\YouConfDataContext.cs" />
     <Compile Include="Data\YouConfDbContext.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
@@ -266,6 +270,15 @@
     <Compile Include="Infrastructure\Logging\TableErrorLog.cs" />
     <Compile Include="Mailers\IUserMailer.cs" />
     <Compile Include="Mailers\UserMailer.cs" />
+    <Compile Include="Migrations\201305190458405_AddConferenceDataToStoreInDatabaseInsteadOfTableStorage.cs" />
+    <Compile Include="Migrations\201305190458405_AddConferenceDataToStoreInDatabaseInsteadOfTableStorage.Designer.cs">
+      <DependentUpon>201305190458405_AddConferenceDataToStoreInDatabaseInsteadOfTableStorage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305191150353_AddPresentationsToSpeaker.cs" />
+    <Compile Include="Migrations\201305191150353_AddPresentationsToSpeaker.Designer.cs">
+      <DependentUpon>201305191150353_AddPresentationsToSpeaker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBinders\DateAndTimeModelBinder.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\PresentationModels.cs" />
@@ -593,6 +606,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201305190458405_AddConferenceDataToStoreInDatabaseInsteadOfTableStorage.resx">
+      <DependentUpon>201305190458405_AddConferenceDataToStoreInDatabaseInsteadOfTableStorage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305191150353_AddPresentationsToSpeaker.resx">
+      <DependentUpon>201305191150353_AddPresentationsToSpeaker.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

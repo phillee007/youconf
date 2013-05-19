@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,23 +11,25 @@ namespace YouConf.Controllers
 {
     public class SpeakerController : Controller
     {
-        public IYouConfDataContext YouConfDataContext { get; set; }
+        public IYouConfDbContext YouConfDbContext { get; set; }
 
-        public SpeakerController(IYouConfDataContext youConfDataContext)
+        public SpeakerController(IYouConfDbContext youConfDbContext)
         {
-            if (youConfDataContext == null)
+            if (youConfDbContext == null)
             {
-                throw new ArgumentNullException("youConfDataContext");
+                throw new ArgumentNullException("youConfDbContext");
             }
-            YouConfDataContext = youConfDataContext;
+            YouConfDbContext = youConfDbContext;
         }
 
         //
         // GET: /Speaker/
 
-        public ActionResult Index(string id)
+        public ActionResult Index(string conferenceHashTag)
         {
-            var conference = YouConfDataContext.GetConference(id);
+            var conference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == conferenceHashTag);
+
             if (conference == null)
             {
                 return HttpNotFound();
@@ -34,26 +37,21 @@ namespace YouConf.Controllers
             return View(conference.Speakers);
         }
 
-        //
-        // GET: /Speaker/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         //
         // GET: /Speaker/Create
 
         public ActionResult Add(string id)
         {
+            var conference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == id);
             var speaker = new Speaker()
             {
-                Id = DateTime.Now.Ticks
+                ConferenceId = conference.Id
             };
-            //We want the id hidden field to be the SpeakerId, but if we don't remove it from ModelState here it will be the conference Id. See http://stackoverflow.com/questions/4710447/asp-net-mvc-html-hiddenfor-with-wrong-value
+
             ModelState.Remove("id");
-            ViewBag.ConferenceId = id;
+            ViewBag.ConferenceHashTag = id;
             return View(speaker);
         }
 
@@ -65,14 +63,9 @@ namespace YouConf.Controllers
         {
             if (ModelState.IsValid)
             {
-                var conference = YouConfDataContext.GetConference(conferenceHashTag);
-                if (conference == null)
-                {
-                    return HttpNotFound();
-                }
+                YouConfDbContext.Speakers.Add(speaker);
+                YouConfDbContext.SaveChanges();
 
-                conference.Speakers.Add(speaker);
-                YouConfDataContext.UpsertConference(conference.HashTag, conference);
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
 
@@ -83,21 +76,15 @@ namespace YouConf.Controllers
         //
         // GET: /Speaker/Edit/5
 
-        public ActionResult Edit(long id, string conferenceHashTag)
+        public ActionResult Edit(int id)
         {
-            var conference = YouConfDataContext.GetConference(conferenceHashTag);
-            if (conference == null)
-            {
-                return HttpNotFound();
-            }
-
-            var speaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+            var speaker = YouConfDbContext.Speakers
+                .FirstOrDefault(x => x.Id == id);
             if (speaker == null)
             {
                 return HttpNotFound();
             }
 
-            ViewBag.ConferenceId = conferenceHashTag;
             return View(speaker);
         }
 
@@ -105,51 +92,39 @@ namespace YouConf.Controllers
         // POST: /Speaker/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(long id, string conferenceHashTag, Speaker speaker)
+        public ActionResult Edit(Speaker speaker)
         {
             if (ModelState.IsValid)
             {
-                var conference = YouConfDataContext.GetConference(conferenceHashTag);
-                if (conference == null)
-                {
-                    return HttpNotFound();
-                }
-
-                var currentSpeaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+                var currentSpeaker = YouConfDbContext.Speakers
+                    .FirstOrDefault(x => x.Id == speaker.Id);
                 if (currentSpeaker == null)
                 {
                     return HttpNotFound();
                 }
 
                 //Overwrite the old speaker details with the new
-                conference.Speakers[conference.Speakers.IndexOf(currentSpeaker)] = speaker;
+                currentSpeaker = speaker;
+                YouConfDbContext.SaveChanges();
 
-                YouConfDataContext.UpsertConference(conferenceHashTag, conference);
-                return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
+                return RedirectToAction("Details", "Conference", new { hashTag = currentSpeaker.Conference.HashTag });
             }
 
-            ViewBag.ConferenceId = conferenceHashTag;
+            ViewBag.ConferenceId = speaker.ConferenceId;
             return View(speaker);
         }
 
         //
         // GET: /Speaker/Delete/5
 
-        public ActionResult Delete(long id, string conferenceHashTag)
+        public ActionResult Delete(int id)
         {
-            var conference = YouConfDataContext.GetConference(conferenceHashTag);
-            if (conference == null)
-            {
-                return HttpNotFound();
-            }
-
-            var currentSpeaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+            var currentSpeaker = YouConfDbContext.Speakers
+                .FirstOrDefault(x => x.Id == id);
             if (currentSpeaker == null)
             {
                 return HttpNotFound();
             }
-
-            ViewBag.ConferenceId = conferenceHashTag;
 
             return View(currentSpeaker);
         }
@@ -159,37 +134,26 @@ namespace YouConf.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
-        public ActionResult DeleteConfirm(long id, string conferenceHashTag)
+        public ActionResult DeleteConfirm(int id)
         {
             if (ModelState.IsValid)
             {
-                var conference = YouConfDataContext.GetConference(conferenceHashTag);
-                if (conference == null)
-                {
-                    return HttpNotFound();
-                }
-
-                var currentSpeaker = conference.Speakers.FirstOrDefault(x => x.Id == id);
+                var currentSpeaker = YouConfDbContext.Speakers
+                    .Include(x => x.Conference)
+                    .FirstOrDefault(x => x.Id == id);
                 if (currentSpeaker == null)
                 {
                     return HttpNotFound();
                 }
 
-                //Remove the speaker
-                conference.Speakers.Remove(currentSpeaker);
-                //Also remove them from any presentations...
-                foreach (var presentation in conference.Presentations)
-                {
-                    var speaker = presentation.Speakers.FirstOrDefault(x => x.Id == currentSpeaker.Id);
-                    presentation.Speakers.Remove(speaker);
-                }
+                var conferenceHashTag = currentSpeaker.Conference.HashTag;
 
-                YouConfDataContext.UpsertConference(conferenceHashTag, conference);
+                YouConfDbContext.Speakers.Remove(currentSpeaker);
+                YouConfDbContext.SaveChanges();
 
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
 
-            ViewBag.ConferenceId = conferenceHashTag;
             return View();
         }
     }

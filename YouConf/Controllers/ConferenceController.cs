@@ -13,24 +13,36 @@ namespace YouConf.Controllers
 {
     public class ConferenceController : Controller
     {
-        public IYouConfDataContext YouConfDataContext { get; set; }
+        public IYouConfDbContext YouConfDbContext { get; set; }
 
-        public ConferenceController(IYouConfDataContext youConfDataContext)
+        public ConferenceController(IYouConfDbContext youConfDbContext)
         {
-            if (youConfDataContext == null)
+            if (youConfDbContext == null)
             {
-                throw new ArgumentNullException("youConfDataContext");
+                throw new ArgumentNullException("youConfDbContext");
             }
-            YouConfDataContext = youConfDataContext;
+            YouConfDbContext = youConfDbContext;
         }
         //
-        // GET: /Conference/
+        // GET: /Conference/All
 
         public ActionResult All()
         {
-            var conferences = YouConfDataContext
-                .GetAllConferences()
+            var conferences = YouConfDbContext
+                .Conferences
                 .Where(x => x.AvailableToPublic)
+                .ToList();
+            return View(conferences);
+        }
+
+        //
+        // GET: /Conference/Manage
+
+        public ActionResult Manage()
+        {
+            //TODO - only get conferences for which the current user is an administrator
+            var conferences = YouConfDbContext
+                .Conferences
                 .ToList();
             return View(conferences);
         }
@@ -40,7 +52,9 @@ namespace YouConf.Controllers
 
         public ActionResult Details(string hashTag)
         {
-            var conference = YouConfDataContext.GetConference(hashTag);
+            var conference = YouConfDbContext
+                .Conferences
+                .FirstOrDefault(x => x.HashTag == hashTag);
             if (conference == null)
             {
                 return HttpNotFound();
@@ -74,7 +88,10 @@ namespace YouConf.Controllers
                 conference.StartDate = TimeZoneInfo.ConvertTimeToUtc(conference.StartDate, conferenceTimeZone);
                 conference.EndDate = TimeZoneInfo.ConvertTimeToUtc(conference.EndDate, conferenceTimeZone);
 
-                YouConfDataContext.UpsertConference(conference.HashTag, conference);
+                
+                YouConfDbContext.Conferences.Add(conference);
+                YouConfDbContext.SaveChanges();
+
                 return RedirectToAction("Details", new { hashTag = conference.HashTag });
             }
             return View(conference);
@@ -85,7 +102,8 @@ namespace YouConf.Controllers
 
         public ActionResult Edit(string hashTag)
         {
-            var conference = YouConfDataContext.GetConference(hashTag);
+            var conference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == hashTag);
             if (conference == null)
             {
                 return HttpNotFound();
@@ -107,7 +125,8 @@ namespace YouConf.Controllers
 
             if (ModelState.IsValid)
             {
-                var existingConference = YouConfDataContext.GetConference(id);
+                var existingConference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == id);
                 if (conference == null)
                 {
                     return HttpNotFound();
@@ -122,7 +141,7 @@ namespace YouConf.Controllers
                 conference.Speakers = existingConference.Speakers;
                 conference.Presentations = existingConference.Presentations;
 
-                YouConfDataContext.UpsertConference(id, conference);
+                YouConfDbContext.SaveChanges();
 
 
                 if (existingConference.HangoutId != conference.HangoutId)
@@ -143,7 +162,8 @@ namespace YouConf.Controllers
 
         public ActionResult Delete(string hashTag)
         {
-            var conference = YouConfDataContext.GetConference(hashTag);
+            var conference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == hashTag);
             if (conference == null)
             {
                 return HttpNotFound();
@@ -159,20 +179,25 @@ namespace YouConf.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteConfirm(string hashTag)
         {
-            var conference = YouConfDataContext.GetConference(hashTag);
+            var conference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == hashTag);
+
             if (conference == null)
             {
                 return HttpNotFound();
             }
 
-            YouConfDataContext.DeleteConference(hashTag);
+            YouConfDbContext.Conferences.Remove(conference);
+            YouConfDbContext.SaveChanges();
 
             return RedirectToAction("All");
         }
 
         public ActionResult Live(string hashTag)
         {
-            var conference = YouConfDataContext.GetConference(hashTag);
+            var conference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == hashTag);
+
             if (conference == null)
             {
                 return HttpNotFound();
@@ -187,7 +212,9 @@ namespace YouConf.Controllers
 
         private bool IsConferenceHashTagAvailable(string hashTag)
         {
-            var conference = YouConfDataContext.GetConference(hashTag);
+            var conference = YouConfDbContext.Conferences
+                .FirstOrDefault(x => x.HashTag == hashTag);
+
             return conference == null;
         }
     }

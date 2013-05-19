@@ -22,9 +22,12 @@ namespace YouConf.Data.Entities
             AvailableToPublic = true;
         }
 
+        public int Id { get; set; }
         [Required]
+        [MaxLength(50)]
         public string HashTag { get; set; }
         [Required]
+        [MaxLength(250)]
         public string Name { get; set; }
         [DataType(DataType.MultilineText)]
         [Display(Name = "Full Description")]
@@ -46,13 +49,14 @@ namespace YouConf.Data.Entities
         [UIHint("TimeZone"), Display(Name = "Time Zone")]
         public string TimeZoneId { get; set; }
         [Display(Name = "Hangout Id")]
+        [MaxLength(50)]
         public string HangoutId { get; set; }
         [Display(Name = "Twitter Widget Id")]
-        public long TwitterWidgetId { get; set; }
+        public long ? TwitterWidgetId { get; set; }
         [Display(Name = "Available to public")]
         public bool AvailableToPublic { get; set; }
-        public IList<Presentation> Presentations { get; set; }
-        public IList<Speaker> Speakers { get; set; }
+        public virtual IList<Presentation> Presentations { get; set; }
+        public virtual IList<Speaker> Speakers { get; set; }
     }
 
     public class Presentation{
@@ -60,9 +64,10 @@ namespace YouConf.Data.Entities
         {
             Speakers = new List<Speaker>();
         }
+
+        public int Id { get; set; }
         [Required]
-        public long Id { get; set; }
-        [Required]
+        [MaxLength(500)]
         public string Name { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]  
@@ -76,22 +81,36 @@ namespace YouConf.Data.Entities
         [Display(Name = "Duration (minutes)")]
         public int Duration { get; set; }
         [Display(Name = "YouTube Video Id")]
+        [MaxLength(250)]
         public string YouTubeVideoId { get; set; }
         [Display(Name="Speaker/s")]
-        public IList<Speaker> Speakers { get; set; }
+        public virtual IList<Speaker> Speakers { get; set; }
+
+        [Required]
+        public int ConferenceId { get; set; }
+        public virtual Conference Conference { get; set; }
     }
     public class Speaker{
+        public int Id { get; set; }
         [Required]
-        public long Id { get; set; }
-        [Required]
+        [MaxLength(200)]
         public string Name { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]  
         public string Bio { get; set; }
+        [MaxLength(250)]
         public string Url { get; set; }
+        [MaxLength(150)]
         public string Email { get; set; }
         [Display(Name = "Avatar Url")]
+        [MaxLength(250)]
         public string AvatarUrl { get; set; }
+
+        [Required]
+        public int ConferenceId { get; set; }
+        public virtual Conference Conference { get; set; }
+
+        public virtual IList<Presentation> Presentations { get; set; }
     }
 
 }

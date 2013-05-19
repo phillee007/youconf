@@ -7,8 +7,9 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    @Html.Hidden("conferenceHashTag", (string)ViewBag.ConferenceId)
-    @Html.Hidden("Id", Model.Id)
+    @Html.Hidden("conferenceHashTag", (string)ViewBag.ConferenceHashTag)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ConferenceId)
 
     <p>Please enter details for the speaker below. Note that whilst it is not mandatory to provide an avatar for a speaker, it can be helpful for users to help recognise the speaker on the conference details page. See <a href="http://avatars.io" target="_blank" class="no-button">Avatars.io</a> for more details on how to use a Twitter, Facebook, or Instagram avatar. In future we'll also add the option to upload your own image for the speaker.</p>
 

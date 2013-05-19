@@ -44,6 +44,8 @@ namespace YouConf.App_Start
             var kernel = new StandardKernel();
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+            kernel.Bind<IYouConfDbContext>().To<YouConfDbContext>()
+                .InRequestScope();
             
             RegisterServices(kernel);
             return kernel;

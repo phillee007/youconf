@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using AutoMapper;
+using Microsoft.AspNet.SignalR;
 using Microsoft.WindowsAzure;
 using Ninject;
 using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -12,6 +14,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using YouConf.Data;
+using YouConf.Data.Entities;
 
 namespace YouConf
 {
@@ -37,6 +40,12 @@ namespace YouConf
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            Mapper.CreateMap<Presentation, Presentation>()
+                .ForMember(x => x.Conference, x => x.Ignore());
+
+            //Tell Entity Framework to automatically update our database to the latest version on app startup
+            Database.SetInitializer(new System.Data.Entity.MigrateDatabaseToLatestVersion<YouConfDbContext, YouConf.Migrations.Configuration>());
         }
     }
 }
