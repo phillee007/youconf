@@ -6,7 +6,7 @@
 <ol class="round">
     <li class="one">
         <h3>Add your conference</h3>
-        Start by adding your conference, along with your presentation and speaker details. Your conference will be displayed on the @Html.ActionLink("conference listing page", "All", "Conference", new { @class = "no-button" }). You can send out links to your conference using the friendly url of your conference page, just make sure to update them if you change your conference hashtag.
+        Start by adding your conference, along with your presentation and speaker details. Your conference will be displayed on the @Html.ActionLink("conference listing page", "All", "Conference", null, new { @class = "no-button" }). You can send out links to your conference using the friendly url of your conference page, just make sure to update them if you change your conference hashtag.
         <br />
         @Html.ActionLink("Add your conference now", "Create", "Conference") | @Html.ActionLink("View other conferences", "All", "Conference")
     </li>

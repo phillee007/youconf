@@ -26,19 +26,8 @@ namespace YouConf.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<YouConfDbContext>(null);
-
                 try
                 {
-                    using (var context = new YouConfDbContext())
-                    {
-                        if (!context.Database.Exists())
-                        {
-                            // Create the SimpleMembership database without Entity Framework migration schema
-                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
-                        }
-                    }
-
                     WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)

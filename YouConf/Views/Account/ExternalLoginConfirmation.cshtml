@@ -8,7 +8,8 @@
     <h2>Associate your @ViewBag.ProviderDisplayName account.</h2>
 </hgroup>
 
-@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) {
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -16,16 +17,23 @@
         <legend>Association Form</legend>
         <p>
             You've successfully authenticated with <strong>@ViewBag.ProviderDisplayName</strong>.
-            Please enter a user name for this site below and click the Confirm button to finish
+            Please enter a user name and email for this site below and click the Confirm button to finish
             logging in.
         </p>
-        <ol>
-            <li class="name">
-                @Html.LabelWithRequiredAsteriskFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-        </ol>
+        <div class="editor-label">
+            @Html.LabelWithRequiredAsteriskFor(m => m.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelWithRequiredAsteriskFor(m => m.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
         @Html.HiddenFor(m => m.ExternalLoginData)
         <input type="submit" value="Register" />
     </fieldset>

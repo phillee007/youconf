@@ -22,7 +22,6 @@ namespace YouConf
     // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
-
     {
 
         protected void Application_Start()
@@ -41,8 +40,16 @@ namespace YouConf
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            Mapper.CreateMap<Presentation, Presentation>()
+            Mapper.CreateMap<Speaker, Speaker>()
+                .ForMember(x => x.Presentations, x => x.Ignore())
                 .ForMember(x => x.Conference, x => x.Ignore());
+            Mapper.CreateMap<Presentation, Presentation>()
+                .ForMember(x => x.Speakers, x => x.Ignore())
+                .ForMember(x => x.Conference, x => x.Ignore());
+            Mapper.CreateMap<Conference, Conference>()
+                .ForMember(x => x.Presentations, x => x.Ignore())
+                .ForMember(x => x.Speakers, x => x.Ignore())
+                .ForMember(x => x.Administrators, x => x.Ignore());
 
             //Tell Entity Framework to automatically update our database to the latest version on app startup
             Database.SetInitializer(new System.Data.Entity.MigrateDatabaseToLatestVersion<YouConfDbContext, YouConf.Migrations.Configuration>());

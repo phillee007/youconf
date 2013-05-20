@@ -14,6 +14,7 @@
         <legend>Conference</legend>
 
         @Html.HiddenFor(model => model.Id)
+        @Html.Hidden("currentHashTag", Model.HashTag)
         <div class="editor-label">
             @Html.LabelWithRequiredAsteriskFor(model => model.HashTag)
         </div>
@@ -68,6 +69,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.TimeZoneId, new { Tooltip = "The local timezone for your chosen conference" })
             @Html.ValidationMessageFor(model => model.TimeZoneId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelWithRequiredAsteriskFor(model => model.AvailableToPublic)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.AvailableToPublic, new { title = "Check this to allow the public to view your conference." })
+            @Html.ValidationMessageFor(model => model.AvailableToPublic)
         </div>
 
         <div class="editor-label">

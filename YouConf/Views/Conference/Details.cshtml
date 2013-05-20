@@ -14,8 +14,11 @@
                 <strong>@Html.ActionLink("View live stream", "Live", new { hashTag = Model.HashTag }, new { @class = "blue-button" })</strong>
 @*<p><strong><a id="LiveStream" href="#">View live stream</a> </strong></p>*@
             }
-            @Html.ActionLink("Edit", "Edit")
-            @Html.ActionLink("Delete", "Delete")
+            @if ((bool)ViewBag.CurrentUserCanEdit)
+            {
+                @Html.ActionLink("Edit", "Edit")
+                @Html.ActionLink("Delete", "Delete")
+            }
         </p>
     </header>
     <p>@Model.Description</p>
@@ -36,14 +39,20 @@
                     </h3>
                 </header>
                 <p>@speaker.Bio <a href="@speaker.Url" title="@speaker.Name" class="no-button">Website</a></p>
-                <footer>
-                    <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null) |
+                @if ((bool)ViewBag.CurrentUserCanEdit)
+                {
+                    <footer>
+                        <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null) |
         @Html.ActionLink("Remove", "Delete", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null)
-                    </p>
-                </footer>
+                        </p>
+                    </footer>
+                }
             </article>
         }
-        <p style="padding-left:1em">@Html.ActionLink("Add a speaker", "Add", "Speaker", new { id = Model.HashTag }, null)</p>
+        @if ((bool)ViewBag.CurrentUserCanEdit)
+        {
+            <p style="padding-left: 1em">@Html.ActionLink("Add a speaker", "Add", "Speaker", new { id = Model.HashTag }, null)</p>
+        }
     </section>
 
     <h2>Presentations</h2>
@@ -57,24 +66,28 @@
             var speakerNames = String.Join(", ", presentation.Speakers.Select(x => x.Name).ToArray());
             <article class="speaker-box">
                 <header>
-                    <h3 style="padding:0.2em;">@presentation.Name</h3>
+                    <h3 style="padding: 0.2em;">@presentation.Name</h3>
                 </header>
-                <span class="event-time"><strong>When: </strong>@presentationLocalStartTime - @presentationLocalEndDate @Model.TimeZoneId (@presentation.StartTime - @presentationUtcEndDate) UTC) </span><br />
+                <span class="event-time"><strong>When: </strong>@presentationLocalStartTime - @presentationLocalEndDate @Model.TimeZoneId (@presentation.StartTime - @presentationUtcEndDate) UTC) </span>
+                <br />
                 <span class="event-time"><strong>Speakers: </strong>@speakerNames</span>
                 <p>@presentation.Abstract</p>
-                <footer>
-                    <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null) |
+                @if ((bool)ViewBag.CurrentUserCanEdit)
+                {
+                    <footer>
+                        <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null) |
     @Html.ActionLink("Remove", "Delete", "Presentation", new { id = presentation.Id, conferenceHashTag = Model.HashTag }, null)
-                        @if (!String.IsNullOrWhiteSpace(presentation.YouTubeVideoId))
-                        {
-@*@:| <a href="//www.youtube.com/watch?v=@presentation.YouTubeVideoId" title="View on YouTube" target="_blank" class="blue-button">View on YouTube</a>*@
+                            @*@:| <a href="//www.youtube.com/watch?v=@presentation.YouTubeVideoId" title="View on YouTube" target="_blank" class="blue-button">View on YouTube</a>*@
                             @Html.ActionLink("View", "Live", null, new { hashTag = Model.HashTag, @class = "blue-button" })
-                        }
-                    </p>
-                </footer>
+                        </p>
+                    </footer>
+                }
             </article>
         }
-        <p style="padding-left:1em">@Html.ActionLink("Add a presentation", "Add", "Presentation", new { id = Model.HashTag }, null)</p>
+        @if ((bool)ViewBag.CurrentUserCanEdit)
+        {
+            <p style="padding-left: 1em">@Html.ActionLink("Add a presentation", "Add", "Presentation", new { id = Model.HashTag }, null)</p>
+        }
     </section>
 
     @*<div style="margin-top: 1em;">

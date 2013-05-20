@@ -13,13 +13,31 @@ using YouConf.Models;
 using YouConf.Data;
 using YouConf.Data.Entities;
 using YouConf.Mailers;
+using YouConf.Services.Email;
 
 namespace YouConf.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        public IYouConfDbContext YouConfDbContext { get; set; }
+        public IMailSender MailSender { get; set; }
+
+        public AccountController(IYouConfDbContext youConfDbContext, IMailSender mailSender)
+        {
+            if (youConfDbContext == null)
+            {
+                throw new ArgumentNullException("youConfDbContext");
+            }
+            if (mailSender == null)
+            {
+                throw new ArgumentNullException("mailSender");
+            }
+
+            YouConfDbContext = youConfDbContext;
+            MailSender = mailSender;
+        }
+
         //
         // GET: /Account/Login
 
@@ -82,7 +100,7 @@ namespace YouConf.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email });
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
@@ -273,7 +291,7 @@ namespace YouConf.Controllers
                     if (user == null)
                     {
                         // Insert name into the profile table
-                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
+                        db.UserProfiles.Add(new UserProfile { UserName = model.UserName, Email = model.Email });
                         db.SaveChanges();
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
@@ -310,6 +328,7 @@ namespace YouConf.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        [Recaptcha.RecaptchaControlMvc.CaptchaValidator]
         public virtual ActionResult ForgotPassword(string email, bool captchaValid, string captchaErrorMessage)
         {
             if (!captchaValid)
@@ -319,22 +338,18 @@ namespace YouConf.Controllers
 
             if (ModelState.IsValid)
             {
-                var userId = WebSecurity.GetUserId(email);
-                if (userId > 0 && OAuthWebSecurity.HasLocalAccount(userId))
+                var user = YouConfDbContext.UserProfiles
+                    .FirstOrDefault(x => x.Email == email);
+
+                if (user.UserId > 0 && OAuthWebSecurity.HasLocalAccount(user.UserId))
                 {
-                    string token = WebSecurity.GeneratePasswordResetToken(email);
+                    string token = WebSecurity.GeneratePasswordResetToken(user.UserName);
 
                     //Send them an email
-                    //UserMailer mailer = new UserMailer();
-                    //var mvcMailMessage = mailer.PasswordReset(email, token);
-                    //var mailMessage = new SendEmailMessage()
-                    //{
-                    //    From = "info@the-kangaroo-court.com",
-                    //    To = email,
-                    //    Subject = "Password reset request from The Kangaroo Court",
-                    //    Body = mvcMailMessage.Body
-                    //};
-                    //SendQueueMessage(mailMessage);
+                    UserMailer mailer = new UserMailer();
+                    var mvcMailMessage = mailer.PasswordReset(user.Email, token);
+                    MailSender.Send(user.Email, "Password reset request", mvcMailMessage.Body);
+
                     return View("PasswordResetEmailSent");
                 }
             }

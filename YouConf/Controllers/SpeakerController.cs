@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -103,8 +104,7 @@ namespace YouConf.Controllers
                     return HttpNotFound();
                 }
 
-                //Overwrite the old speaker details with the new
-                currentSpeaker = speaker;
+                Mapper.Map(speaker, currentSpeaker);
                 YouConfDbContext.SaveChanges();
 
                 return RedirectToAction("Details", "Conference", new { hashTag = currentSpeaker.Conference.HashTag });

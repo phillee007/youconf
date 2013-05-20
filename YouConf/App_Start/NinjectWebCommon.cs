@@ -12,6 +12,7 @@ namespace YouConf.App_Start
     using Ninject.Web.Common;
     using System.Reflection;
     using YouConf.Data;
+    using YouConf.Services.Email;
 
     public static class NinjectWebCommon 
     {
@@ -46,6 +47,7 @@ namespace YouConf.App_Start
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             kernel.Bind<IYouConfDbContext>().To<YouConfDbContext>()
                 .InRequestScope();
+            kernel.Bind<IMailSender>().To<SmtpMailSender>();
             
             RegisterServices(kernel);
             return kernel;

@@ -19,10 +19,11 @@ namespace YouConf.Data.Entities
         {
             Presentations = new List<Presentation>();
             Speakers = new List<Speaker>();
-            AvailableToPublic = true;
+            Administrators = new List<UserProfile>();
         }
 
         public int Id { get; set; }
+        public virtual IList<UserProfile> Administrators { get; set; }
         [Required]
         [MaxLength(50)]
         public string HashTag { get; set; }

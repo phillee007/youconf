@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using AutoMapper;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YouConf.Data;
@@ -37,14 +40,14 @@ namespace YouConf.Controllers
 
         //
         // GET: /Conference/Manage
-
+        [System.Web.Mvc.Authorize]
         public ActionResult Manage()
         {
-            //TODO - only get conferences for which the current user is an administrator
-            var conferences = YouConfDbContext
-                .Conferences
-                .ToList();
-            return View(conferences);
+            var conferences = YouConfDbContext.UserProfiles
+                .Include(x => x.ConferencesAdministering)
+                .FirstOrDefault(x => x.UserName == User.Identity.Name)
+                .ConferencesAdministering;
+            return View("All", conferences);
         }
 
         //
@@ -54,17 +57,23 @@ namespace YouConf.Controllers
         {
             var conference = YouConfDbContext
                 .Conferences
+                .Include(x => x.Administrators)
                 .FirstOrDefault(x => x.HashTag == hashTag);
             if (conference == null)
             {
                 return HttpNotFound();
+            }
+            ViewBag.CurrentUserCanEdit = false;
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.CurrentUserCanEdit = IsCurrentUserAuthorizedToAdministerConference(conference);
             }
             return View(conference);
         }
 
         //
         // GET: /Conference/Create
-
+        [System.Web.Mvc.Authorize]
         public ActionResult Create()
         {
             var model = new Conference();
@@ -75,6 +84,7 @@ namespace YouConf.Controllers
         // POST: /Conference/Create
 
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         public ActionResult Create(Conference conference)
         {
             if (!IsConferenceHashTagAvailable(conference.HashTag))
@@ -88,6 +98,8 @@ namespace YouConf.Controllers
                 conference.StartDate = TimeZoneInfo.ConvertTimeToUtc(conference.StartDate, conferenceTimeZone);
                 conference.EndDate = TimeZoneInfo.ConvertTimeToUtc(conference.EndDate, conferenceTimeZone);
 
+                var currentUserProfile = YouConfDbContext.UserProfiles.FirstOrDefault(x => x.UserName == User.Identity.Name);
+                conference.Administrators.Add(currentUserProfile);
                 
                 YouConfDbContext.Conferences.Add(conference);
                 YouConfDbContext.SaveChanges();
@@ -99,7 +111,7 @@ namespace YouConf.Controllers
 
         //
         // GET: /Conference/Edit/5
-
+        [System.Web.Mvc.Authorize]
         public ActionResult Edit(string hashTag)
         {
             var conference = YouConfDbContext.Conferences
@@ -108,6 +120,10 @@ namespace YouConf.Controllers
             {
                 return HttpNotFound();
             }
+            if (!IsCurrentUserAuthorizedToAdministerConference(conference))
+            {
+                return HttpUnauthorized();
+            }
             return View(conference);
         }
 
@@ -115,10 +131,11 @@ namespace YouConf.Controllers
         // POST: /Conference/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(string id, Conference conference)
+        [System.Web.Mvc.Authorize]
+        public ActionResult Edit(string currentHashTag, Conference conference)
         {
             //If the user has changed the conference hashtag we have to make sure that the new one hasn't already been taken
-            if (id != conference.HashTag && !IsConferenceHashTagAvailable(conference.HashTag))
+            if (currentHashTag != conference.HashTag && !IsConferenceHashTagAvailable(conference.HashTag))
             {
                 ModelState.AddModelError("HashTag", "Unfortunately that hashtag is not available.");
             }
@@ -126,25 +143,27 @@ namespace YouConf.Controllers
             if (ModelState.IsValid)
             {
                 var existingConference = YouConfDbContext.Conferences
-                .FirstOrDefault(x => x.HashTag == id);
+                .FirstOrDefault(x => x.Id == conference.Id);
                 if (conference == null)
                 {
                     return HttpNotFound();
+                }
+                if (!IsCurrentUserAuthorizedToAdministerConference(existingConference))
+                {
+                    return HttpUnauthorized();
                 }
 
                 var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(conference.TimeZoneId);
                 conference.StartDate = TimeZoneInfo.ConvertTimeToUtc(conference.StartDate, conferenceTimeZone);
                 conference.EndDate = TimeZoneInfo.ConvertTimeToUtc(conference.EndDate, conferenceTimeZone);
 
-                //Could use Automapper or similar to map the new conference details onto the old so we don't lose any child properties e.g. Speakers/Presentations.
-                //We'll do it manually for now
-                conference.Speakers = existingConference.Speakers;
-                conference.Presentations = existingConference.Presentations;
+                var hasHangoutIdUpdated = existingConference.HangoutId != conference.HangoutId;
 
+                Mapper.Map(conference, existingConference);
                 YouConfDbContext.SaveChanges();
 
 
-                if (existingConference.HangoutId != conference.HangoutId)
+                if (hasHangoutIdUpdated)
                 {
                     //User has changed the conference hangout id, so notify any listeners/viewers out there if they're watching (e.g. during the live conference streaming)
                     var context = GlobalHost.ConnectionManager.GetHubContext<YouConfHub>();
@@ -159,7 +178,7 @@ namespace YouConf.Controllers
 
         //
         // GET: /Conference/Delete/5
-
+        [System.Web.Mvc.Authorize]
         public ActionResult Delete(string hashTag)
         {
             var conference = YouConfDbContext.Conferences
@@ -176,6 +195,7 @@ namespace YouConf.Controllers
         // POST: /Conference/Delete/5
 
         [HttpPost]
+        [System.Web.Mvc.Authorize]
         [ActionName("Delete")]
         public ActionResult DeleteConfirm(string hashTag)
         {
@@ -185,6 +205,10 @@ namespace YouConf.Controllers
             if (conference == null)
             {
                 return HttpNotFound();
+            }
+            if (!IsCurrentUserAuthorizedToAdministerConference(conference))
+            {
+                return HttpUnauthorized();
             }
 
             YouConfDbContext.Conferences.Remove(conference);
@@ -216,6 +240,18 @@ namespace YouConf.Controllers
                 .FirstOrDefault(x => x.HashTag == hashTag);
 
             return conference == null;
+        }
+
+        private bool IsCurrentUserAuthorizedToAdministerConference(Conference conference)
+        {
+            var userProfile = YouConfDbContext.UserProfiles.FirstOrDefault(x => x.UserName == User.Identity.Name);
+            return conference.Administrators.Contains(userProfile);
+
+        }
+
+        protected HttpUnauthorizedResult HttpUnauthorized()
+        {
+            throw new HttpException((int)HttpStatusCode.Unauthorized, "Current user is does not have permission to access this page");
         }
     }
 }
