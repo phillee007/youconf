@@ -40,6 +40,14 @@ namespace YouConf
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            ConfigureAutoMapper();
+
+            //Tell Entity Framework to automatically update our database to the latest version on app startup
+            Database.SetInitializer(new System.Data.Entity.MigrateDatabaseToLatestVersion<YouConfDbContext, YouConf.Migrations.Configuration>());
+        }
+
+        private static void ConfigureAutoMapper()
+        {
             Mapper.CreateMap<Speaker, Speaker>()
                 .ForMember(x => x.Presentations, x => x.Ignore())
                 .ForMember(x => x.Conference, x => x.Ignore());
@@ -50,9 +58,6 @@ namespace YouConf
                 .ForMember(x => x.Presentations, x => x.Ignore())
                 .ForMember(x => x.Speakers, x => x.Ignore())
                 .ForMember(x => x.Administrators, x => x.Ignore());
-
-            //Tell Entity Framework to automatically update our database to the latest version on app startup
-            Database.SetInitializer(new System.Data.Entity.MigrateDatabaseToLatestVersion<YouConfDbContext, YouConf.Migrations.Configuration>());
         }
     }
 }

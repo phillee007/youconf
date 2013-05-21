@@ -22,6 +22,10 @@ namespace YouConf
                 displayName: "Windows Live",
                 extraData: microsoftSocialData);
 
+            Dictionary<string, object> googleSocialData = new Dictionary<string, object>();
+            googleSocialData.Add("Icon", "/images/icons/social/google.png");
+            OAuthWebSecurity.RegisterGoogleClient("Google", googleSocialData);
+
             //OAuthWebSecurity.RegisterTwitterClient(
             //    consumerKey: "",
             //    consumerSecret: "");
@@ -29,10 +33,6 @@ namespace YouConf
             //OAuthWebSecurity.RegisterFacebookClient(
             //    appId: "",
             //    appSecret: "");
-
-            Dictionary<string, object> googleSocialData = new Dictionary<string, object>();
-            googleSocialData.Add("Icon", "/images/icons/social/google.png");
-            OAuthWebSecurity.RegisterGoogleClient("Google", googleSocialData);
         }
     }
 }
