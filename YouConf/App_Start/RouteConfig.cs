@@ -46,7 +46,7 @@ namespace YouConf
 
         public static HashSet<string> GetControllerNames()
         {
-            var controllerNames = new HashSet<string>();
+            var controllerNames = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
             GetSubClasses<Controller>().ForEach(
                 type => controllerNames.Add(type.Name));
             return controllerNames;
