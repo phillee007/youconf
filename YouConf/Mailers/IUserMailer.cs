@@ -5,6 +5,6 @@ namespace YouConf.Mailers
     public interface IUserMailer
     {
 			MvcMailMessage Welcome();
-            MvcMailMessage PasswordReset(string email, string token);
+            MvcMailMessage PasswordReset(string email, string username, string token);
 	}
 }
