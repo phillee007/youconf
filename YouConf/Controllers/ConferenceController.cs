@@ -35,6 +35,7 @@ namespace YouConf.Controllers
                 .Conferences
                 .Where(x => x.AvailableToPublic)
                 .ToList();
+            ViewBag.Title = "All conferences";
             return View(conferences);
         }
 
@@ -47,6 +48,8 @@ namespace YouConf.Controllers
                 .Include(x => x.ConferencesAdministering)
                 .FirstOrDefault(x => x.UserName == User.Identity.Name)
                 .ConferencesAdministering;
+
+            ViewBag.Title = "Manage your conferences";
             return View("All", conferences);
         }
 
