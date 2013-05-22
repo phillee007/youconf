@@ -20,9 +20,10 @@ namespace YouConf.Mailers
 			});
 		}
  
-		public virtual MvcMailMessage PasswordReset(string email, string token)
+		public virtual MvcMailMessage PasswordReset(string email, string username, string token)
         {
             ViewBag.Token = token;
+            ViewBag.Username = username;
             return Populate(x =>
             {
                 x.Subject = "Reset your password";

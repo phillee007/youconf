@@ -348,7 +348,7 @@ namespace YouConf.Controllers
 
                     //Send them an email
                     UserMailer mailer = new UserMailer();
-                    var mvcMailMessage = mailer.PasswordReset(user.Email, token);
+                    var mvcMailMessage = mailer.PasswordReset(user.Email, user.UserName, token);
                     MailSender.Send(user.Email, "Password reset request", mvcMailMessage.Body);
 
                     return View("PasswordResetEmailSent");
