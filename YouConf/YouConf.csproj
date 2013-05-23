@@ -256,6 +256,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PascalsPyramidController.cs" />
     <Compile Include="Controllers\PresentationController.cs" />
     <Compile Include="Controllers\SpeakerController.cs" />
     <Compile Include="Data\Entities\Conference.cs" />
@@ -616,6 +617,7 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\PasswordResetEmailSent.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\PascalsPyramid\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

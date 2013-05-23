@@ -1,0 +1,34 @@
+﻿@model YouConf.Controllers.PascalsPyramidModel
+
+@{
+    ViewBag.Title = "Pascal's Pyramid!";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    if (ViewBag.TotalTimeElapsed != null)
+    {
+        <h3>Results</h3>
+        <p>Total elapsed time (10 iterations): @ViewBag.TotalTimeElapsed seconds</p>
+        <p>@(Model.RowNumber + "th") row: @ViewBag.NthRow</p>
+    }
+
+    <fieldset>
+        <legend>PascalsPyramidModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RowNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RowNumber)
+            @Html.ValidationMessageFor(model => model.RowNumber)
+        </div>
+
+        <p>
+            <input type="submit" value="Run" />
+        </p>
+    </fieldset>
+}
+
