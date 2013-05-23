@@ -151,7 +151,7 @@ h5, h6 {
 }
 
 header .content-wrapper {
-    padding: 25px 0 15px;
+    padding: 0 0 15px;
 }
 
 .site-footer a {
@@ -204,6 +204,10 @@ header .content-wrapper {
             background: none;
             margin: 0;
             padding: 0;
+            text-decoration: underline;
+        }
+
+        #login a:hover {
             text-decoration: underline;
         }
 
