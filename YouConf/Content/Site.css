@@ -882,21 +882,12 @@ tr.pager td {
         }
 
         #login a {
-            background: none;
-            color: #999;
             font-weight: 600;
             margin: 2px;
             padding: 0;
         }
 
-            #login a:hover {
-                color: #333;
-            }
-
     /* menu */
-    nav {
-        margin-bottom: 5px;
-    }
 
     ul#menu {
         margin: 0;
