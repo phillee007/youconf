@@ -34,6 +34,7 @@ namespace YouConf.Controllers
             var conferences = YouConfDbContext
                 .Conferences
                 .Where(x => x.AvailableToPublic)
+                .OrderBy(x => x.StartDate)
                 .ToList();
             ViewBag.Title = "All conferences";
             return View(conferences);
@@ -79,7 +80,11 @@ namespace YouConf.Controllers
         [System.Web.Mvc.Authorize]
         public ActionResult Create()
         {
-            var model = new Conference();
+            var model = new Conference()
+            {
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddDays(1)
+            };
             return View(model);
         }
 

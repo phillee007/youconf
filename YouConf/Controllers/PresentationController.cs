@@ -37,7 +37,10 @@ namespace YouConf.Controllers
             }
 
             ModelState.Remove("id");
-            var presentation = new Presentation() { };
+            var presentation = new Presentation()
+            {
+                StartTime = conference.StartDate
+            };
 
             ViewBag.Conference = conference;
             ViewBag.Speakers = conference.Speakers;
