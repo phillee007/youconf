@@ -29,10 +29,9 @@ namespace YouConf.Controllers
             {
                 using (var db = new YouConfDbContext())
                 {
-                    //Run it once to warm it up, that way we're actually testing the proc, and not the connection as much
-                    db.Database.SqlQuery<string>("exec GetPascalTriangleNthRow @RowNumber", new SqlParameter("@RowNumber", model.RowNumber)).First();
+                    //Run it once to warm it up, that way we're actually testing the proc, and not the connection to SQL and Entity framework etc
+                    var nthRow = db.Database.SqlQuery<string>("exec GetPascalTriangleNthRow @RowNumber", new SqlParameter("@RowNumber", model.RowNumber)).First();
 
-                    var nthRow = String.Empty;
                     // Create new stopwatch
                     Stopwatch stopwatch = new Stopwatch();
 
@@ -41,7 +40,7 @@ namespace YouConf.Controllers
 
                     for (int i = 0; i < 10; i++)
                     {
-                        nthRow = db.Database.SqlQuery<string>("exec GetPascalTriangleNthRow @RowNumber", new SqlParameter("@RowNumber", model.RowNumber)).First();
+                       db.Database.SqlQuery<string>("exec GetPascalTriangleNthRow @RowNumber", new SqlParameter("@RowNumber", model.RowNumber)).First();
                     }
 
                     var elapsed = stopwatch.Elapsed;
