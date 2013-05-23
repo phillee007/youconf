@@ -55,6 +55,7 @@ namespace YouConf.Controllers
         public ActionResult Add(string conferenceHashTag, long[] speakerIds, Presentation presentation)
         {
             var conference = YouConfDbContext.Conferences
+                .Include(x => x.Speakers)
                 .FirstOrDefault(x => x.HashTag == conferenceHashTag);
 
             if (conference == null)
