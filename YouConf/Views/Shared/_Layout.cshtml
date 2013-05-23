@@ -14,14 +14,14 @@
 <body>
     <header class="site-header">
         <div class="content-wrapper clear-fix" style="position: relative;">
+            <section id="login">
+                @Html.Partial("_LoginPartial")
+            </section>
             <div class="float-left">
                 <a href="/" title="Home">
                     <img src="/images/logo-full.png" alt="YouConf logo" /></a>
             </div>
-            <div class="float-right" style="margin-top:-15px;">
-                <section id="login">
-                     @Html.Partial("_LoginPartial")
-                </section>
+            <div class="float-right">
                 <nav>
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
