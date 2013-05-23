@@ -57,7 +57,7 @@ namespace YouConf.Controllers
 
     public class PascalsPyramidModel
     {
-        [Range(1, 67, ErrorMessage = "The maximum row number you can enter without an arithmetic overflow exception is 67")]
+        [Range(1, 67, ErrorMessage = "The row number must be between 1 and 67 (arithmetic overflow exceptions happen above 67)")]
         public int RowNumber { get; set; }
     }
 }
