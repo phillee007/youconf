@@ -5,21 +5,24 @@
     @Html.ActionLink("Your conferences", "Manage")
 </p>
 
-<div class="box striped">
-    @foreach (var item in Model)
-    {
-        <article>
-            <header>
-                <h2>@item.Name</h2>
-            </header>
-            @Html.Partial("ConferenceWhenAndWhere", item)
-            <p>@Html.Truncate(item.Abstract, 300) </p>
-            <div style="font-size: 0.8em;">
-                @Html.ActionLink("More", "Details", new { hashTag = item.HashTag })
-            </div>
-        </article>
-    }
-</div>
+@if (Model.Any())
+{
+    <div class="box striped">
+        @foreach (var item in Model)
+        {
+            <article>
+                <header>
+                    <h2>@item.Name</h2>
+                </header>
+                @Html.Partial("ConferenceWhenAndWhere", item)
+                <p>@Html.Truncate(item.Abstract, 300) </p>
+                <div style="font-size: 0.8em;">
+                    @Html.ActionLink("More", "Details", new { hashTag = item.HashTag })
+                </div>
+            </article>
+        }
+    </div>
+}
 @*<table>
     <tr>
         <th>

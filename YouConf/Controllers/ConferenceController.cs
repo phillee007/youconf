@@ -36,7 +36,7 @@ namespace YouConf.Controllers
                 .Where(x => x.AvailableToPublic)
                 .OrderBy(x => x.StartDate)
                 .ToList();
-            ViewBag.Title = "All conferences";
+            ViewBag.Title = String.Format("All conferences ({0})", conferences.Count);
             return View(conferences);
         }
 
@@ -50,7 +50,7 @@ namespace YouConf.Controllers
                 .FirstOrDefault(x => x.UserName == User.Identity.Name)
                 .ConferencesAdministering;
 
-            ViewBag.Title = "Manage your conferences";
+            ViewBag.Title = String.Format("Manage your conferences ({0})", conferences.Count);
             return View("All", conferences);
         }
 
@@ -219,6 +219,8 @@ namespace YouConf.Controllers
                 return HttpUnauthorized();
             }
 
+            conference.Speakers.Clear();
+            conference.Presentations.Clear();
             YouConfDbContext.Conferences.Remove(conference);
             YouConfDbContext.SaveChanges();
 

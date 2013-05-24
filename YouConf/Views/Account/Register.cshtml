@@ -7,7 +7,7 @@
     <div class="col-1-2">
         <section id="loginForm">
             <h2 style="margin: 0 0 0.5em">Create a local account</h2>
-            @using (Html.BeginForm())
+            @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)

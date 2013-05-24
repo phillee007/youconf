@@ -8,7 +8,7 @@
     <div class="col-1-2">
         <section id="loginForm">
             <h2 style="margin: 0">Use a local account to log in</h2>
-            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -36,14 +36,14 @@
                     <input type="submit" value="Log in" />
                 </fieldset>
                 <p>
-                    @Html.ActionLink("Register", "Register", null, new { @class = "no-button" }) if you don't have an account. @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    @Html.ActionLink("Register", "Register", new { returnUrl = ViewBag.ReturnUrl }, new { @class = "no-button" }) if you don't have an account. @Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "no-button" })
                 </p>
             }
         </section>
     </div>
     <div class="col-1-2">
         <section class="social" id="socialLoginForm">
-            <h2 style="margin: 0">Use another service</h2>
+            <h2 style="margin: 0">Use another service to log in</h2>
             @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
