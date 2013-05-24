@@ -294,6 +294,10 @@
     <Compile Include="Migrations\201305240215202_test.Designer.cs">
       <DependentUpon>201305240215202_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305240614369_NotSureWhatHasChangedSoIHaveToAddAMigration.cs" />
+    <Compile Include="Migrations\201305240614369_NotSureWhatHasChangedSoIHaveToAddAMigration.Designer.cs">
+      <DependentUpon>201305240614369_NotSureWhatHasChangedSoIHaveToAddAMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBinders\DateAndTimeModelBinder.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -645,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305240215202_test.resx">
       <DependentUpon>201305240215202_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305240614369_NotSureWhatHasChangedSoIHaveToAddAMigration.resx">
+      <DependentUpon>201305240614369_NotSureWhatHasChangedSoIHaveToAddAMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
