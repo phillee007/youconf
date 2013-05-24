@@ -134,9 +134,10 @@ namespace YouConf.Controllers
                 //Convert the start time to UTC before storing
                 presentation.StartTime = ConvertToUtc(presentation.StartTime, currentPresentation.Conference.TimeZoneId);
 
-                PopulateSpeakers(currentPresentation.Conference, presentation, speakerIds);
                 //Overwrite the old Presentation details with the new
                 Mapper.Map(presentation, currentPresentation);
+                PopulateSpeakers(currentPresentation.Conference, currentPresentation, speakerIds);
+
                 YouConfDbContext.SaveChanges();
 
                 return RedirectToAction("Details", "Conference", new { hashTag = currentPresentation.Conference.HashTag });

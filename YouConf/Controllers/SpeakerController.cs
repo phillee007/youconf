@@ -148,6 +148,7 @@ namespace YouConf.Controllers
 
                 var conferenceHashTag = currentSpeaker.Conference.HashTag;
 
+                currentSpeaker.Presentations.Clear();
                 YouConfDbContext.Speakers.Remove(currentSpeaker);
                 YouConfDbContext.SaveChanges();
 
