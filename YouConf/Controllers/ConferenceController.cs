@@ -219,6 +219,7 @@ namespace YouConf.Controllers
                 return HttpUnauthorized();
             }
 
+            conference.Speakers.ToList().ForEach(x => x.Presentations.Clear());
             YouConfDbContext.Conferences.Remove(conference);
             YouConfDbContext.SaveChanges();
 
