@@ -220,14 +220,10 @@ namespace YouConf.Controllers
             }
 
             //Because we've disabled cascade deletes on one-many relationships, we have to delete the individual speakers/presentations first
-            foreach (var speaker in conference.Speakers)
-            {
-                YouConfDbContext.Speakers.Remove(speaker);
-            }
-            foreach (var presentation in conference.Presentations)
-            {
-                YouConfDbContext.Presentations.Remove(presentation);
-            }
+            conference.Speakers.ToList().ForEach(x =>
+                YouConfDbContext.Speakers.Remove(x));
+            conference.Presentations.ToList().ForEach(x =>
+                YouConfDbContext.Presentations.Remove(x));
             YouConfDbContext.Conferences.Remove(conference);
             YouConfDbContext.SaveChanges();
 
