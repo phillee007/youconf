@@ -290,6 +290,10 @@
     <Compile Include="Migrations\201305200354169_AddConferenceAdministrators.Designer.cs">
       <DependentUpon>201305200354169_AddConferenceAdministrators.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305240215202_test.cs" />
+    <Compile Include="Migrations\201305240215202_test.Designer.cs">
+      <DependentUpon>201305240215202_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBinders\DateAndTimeModelBinder.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -638,6 +642,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305200354169_AddConferenceAdministrators.resx">
       <DependentUpon>201305200354169_AddConferenceAdministrators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305240215202_test.resx">
+      <DependentUpon>201305240215202_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
