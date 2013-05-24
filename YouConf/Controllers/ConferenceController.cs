@@ -219,11 +219,6 @@ namespace YouConf.Controllers
                 return HttpUnauthorized();
             }
 
-            //Because we've disabled cascade deletes on one-many relationships, we have to delete the individual speakers/presentations first
-            conference.Speakers.ToList().ForEach(x =>
-                YouConfDbContext.Speakers.Remove(x));
-            conference.Presentations.ToList().ForEach(x =>
-                YouConfDbContext.Presentations.Remove(x));
             YouConfDbContext.Conferences.Remove(conference);
             YouConfDbContext.SaveChanges();
 
