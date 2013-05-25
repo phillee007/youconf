@@ -343,7 +343,7 @@ namespace YouConf.Controllers
                 var user = YouConfDbContext.UserProfiles
                     .FirstOrDefault(x => x.Email == email);
 
-                if (user.UserId > 0 && OAuthWebSecurity.HasLocalAccount(user.UserId))
+                if (user != null && user.UserId > 0 && OAuthWebSecurity.HasLocalAccount(user.UserId))
                 {
                     string token = WebSecurity.GeneratePasswordResetToken(user.UserName);
 
