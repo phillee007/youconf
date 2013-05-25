@@ -15,7 +15,7 @@
         <h1 style="margin: 0">@Model.Name</h1>
         @Html.Partial("ConferenceWhenAndWhere", Model)
         <p>
-            <pre><strong><@Model.Abstract</strong></pre>
+            <pre><strong>@Model.Abstract</strong></pre>
         </p>
         <p>
             @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
