@@ -7,7 +7,9 @@
         @section H1{}
         <h1 style="margin: 0">@Model.Name</h1>
         @Html.Partial("ConferenceWhenAndWhere", Model)
-        <p><strong>@Model.Abstract</strong></p>
+        <p>
+            <pre><strong><@Model.Abstract</strong></pre>
+        </p>
         <p>
             @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
             {
@@ -21,7 +23,9 @@
             }
         </p>
     </header>
-    <p>@Model.Description</p>
+    <p>
+        <pre>@Model.Description</pre>
+    </p>
 
     <h2>Speakers</h2>
     <section class="box">
