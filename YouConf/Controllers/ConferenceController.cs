@@ -36,7 +36,7 @@ namespace YouConf.Controllers
                 .Where(x => x.AvailableToPublic)
                 .OrderBy(x => x.StartDate)
                 .ToList();
-            ViewBag.Title = String.Format("All conferences ({0})", conferences.Count);
+            ViewBag.Title = "All conferences";
             return View(conferences);
         }
 
