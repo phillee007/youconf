@@ -379,6 +379,7 @@
     <Content Include="Data\Challenge3StoredProcedure\PascalsTriangle.sql" />
     <Content Include="favicon-play.ico" />
     <Content Include="Global.asax" />
+    <Content Include="HiddenSettings.Template.config" />
     <Content Include="HiddenSettings.config" />
     <None Include="Properties\PublishProfiles\youconf - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\youconf - Web Deploy.pubxml" />
@@ -694,6 +695,12 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target> -->
+  <Choose>
+        <When Condition="!Exists('HiddenSettings.config')">
+		</When>
+    </Choose>-->
+  <Target Name="AfterBuild" Condition="!Exists('HiddenSettings.config')">
+			<Copy SourceFiles="HiddenSettings.Template.config" DestinationFiles="HiddenSettings.config" SkipUnchangedFiles="true"></Copy>
+		
+  </Target>
 </Project>
