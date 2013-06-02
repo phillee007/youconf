@@ -13,6 +13,7 @@ namespace YouConf.App_Start
     using System.Reflection;
     using YouConf.Data;
     using YouConf.Services.Email;
+    using Ninject.Integration.SolrNet;
 
     public static class NinjectWebCommon 
     {
@@ -48,6 +49,8 @@ namespace YouConf.App_Start
             kernel.Bind<IYouConfDbContext>().To<YouConfDbContext>()
                 .InRequestScope();
             kernel.Bind<IMailSender>().To<SmtpMailSender>();
+
+            kernel.Load(new SolrNetModule("http://youconfsearch.cloudapp.net/solr"));
             
             RegisterServices(kernel);
             return kernel;

@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Search for conferences";
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/ajaxsolr")
+
+    <script>
+        var Manager;
+        (function ($) {
+            $(function () {
+                Manager = new AjaxSolr.Manager({
+                    solrUrl: 'http://youconfsearch.cloudapp.net/solr/'
+                });
+
+                Manager.addWidget(new AjaxSolr.ResultWidget({
+                    id: 'result',
+                    target: '#docs'
+                }));
+
+                Manager.addWidget(new AjaxSolr.PagerWidget({
+                    id: 'pager',
+                    target: '#pager',
+                    prevLabel: '&lt;',
+                    nextLabel: '&gt;',
+                    innerWindow: 1,
+                    renderHeader: function (perPage, offset, total) {
+                        $('#pager-header').html($('<span></span>').text('Displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total + ' conferences'));
+                    }
+                }));
+
+                Manager.addWidget(new AjaxSolr.TextWidget({
+                    id: 'text',
+                    target: '#search'
+                }));
+
+                //Manager.addWidget(new AjaxSolr.AutocompleteWidget({
+                //    id: 'text',
+                //    target: '#search',
+                //    fields: ['title']
+                //}));
+
+                Manager.init();
+                //Manager.store.addByValue('q', '*:*');
+                //Manager.doRequest();
+            });
+        })(jQuery);
+    </script>
+}
+
+<style>
+
+    #navigation {
+        text-align: center;
+    }
+
+    #pager,
+    #pager-header {
+        display: inline;
+    }
+
+        #pager li,
+        .links li {
+            list-style-type: none;
+            display: inline;
+        }
+
+    #selection {
+        padding: 10px 15px 0;
+    }
+
+        #selection li {
+            list-style-type: none;
+        }
+
+    #docs {
+        padding-top: 1px;
+    }
+
+    #search, #pager {
+        padding: 0;
+    }
+
+    em {
+        font-weight: bold;
+        font-style: normal;
+    }
+</style>
+<style>
+    .search {
+	padding:6px 15px 6px 30px;
+	margin:3px;
+	background: url('./images/search.png') no-repeat 8px 6px;
+    width: 70%;
+}
+    input[type=text]{
+	color:#bcbcbc;
+}
+
+    input[type=button], input[type=button]:hover {
+	position:relative;
+	left:-6px;
+	border:1px solid #e2e2e2;
+	background: #e4f1f9; /* Old browsers */
+	background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f1f9), color-stop(100%,#d5e7f3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #858585 0%,#36454F 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* IE10+ */
+	background: linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9', endColorstr='#d5e7f3',GradientType=0 ); /* IE6-9 */
+	color:#fff;
+	cursor: pointer;
+}
+
+    .lighter, .light, .dark {
+	width:95%;
+	height:50px;
+	padding:40px 25px;
+}
+</style>
+<p>Enter the terms to search for. This could include the name of a conference, presentation, speaker, or other keywords.</p>
+<p id="search"><input id="query" name="query" autocomplete="off" type="text" class="search square"><input type="button" value="Search"></p>
+@*<ul id="search">
+    <li>
+        <input type="text" id="query" name="query" autocomplete="off">
+    </li>
+</ul>*@
+<div id="result">
+    <div id="docs"></div>
+    <hr class="separator" />
+    <div id="navigation">
+        <ul id="pager"></ul>
+        <div id="pager-header"></div>
+    </div>
+</div>
+
+@section Sidebar{}

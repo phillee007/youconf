@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using Microsoft.Practices.ServiceLocation;
+using SolrNet;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using YouConf.Data;
 using YouConf.Data.Entities;
+using YouConf.Data.SolrEntities;
 using YouConf.SignalRHubs;
 
 namespace YouConf.Controllers
@@ -17,14 +20,20 @@ namespace YouConf.Controllers
     public class ConferenceController : Controller
     {
         public IYouConfDbContext YouConfDbContext { get; set; }
+        ISolrOperations<ConferenceDto> Solr { get; set; }
 
-        public ConferenceController(IYouConfDbContext youConfDbContext)
+        public ConferenceController(IYouConfDbContext youConfDbContext, ISolrOperations<ConferenceDto> solr)
         {
             if (youConfDbContext == null)
             {
                 throw new ArgumentNullException("youConfDbContext");
             }
+            if (solr == null)
+            {
+                throw new ArgumentNullException("solr");
+            }
             YouConfDbContext = youConfDbContext;
+            Solr = solr;
         }
         //
         // GET: /Conference/All
@@ -117,6 +126,22 @@ namespace YouConf.Controllers
             return View(conference);
         }
 
+        private void AddConferenceToSolr(Conference conference)
+        {
+            // make some articles  
+            Solr.Add(new ConferenceDto()
+            {
+                ID = conference.Id,
+                HashTag = conference.HashTag,
+                Title = conference.Name,
+                Content = conference.Abstract + " " + conference.Description,
+                Speakers = conference.Speakers
+                    .Select(x => x.Name)
+                    .ToList()
+            });
+            Solr.Commit();
+        }
+
         //
         // GET: /Conference/Edit/5
         [System.Web.Mvc.Authorize]
@@ -178,6 +203,8 @@ namespace YouConf.Controllers
                     context.Clients.Group(conference.HashTag).updateConferenceVideoUrl(conference.HangoutId);
                 }
 
+                AddConferenceToSolr(existingConference);
+
                 return RedirectToAction("Details", new { hashTag = conference.HashTag });
             }
 
@@ -210,6 +237,8 @@ namespace YouConf.Controllers
             var conference = YouConfDbContext.Conferences
                 .FirstOrDefault(x => x.HashTag == hashTag);
 
+            var id = conference.Id;
+
             if (conference == null)
             {
                 return HttpNotFound();
@@ -222,6 +251,8 @@ namespace YouConf.Controllers
             conference.Speakers.ToList().ForEach(x => x.Presentations.Clear());
             YouConfDbContext.Conferences.Remove(conference);
             YouConfDbContext.SaveChanges();
+
+            Solr.Delete(id.ToString());
 
             return RedirectToAction("All");
         }

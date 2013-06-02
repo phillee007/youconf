@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ninject.Integration.SolrNet</name>
+    </assembly>
+    <members>
+        <member name="T:Ninject.Integration.SolrNet.Config.SolrConfigurationSection">
+            <summary>
+            Configuration section for Solr servers
+            </summary>
+        </member>
+        <member name="P:Ninject.Integration.SolrNet.Config.SolrConfigurationSection.SolrServers">
+            <summary>
+            Solr Servers configuration settings
+            </summary>
+        </member>
+        <member name="T:Ninject.Integration.SolrNet.SolrNetModule">
+            <summary>
+            Configures SolrNet in a Ninject kernel
+            </summary>
+        </member>
+        <member name="M:Ninject.Integration.SolrNet.SolrNetModule.#ctor(System.String)">
+            <summary>
+            Configures SolrNet in a Ninject kernel
+            </summary>
+            <param name="serverURL"></param>
+        </member>
+        <member name="M:Ninject.Integration.SolrNet.SolrNetModule.#ctor(Ninject.Integration.SolrNet.Config.SolrServers)">
+            <summary>
+            Configures SolrNet in a Ninject kernel with multiple servers/cores
+            </summary>
+            <param name="solrServers"></param>
+        </member>
+        <member name="P:Ninject.Integration.SolrNet.SolrNetModule.Mapper">
+            <summary>
+            Optional override for document mapper
+            </summary>
+        </member>
+    </members>
+</doc>

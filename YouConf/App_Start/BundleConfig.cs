@@ -8,7 +8,7 @@ namespace YouConf
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -28,6 +28,19 @@ namespace YouConf
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ajaxsolr").Include(
+                "~/Scripts/ajax-solr/core/Core.js",
+                "~/Scripts/ajax-solr/core/AbstractManager.js",
+                "~/Scripts/ajax-solr/managers/Manager.jquery.js",
+                "~/Scripts/ajax-solr/core/Parameter.js",
+                "~/Scripts/ajax-solr/core/ParameterStore.js",
+                "~/Scripts/ajax-solr/core/AbstractWidget.js",
+                "~/Scripts/ajax-solr/widgets/ResultWidget.js",
+                "~/Scripts/ajax-solr/widgets/jQuery/PagerWidget.js",
+                "~/Scripts/ajax-solr/core/AbstractTextWidget.js",
+                "~/Scripts/ajax-solr/widgets/TextWidget.js")
+                );
 
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/normalize.css", "~/Content/site.*"));

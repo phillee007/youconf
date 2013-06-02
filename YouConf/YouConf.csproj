@@ -50,6 +50,9 @@
     <Reference Include="Elmah.Mvc">
       <HintPath>..\packages\Elmah.MVC.2.0.2\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="HttpWebAdapters">
+      <HintPath>..\lib\SolrNet\HttpWebAdapters.dll</HintPath>
+    </Reference>
     <Reference Include="Lucifure.Stash">
       <HintPath>..\packages\LucifureStash.1.2.5\lib\net40\Lucifure.Stash.dll</HintPath>
     </Reference>
@@ -73,6 +76,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.1.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SolrNet\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ServiceBus, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WindowsAzure.ServiceBus.2.0.1.0\lib\net40-full\Microsoft.ServiceBus.dll</HintPath>
@@ -90,6 +97,9 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Integration.SolrNet">
+      <HintPath>..\lib\SolrNet\Ninject.Integration.SolrNet.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Web.Common">
       <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
@@ -101,6 +111,10 @@
     </Reference>
     <Reference Include="Recaptcha">
       <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="SolrNet, Version=0.4.0.2002, Culture=neutral, PublicKeyToken=bc21753e8aa334cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SolrNet\SolrNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -258,11 +272,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PascalsPyramidController.cs" />
     <Compile Include="Controllers\PresentationController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SpeakerController.cs" />
     <Compile Include="Data\Entities\Conference.cs" />
     <Compile Include="Data\Entities\UserProfile.cs" />
     <Compile Include="Data\IYouConfDataContext.cs" />
     <Compile Include="Data\IYouConfDbContext.cs" />
+    <Compile Include="Data\SolrEntities\ConferenceDto.cs" />
     <Compile Include="Data\YouConfDataContext.cs" />
     <Compile Include="Data\YouConfDbContext.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
@@ -383,6 +399,7 @@
     <Content Include="HiddenSettings.config" />
     <None Include="Properties\PublishProfiles\youconf - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\youconf - Web Deploy.pubxml" />
+    <Content Include="Scripts\ajax-solr\ASL-LICENSE" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\brownie\404.png" />
     <Content Include="Images\brownie\address.png" />
@@ -537,6 +554,25 @@
     <Content Include="Images\Step-Forward-Pressed-icon.png" />
     <Content Include="Images\TwitterScreenshot.png" />
     <Content Include="Images\VSScreenshot.png" />
+    <Content Include="Scripts\ajax-solr\COPYRIGHT.txt" />
+    <Content Include="Scripts\ajax-solr\core\AbstractFacetWidget.js" />
+    <Content Include="Scripts\ajax-solr\core\AbstractManager.js" />
+    <Content Include="Scripts\ajax-solr\core\AbstractSpatialWidget.js" />
+    <Content Include="Scripts\ajax-solr\core\AbstractSpellcheckWidget.js" />
+    <Content Include="Scripts\ajax-solr\core\AbstractTextWidget.js" />
+    <Content Include="Scripts\ajax-solr\core\AbstractWidget.js" />
+    <Content Include="Scripts\ajax-solr\core\Core.js" />
+    <Content Include="Scripts\ajax-solr\core\Parameter.js" />
+    <Content Include="Scripts\ajax-solr\core\ParameterHashStore.js" />
+    <Content Include="Scripts\ajax-solr\core\ParameterStore.js" />
+    <Content Include="Scripts\ajax-solr\managers\Manager.jquery.js" />
+    <Content Include="Scripts\ajax-solr\widgets\AutoCompleteWidget.js" />
+    <Content Include="Scripts\ajax-solr\widgets\jquery\AutocompleteTermWidget.js" />
+    <Content Include="Scripts\ajax-solr\widgets\jquery\PagerWidget.js" />
+    <Content Include="Scripts\ajax-solr\widgets\ParameterHistoryStore.js" />
+    <Content Include="Scripts\ajax-solr\widgets\ParameterYUIStore.js" />
+    <Content Include="Scripts\ajax-solr\widgets\ResultWidget.js" />
+    <Content Include="Scripts\ajax-solr\widgets\TextWidget.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
@@ -632,6 +668,7 @@
     <Content Include="Views\Account\PasswordResetEmailSent.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\PascalsPyramid\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -700,7 +737,7 @@
 		</When>
     </Choose>-->
   <Target Name="AfterBuild">
-			<Copy SourceFiles="HiddenSettings.Template.config" DestinationFiles="HiddenSettings.config" SkipUnchangedFiles="true" Condition="!Exists('HiddenSettings.config')"></Copy>
-		
+    <Copy SourceFiles="HiddenSettings.Template.config" DestinationFiles="HiddenSettings.config" SkipUnchangedFiles="true" Condition="!Exists('HiddenSettings.config')">
+    </Copy>
   </Target>
 </Project>

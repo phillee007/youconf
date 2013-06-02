@@ -46,8 +46,19 @@
     <Reference Include="FluentAssertions.Mvc4">
       <HintPath>..\packages\FluentAssertions.Mvc4.0.1.0.0\lib\net40\FluentAssertions.Mvc4.dll</HintPath>
     </Reference>
+    <Reference Include="HttpWebAdapters, Version=0.4.0.2002, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SolrNet\HttpWebAdapters.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Integration.SolrNet">
+      <HintPath>..\lib\SolrNet\Ninject.Integration.SolrNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SolrNet, Version=0.4.0.2002, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SolrNet\SolrNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
