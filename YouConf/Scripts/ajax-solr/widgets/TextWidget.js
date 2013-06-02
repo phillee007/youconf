@@ -3,18 +3,29 @@
     AjaxSolr.TextWidget = AjaxSolr.AbstractTextWidget.extend({
         init: function () {
             var self = this;
-            $(this.target).find('input').bind('keydown', function (e) {
+
+            var performRequest = function (val) {
+                if (val && self.set("*" + val + "*")) {
+                    self.manager.store.addByValue('hl', 'true');
+                    self.manager.store.addByValue('hl.fl', 'content');
+                    self.manager.store.addByValue('hl.snippets', '3');
+                    self.doRequest();
+                }
+            };
+            $(this.target).find('input:text').bind('keydown', function (e) {
                 if (e.which == 13) {
                     var value = $(this).val();
-                    if (value && self.set(value)) {
-                        self.doRequest();
-                    }
+                    performRequest(value);
                 }
+            });
+            $(this.target).find('input:button').bind('click', function (e) {
+                var value = $(this).siblings('input').val();
+                performRequest(value);
             });
         },
 
         afterRequest: function () {
-            $(this.target).find('input').val('');
+            $(this.target).find('input:text').val('');
         }
     });
 
