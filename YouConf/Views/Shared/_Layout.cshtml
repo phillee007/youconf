@@ -12,10 +12,49 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @*<style>
+        .search {
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+            .search input {
+                margin: 0;
+                border-width: 0;
+                font-size: 1em;
+            }
+
+                .search input[type=text] {
+                    width: 150px;
+                    color: #bcbcbc;
+                }
+                .search input[type=button] {
+                  
+                }
+
+                .search input[type=button], .search input[type=button]:hover {
+                    position: relative;
+                    left: -2px;
+                      background: url('./images/search.png') no-repeat center right;
+                    padding: 0 10px 5px 10px;
+                    color: #fff;
+                    cursor: pointer;
+                    
+                }
+
+        .lighter, .light, .dark {
+            width: 95%;
+            height: 50px;
+            padding: 40px 25px;
+        }
+    </style>*@
     <header class="site-header">
         <div class="content-wrapper clear-fix" style="position: relative;">
             <section id="login">
                 @Html.Partial("_LoginPartial")
+                @*<div style="background-color: #fff" class="search">
+                            <input id="query" name="query" autocomplete="off" type="text" class="square" /><input type="button" />
+                        </div>*@
             </section>
             <div class="float-left">
                 <a href="/" title="Home">
