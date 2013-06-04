@@ -33,17 +33,20 @@ namespace YouConfWorker
         // rather than recreating it on every request
         QueueClient Client;
         bool IsStopped;
+        private volatile bool _returnedFromRunMethod = false;
 
         public override void Run()
         {
             while (!IsStopped)
             {
+                BrokeredMessage msg = null;
                 try
                 {
                     // Receive as many messages as possible (to reduce the number of storage transactions)
                     var receivedMessages = Client.ReceiveBatch(32);
                     if (receivedMessages.Count() == 0)
                     {
+                        Thread.Sleep(_currentPollInterval);
                         //No messages, so increase poll interval
                         if (_currentPollInterval < _maxPollInterval)
                         {
@@ -57,6 +60,8 @@ namespace YouConfWorker
 
                     foreach (var receivedMessage in receivedMessages)
                     {
+                        msg = receivedMessage;
+
                         // Process the message
                         Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
 
@@ -77,12 +82,15 @@ namespace YouConfWorker
                             receivedMessage.DeadLetter();
                         }
 
+                        //Use reflection to figure out the type of object contained in the message body, and extract it
                         MethodInfo method = typeof(BrokeredMessage).GetMethod("GetBody", new Type[] { });
                         MethodInfo generic = method.MakeGenericMethod(messageBodyType);
                         var messageBody = generic.Invoke(receivedMessage, null);
 
-                        CallMessageHandler(messageBody);
+                        //Process the message contents
+                        ProcessMessage(messageBody);
 
+                        //Everything ok, so take it off the queue
                         receivedMessage.Complete();
                     }
                 }
@@ -90,21 +98,31 @@ namespace YouConfWorker
                 {
                     if (!e.IsTransient)
                     {
-                        Trace.WriteLine(e.Message);
-                        throw;
+                        Trace.WriteLine(e.ToString());
                     }
 
                     Thread.Sleep(10000);
                 }
-                catch (OperationCanceledException e)
+                catch (Exception ex)
                 {
-                    if (!IsStopped)
+                    string err = ex.ToString();
+                    if (ex.InnerException != null)
                     {
-                        Trace.WriteLine(e.Message);
-                        throw;
+                        err += "\r\n Inner Exception: " + ex.InnerException.ToString();
                     }
+                    if (msg != null)
+                    {
+                        err += "\r\n Last queue message retrieved: " + msg.ToString();
+                    }
+                    Trace.TraceError(err);
+                    // Don't fill up Trace storage if we have a bug in either process loop.
+                    System.Threading.Thread.Sleep(1000 * 60);
                 }
             }
+
+            // If OnStop has been called, return to do a graceful shutdown.
+            _returnedFromRunMethod = true;
+            Trace.WriteLine("Exiting run method");
         }
 
         public override bool OnStart()
@@ -166,18 +184,29 @@ namespace YouConfWorker
         {
             // Close the connection to Service Bus Queue
             IsStopped = true;
+            while (_returnedFromRunMethod == false)
+            {
+                System.Threading.Thread.Sleep(1000);
+            }
             Client.Close();
             base.OnStop();
         }
 
-        public void CallMessageHandler<T>(T message) where T : class
+        /// <summary>
+        /// Locates the correct handler type, and executes it using the current message
+        /// </summary>
+        /// <typeparam name="T">The type of message</typeparam>
+        /// <param name="message">The actual message body</param>
+        public void ProcessMessage<T>(T message) where T : class
         {
+            //Voodoo to construct the right message handler type
             Type handlerType = typeof(IMessageHandler<>);
             Type[] typeArgs = { message.GetType() };
             Type constructed = handlerType.MakeGenericType(typeArgs);
-
+            //Get an instance of the message handler type
             var handler = NinjectKernel.Get(constructed);
 
+            //Handle the message
             var methodInfo = constructed.GetMethod("Handle");
             methodInfo.Invoke(handler, new[] { message });
         }
