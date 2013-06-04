@@ -5,14 +5,14 @@ namespace YouConf.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<YouConf.Data.YouConfDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<YouConf.Common.Data.YouConfDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(YouConf.Data.YouConfDbContext context)
+        protected override void Seed(YouConf.Common.Data.YouConfDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

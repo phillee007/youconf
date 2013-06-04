@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace YouConf.Data.Entities
+namespace YouConf.Common.Data.Entities
 {
     [Table("UserProfile")]
     public class UserProfile

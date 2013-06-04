@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using YouConf.Data;
+using YouConf.Common.Data;
 
 namespace YouConf.Controllers
 {

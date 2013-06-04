@@ -5,12 +5,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using YouConf.Data;
-using YouConf.Data.Entities;
+using YouConf.Common.Data;
+using YouConf.Common.Data.Entities;
 
 namespace YouConf.Controllers
 {
-    public class PresentationController : Controller
+    public class PresentationController : BaseController
     {
         public IYouConfDbContext YouConfDbContext { get; set; }
 
@@ -71,6 +71,8 @@ namespace YouConf.Controllers
                 PopulateSpeakers(conference, presentation, speakerIds);
                 conference.Presentations.Add(presentation);
                 YouConfDbContext.SaveChanges();
+
+                UpdateConferenceInSolrIndex(conference.Id, Common.Messaging.SolrIndexAction.Update);
 
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
@@ -139,6 +141,7 @@ namespace YouConf.Controllers
                 PopulateSpeakers(currentPresentation.Conference, currentPresentation, speakerIds);
 
                 YouConfDbContext.SaveChanges();
+                UpdateConferenceInSolrIndex(currentPresentation.ConferenceId, Common.Messaging.SolrIndexAction.Update);
 
                 return RedirectToAction("Details", "Conference", new { hashTag = currentPresentation.Conference.HashTag });
             }
@@ -186,6 +189,7 @@ namespace YouConf.Controllers
                 currentPresentation.Speakers.Clear();
                 YouConfDbContext.Presentations.Remove(currentPresentation);
                 YouConfDbContext.SaveChanges();
+                UpdateConferenceInSolrIndex(currentPresentation.ConferenceId, Common.Messaging.SolrIndexAction.Update);
 
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }

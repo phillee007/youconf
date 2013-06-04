@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YouConf.Data;
+using YouConf.Common.Data;
 
 namespace YouConf.Tests.Integration
 {

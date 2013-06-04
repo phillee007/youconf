@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace YouConf.Data.SolrEntities
+namespace YouConfWorker.Data.SolrEntities
 {
     public class ConferenceDto
     {

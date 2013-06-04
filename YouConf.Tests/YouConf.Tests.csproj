@@ -155,6 +155,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\YouConf.Common\YouConf.Common.csproj">
+      <Project>{b188b14d-5af3-4248-a3d3-e4a4801f82f8}</Project>
+      <Name>YouConf.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YouConf\YouConf.csproj">
       <Project>{3C12FA4D-CCE4-489A-A2AF-2959421FEA31}</Project>
       <Name>YouConf</Name>

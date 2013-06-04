@@ -43,6 +43,7 @@ local.properties
 
 #Azure publish profiles
 PublishProfiles/
+YouConfCloudService/Profiles
 
 #Hidden app settings
 YouConf/HiddenSettings.config

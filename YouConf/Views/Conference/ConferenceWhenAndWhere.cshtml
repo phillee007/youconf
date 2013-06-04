@@ -1,4 +1,4 @@
-﻿@model YouConf.Data.Entities.Conference
+﻿@model Conference
 @{
     var conferenceTimeZone = TimeZoneInfo.FindSystemTimeZoneById(Model.TimeZoneId);
     var localStartDate = Model.StartDate.UtcToLocal(conferenceTimeZone);

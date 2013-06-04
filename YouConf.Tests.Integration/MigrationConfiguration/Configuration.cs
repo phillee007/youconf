@@ -4,7 +4,7 @@ namespace YouConf.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using YouConf.Data;
+    using YouConf.Common.Data;
 
     internal sealed class YouConfTestInitializer : DbMigrationsConfiguration<YouConfDbContext>
     {
@@ -13,7 +13,7 @@ namespace YouConf.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(YouConf.Data.YouConfDbContext context)
+        protected override void Seed(YouConf.Common.Data.YouConfDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

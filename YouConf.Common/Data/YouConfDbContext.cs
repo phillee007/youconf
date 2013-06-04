@@ -5,9 +5,9 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
-using YouConf.Data.Entities;
+using YouConf.Common.Data.Entities;
 
-namespace YouConf.Data
+namespace YouConf.Common.Data
 {
    public class YouConfDbContext : DbContext, IYouConfDbContext
     {

@@ -1,10 +1,10 @@
-﻿@model YouConf.Data.Entities.Presentation
+﻿@model Presentation
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    @Html.Hidden("conferenceHashTag", ((YouConf.Data.Entities.Conference)ViewBag.Conference).HashTag)
+    @Html.Hidden("conferenceHashTag", ((Conference)ViewBag.Conference).HashTag)
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.ConferenceId) 
 
@@ -31,7 +31,7 @@
             @Html.LabelWithRequiredAsteriskFor(model => model.StartTime)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.StartTime, "LocalDateTime", new { TimeZoneId = ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId, Tooltip = String.Format("This should be specified in local time for your chosen conference timezone ({0})", ((YouConf.Data.Entities.Conference)ViewBag.Conference).TimeZoneId) })
+            @Html.EditorFor(model => model.StartTime, "LocalDateTime", new { TimeZoneId = ((Conference)ViewBag.Conference).TimeZoneId, Tooltip = String.Format("This should be specified in local time for your chosen conference timezone ({0})", ((Conference)ViewBag.Conference).TimeZoneId) })
             @Html.ValidationMessageFor(model => model.StartTime)
         </div>
 
@@ -57,7 +57,7 @@
         <div class="editor-field">
             <fieldset class="checkboxgroup">
                 <legend>Speaker/s</legend>
-                @foreach (var speaker in (IEnumerable<YouConf.Data.Entities.Speaker>)ViewBag.Speakers)
+                @foreach (var speaker in (IEnumerable<Speaker>)ViewBag.Speakers)
                 {
                     var isChecked = Model.Speakers.Select(x => x.Id).Contains(speaker.Id);
                     <label>
@@ -72,5 +72,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Conference", "Details", "Conference", new { hashTag = ((YouConf.Data.Entities.Conference)ViewBag.Conference).HashTag }, null)
+    @Html.ActionLink("Back to Conference", "Details", "Conference", new { hashTag = ((Conference)ViewBag.Conference).HashTag }, null)
 </div>

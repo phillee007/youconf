@@ -5,12 +5,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using YouConf.Data;
-using YouConf.Data.Entities;
+using YouConf.Common.Data.Entities;
+using YouConf.Common.Data;
 
 namespace YouConf.Controllers
 {
-    public class SpeakerController : Controller
+    public class SpeakerController : BaseController
     {
         public IYouConfDbContext YouConfDbContext { get; set; }
 
@@ -66,6 +66,7 @@ namespace YouConf.Controllers
             {
                 YouConfDbContext.Speakers.Add(speaker);
                 YouConfDbContext.SaveChanges();
+                UpdateConferenceInSolrIndex(speaker.ConferenceId, Common.Messaging.SolrIndexAction.Update);
 
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }
@@ -106,6 +107,7 @@ namespace YouConf.Controllers
 
                 Mapper.Map(speaker, currentSpeaker);
                 YouConfDbContext.SaveChanges();
+                UpdateConferenceInSolrIndex(currentSpeaker.ConferenceId, Common.Messaging.SolrIndexAction.Update);
 
                 return RedirectToAction("Details", "Conference", new { hashTag = currentSpeaker.Conference.HashTag });
             }
@@ -151,6 +153,7 @@ namespace YouConf.Controllers
                 currentSpeaker.Presentations.Clear();
                 YouConfDbContext.Speakers.Remove(currentSpeaker);
                 YouConfDbContext.SaveChanges();
+                UpdateConferenceInSolrIndex(currentSpeaker.ConferenceId, Common.Messaging.SolrIndexAction.Update);
 
                 return RedirectToAction("Details", "Conference", new { hashTag = conferenceHashTag });
             }

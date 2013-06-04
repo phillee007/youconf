@@ -266,6 +266,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
@@ -274,13 +275,6 @@
     <Compile Include="Controllers\PresentationController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SpeakerController.cs" />
-    <Compile Include="Data\Entities\Conference.cs" />
-    <Compile Include="Data\Entities\UserProfile.cs" />
-    <Compile Include="Data\IYouConfDataContext.cs" />
-    <Compile Include="Data\IYouConfDbContext.cs" />
-    <Compile Include="Data\SolrEntities\ConferenceDto.cs" />
-    <Compile Include="Data\YouConfDataContext.cs" />
-    <Compile Include="Data\YouConfDbContext.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -392,7 +386,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Data\Challenge3StoredProcedure\PascalsTriangle.sql" />
     <Content Include="favicon-play.ico" />
     <Content Include="Global.asax" />
     <Content Include="HiddenSettings.Template.config" />
@@ -698,6 +691,12 @@
     <EmbeddedResource Include="Migrations\201305240654589_ReAddOneToManyDeleteConventionAndRemoveManyToManyDeleteConvention.resx">
       <DependentUpon>201305240654589_ReAddOneToManyDeleteConventionAndRemoveManyToManyDeleteConvention.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YouConf.Common\YouConf.Common.csproj">
+      <Project>{b188b14d-5af3-4248-a3d3-e4a4801f82f8}</Project>
+      <Name>YouConf.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

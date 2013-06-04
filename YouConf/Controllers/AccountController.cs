@@ -10,15 +10,16 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using YouConf.Filters;
 using YouConf.Models;
-using YouConf.Data;
-using YouConf.Data.Entities;
 using YouConf.Mailers;
 using YouConf.Services.Email;
+using AzureDemo.Messaging;
+using YouConf.Common.Data;
+using YouConf.Common.Data.Entities;
 
 namespace YouConf.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         public IYouConfDbContext YouConfDbContext { get; set; }
         public IMailSender MailSender { get; set; }
@@ -350,7 +351,14 @@ namespace YouConf.Controllers
                     //Send them an email
                     UserMailer mailer = new UserMailer();
                     var mvcMailMessage = mailer.PasswordReset(user.Email, user.UserName, token);
-                    MailSender.Send(user.Email, "Password reset request", mvcMailMessage.Body);
+                    var emailMessage = new SendEmailMessage()
+                    {
+                        Body = mvcMailMessage.Body,
+                        To = user.Email,
+                        Subject = "Password reset request"
+                    };
+                    SendQueueMessage(emailMessage);
+
 
                     return View("PasswordResetEmailSent");
                 }

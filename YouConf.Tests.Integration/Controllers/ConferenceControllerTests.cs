@@ -5,9 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using YouConf.Data;
 using YouConf.Migrations;
-using YouConf.Data.Entities;
 using System.Collections.Generic;
 using YouConf.Controllers;
 using System.Web.Mvc;
@@ -17,8 +15,8 @@ using Moq;
 using System.Web;
 using System.Security.Principal;
 using System.Web.Routing;
-using YouConf.Data.SolrEntities;
 using SolrNet;
+using YouConf.Common.Data.Entities;
 
 namespace YouConf.Tests.Integration
 {
@@ -37,8 +35,7 @@ namespace YouConf.Tests.Integration
             _context.SaveChangesWithErrors();
 
 
-            var stubSolr = new Mock<ISolrOperations<ConferenceDto>>();
-            var conferenceController = new ConferenceController(_context, stubSolr.Object);
+            var conferenceController = new ConferenceController(_context);
 
             var result = conferenceController.All()
                 .As<ViewResult>();
@@ -51,8 +48,7 @@ namespace YouConf.Tests.Integration
         [TestMethod]
         public void Details_WithInvalidHashTag_Should_ReturnHttpNotFoundResult()
         {
-            var stubSolr = new Mock<ISolrOperations<ConferenceDto>>();
-            var conferenceController = new ConferenceController(_context, stubSolr.Object);
+            var conferenceController = new ConferenceController(_context);
 
             var result = conferenceController.Details("thisisinvalid")
                 .As<HttpNotFoundResult>();
@@ -67,8 +63,7 @@ namespace YouConf.Tests.Integration
             _context.Conferences.Add(new Conference() { HashTag = "test", Name = "test", Abstract = "test", StartDate = DateTime.Now, EndDate = DateTime.Now, TimeZoneId = "test", AvailableToPublic = false });
             _context.SaveChangesWithErrors(); ;
 
-            var stubSolr = new Mock<ISolrOperations<ConferenceDto>>();
-            var conferenceController = new ConferenceController(_context, stubSolr.Object);
+            var conferenceController = new ConferenceController(_context);
             conferenceController.ControllerContext = TestHelper.MockContext(conferenceController, "TestUser");
 
             var result = conferenceController.Details("abcde")
@@ -86,8 +81,7 @@ namespace YouConf.Tests.Integration
             _context.Conferences.Add(new Conference() { HashTag = "abcde", Name = "test", Abstract = "test", StartDate = DateTime.Now, EndDate = DateTime.Now, TimeZoneId = "test", AvailableToPublic = false });
             _context.SaveChangesWithErrors();
 
-            var stubSolr = new Mock<ISolrOperations<ConferenceDto>>();
-            var conferenceController = new ConferenceController(_context, stubSolr.Object);
+            var conferenceController = new ConferenceController(_context);
 
             var newConference = new Conference() { HashTag = "abcde" };
             var result = conferenceController.Create(newConference)

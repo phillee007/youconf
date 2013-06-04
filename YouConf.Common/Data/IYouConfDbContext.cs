@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
-using YouConf.Data.Entities;
-namespace YouConf.Data
+using YouConf.Common.Data.Entities;
+namespace YouConf.Common.Data
 {
     public interface IYouConfDbContext
     {

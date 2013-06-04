@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="YouConfCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
+  <Role name="YouConfWorker">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UpdateThisInYourOwnAzureInstance" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="UpdateThisInYourOwnAzureInstance" />
+      <Setting name="Sendgrid.Username" value="UpdateThisInYourOwnAzureInstance" />
+      <Setting name="Sendgrid.Password" value="UpdateThisInYourOwnAzureInstance" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

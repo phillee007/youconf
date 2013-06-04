@@ -13,8 +13,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using YouConf.Data;
-using YouConf.Data.Entities;
+using YouConf.Common.Data;
+using YouConf.Common.Data.Entities;
 
 namespace YouConf
 {

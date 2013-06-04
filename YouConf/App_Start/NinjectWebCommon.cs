@@ -11,9 +11,9 @@ namespace YouConf.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using System.Reflection;
-    using YouConf.Data;
     using YouConf.Services.Email;
     using Ninject.Integration.SolrNet;
+    using YouConf.Common.Data;
 
     public static class NinjectWebCommon 
     {
@@ -44,13 +44,7 @@ namespace YouConf.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-            kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-            kernel.Bind<IYouConfDbContext>().To<YouConfDbContext>()
-                .InRequestScope();
-            kernel.Bind<IMailSender>().To<SmtpMailSender>();
-
-            kernel.Load(new SolrNetModule("http://youconfsearch.cloudapp.net/solr"));
+            
             
             RegisterServices(kernel);
             return kernel;
@@ -63,7 +57,13 @@ namespace YouConf.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load(Assembly.GetExecutingAssembly());
-            kernel.Bind<IYouConfDataContext>().To<YouConfDataContext>();
+            kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+            kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+            kernel.Bind<IYouConfDbContext>().To<YouConfDbContext>()
+                .InRequestScope();
+            kernel.Bind<IMailSender>().To<SmtpMailSender>();
+
+            kernel.Load(new SolrNetModule("http://youconfsearch.cloudapp.net/solr"));
         }        
     }
 }
