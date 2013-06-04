@@ -25,17 +25,24 @@ namespace YouConfWorker.MessageHandlers
 
         public void Handle(UpdateSolrIndexMessage message)
         {
-            var conference = Db.Conferences.First(x => x.Id == message.ConferenceId);
-            Solr.Add(new ConferenceDto()
+            if (message.Action == SolrIndexAction.Delete)
             {
-                ID = conference.Id,
-                HashTag = conference.HashTag,
-                Title = conference.Name,
-                Content = conference.Abstract + " " + conference.Description,
-                Speakers = conference.Speakers
-                    .Select(x => x.Name)
-                    .ToList()
-            });
+                Solr.Delete(message.ConferenceId.ToString());
+            }
+            else
+            {
+                var conference = Db.Conferences.First(x => x.Id == message.ConferenceId);
+                Solr.Add(new ConferenceDto()
+                {
+                    ID = conference.Id,
+                    HashTag = conference.HashTag,
+                    Title = conference.Name,
+                    Content = conference.Abstract + " " + conference.Description,
+                    Speakers = conference.Speakers
+                        .Select(x => x.Name)
+                        .ToList()
+                });
+            }
             Solr.Commit();
         }
     }
