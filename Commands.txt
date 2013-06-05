@@ -1,0 +1,43 @@
+htpasswd -c ~/stack/apache2/passwd/passwords testuser
+
+/home/youonfuser/stack/apache2/passwd/passwords
+
+testuser justtesting
+
+AuthName "Protect root directory"
+AuthUserFile /home/youconfuser/stack/apache2/passwd/passwords
+AuthType Basic
+Require valid-user
+
+
+Alias /Solr "/opt/bitnami/apache-solr/htdocs"
+
+**** AUTH ****
+
+ProxyPass /solr http://127.0.0.1:8983/solr
+ProxyPassReverse /solr http://127.0.0.1:8983/solr
+
+
+Alias /solr "/opt/bitnami/apache-solr/htdocs"
+
+<Directory "/opt/bitnami/apache-solr">
+  AuthType Basic
+  AuthName MyAuthName
+  AuthUserFile "/home/youconfuser/stack/apache2/passwd/passwords"
+  Require valid-user
+  
+<IfVersion < 2.3 >
+  Order allow,deny
+  Allow from all
+  Satisfy all
+</IfVersion>
+<IfVersion >= 2.3>
+  Require all granted
+</IfVersion>
+  ErrorDocument 403 "Authentication error"
+</Directory>
+
+**** RESTART APACHE ****
+
+cd /opt/bitnami/apache-solr/
+sudo /opt/bitnami/apache-solr/ctlscript.sh restart

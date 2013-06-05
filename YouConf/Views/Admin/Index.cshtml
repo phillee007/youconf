@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Confererence Index Admin";
+}
+
+@using (Html.BeginForm("ReIndex", "Admin"))
+{
+    <input type="submit" value="ReIndex all conferences" />
+}
+@using (Html.BeginForm("DeleteAll", "Admin"))
+{
+    <input type="submit" value="Delete all conferences" />
+}
