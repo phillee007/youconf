@@ -23,7 +23,7 @@
             var snippet = '';
             //Use the highlighted snippets first if any, otherwise use the conference abstract
             if (highlights.content && highlights.content.length > 0) {
-                snippet = highlights.content.join('...') + "...";
+                snippet = "..." + highlights.content.join('...') + "...";
             }
             else {
                 if (doc.content[0].length > 300) {
@@ -40,7 +40,7 @@
             //doc.cat contains the speaker names (if any)
             if(doc.cat)
                 output += '<h3 style="margin:0;">Speakers: ' + doc.cat.join(', ') + '</h3>';
-            output += '<p><i>' + snippet + '</i></p></div>';
+            output += '<p style="margin:0"><i>' + snippet + '</i></p></div>';
             return output;
         },
 
