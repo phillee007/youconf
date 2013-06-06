@@ -7,35 +7,6 @@
         //    $(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
         //},
 
-        facetLinks: function (facet_field, facet_values) {
-            var links = [];
-            if (facet_values) {
-                for (var i = 0, l = facet_values.length; i < l; i++) {
-                    if (facet_values[i] !== undefined) {
-                        links.push(
-                          $('<a href="#"></a>')
-                          .text(facet_values[i])
-                          .click(this.facetHandler(facet_field, facet_values[i]))
-                        );
-                    }
-                    else {
-                        links.push('no items found in current selection');
-                    }
-                }
-            }
-            return links;
-        },
-
-        facetHandler: function (facet_field, facet_value) {
-            var self = this;
-            return function () {
-                self.manager.store.remove('fq');
-                self.manager.store.addByValue('fq', facet_field + ':' + AjaxSolr.Parameter.escapeValue(facet_value));
-                self.doRequest();
-                return false;
-            };
-        },
-
         afterRequest: function () {
             $(this.target).empty();
             if (this.manager.response.response.docs.length == 0) {
@@ -45,17 +16,6 @@
                 var doc = this.manager.response.response.docs[i];
                 
                 $(this.target).append(this.template(doc, this.manager.response.highlighting[doc.id]));
-
-                //var items = [];
-                //items = items.concat(this.facetLinks('topics', doc.topics));
-                //items = items.concat(this.facetLinks('organisations', doc.organisations));
-                //items = items.concat(this.facetLinks('exchanges', doc.exchanges));
-
-                //var $links = $('#links_' + doc.id);
-                //$links.empty();
-                //for (var j = 0, m = items.length; j < m; j++) {
-                //    $links.append($('<li></li>').append(items[j]));
-                //}
             }
         },
 
@@ -76,12 +36,11 @@
                 }
             }
 
-            var output = '<div><h2>' + doc.title + '</h2>';
+            var output = '<div><h2><a href="/' + doc.hashtag + '" title="' + doc.title + '">' + doc.title + '</a></h2>';
             //doc.cat contains the speaker names (if any)
             if(doc.cat)
                 output += '<h3 style="margin:0;">Speakers: ' + doc.cat.join(', ') + '</h3>';
-            output += '<p id="links_' + doc.id + '" class="links"></p>';
-            output += '<p>' + snippet + '</p></div>';
+            output += '<p><i>' + snippet + '</i></p></div>';
             return output;
         },
 

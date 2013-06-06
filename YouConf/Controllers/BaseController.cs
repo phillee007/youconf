@@ -27,7 +27,7 @@ namespace YouConf.Controllers
             // Initialize the connection to Service Bus Queue
             var client = QueueClient.CreateFromConnectionString(connectionString, QueueName);
 
-            // Create message, passing a string message for the body
+            // Create message, with the message body being automatically serialized
             BrokeredMessage brokeredMessage = new BrokeredMessage(message);
             brokeredMessage.Properties["messageType"] = message.GetType().AssemblyQualifiedName;
             client.Send(brokeredMessage);
