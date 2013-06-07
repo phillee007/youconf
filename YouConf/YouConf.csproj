@@ -395,6 +395,7 @@
     <None Include="Properties\PublishProfiles\youconf - Web Deploy.pubxml" />
     <Content Include="Images\icons\ajax-loader.gif" />
     <Content Include="Images\icons\magnifier.png" />
+    <Content Include="Images\search-nav.png" />
     <Content Include="Images\search.png" />
     <Content Include="Scripts\ajax-solr\ASL-LICENSE" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
