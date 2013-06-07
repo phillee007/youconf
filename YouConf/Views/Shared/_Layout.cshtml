@@ -12,49 +12,10 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @*<style>
-        .search {
-            display: inline-block;
-            margin-left: 30px;
-        }
-
-            .search input {
-                margin: 0;
-                border-width: 0;
-                font-size: 1em;
-            }
-
-                .search input[type=text] {
-                    width: 150px;
-                    color: #bcbcbc;
-                }
-                .search input[type=button] {
-                  
-                }
-
-                .search input[type=button], .search input[type=button]:hover {
-                    position: relative;
-                    left: -2px;
-                      background: url('./images/search.png') no-repeat center right;
-                    padding: 0 10px 5px 10px;
-                    color: #fff;
-                    cursor: pointer;
-                    
-                }
-
-        .lighter, .light, .dark {
-            width: 95%;
-            height: 50px;
-            padding: 40px 25px;
-        }
-    </style>*@
     <header class="site-header">
         <div class="content-wrapper clear-fix" style="position: relative;">
             <section id="login">
                 @Html.Partial("_LoginPartial")
-                @*<div style="background-color: #fff" class="search">
-                            <input id="query" name="query" autocomplete="off" type="text" class="square" /><input type="button" />
-                        </div>*@
             </section>
             <div class="float-left">
                 <a href="/" title="Home">
@@ -66,6 +27,8 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Conferences", "All", "Conference")</li>
                         <li>@Html.ActionLink("Help", "Index", "Help")</li>
+                        <li><a href="/search" title="Search">
+                            <img src="~/Images/search (1).png" class="search-button" /></a></li>
                     </ul>
                 </nav>
             </div>
@@ -120,7 +83,7 @@
         </div>
         <div class="content-wrapper clear-fix">
             <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - YouConf (by Phil Lee). Step-forward play icon courtesy of <a href="http://www.iconarchive.com/show/play-stop-pause-icons-by-icons-land/Step-Forward-Disabled-icon.html">Icon Archive.</a> Video camera favicon courtesy of <a href="http://findicons.com/icon/222109/video_camera?id=330197">Find Icons.</a> Info icon courtesy of <a href="http://findicons.com/icon/13995/info?id=14145">Find Icons.</a> Arrow icon courtesy of <a href="http://findicons.com/icon/51020/next?width=32">Find Icons.</a></p>
+                <p>&copy; @DateTime.Now.Year - YouConf (by Phil Lee). Step-forward play icon courtesy of <a href="http://www.iconarchive.com/show/play-stop-pause-icons-by-icons-land/Step-Forward-Disabled-icon.html">Icon Archive.</a> Video camera favicon courtesy of <a href="http://findicons.com/icon/222109/video_camera?id=330197">Find Icons.</a> Info icon courtesy of <a href="http://findicons.com/icon/13995/info?id=14145">Find Icons.</a> Arrow icon courtesy of <a href="http://findicons.com/icon/51020/next?width=32">Find Icons.</a> Header nav search icon courtesy of <a href="http://findicons.com/icon/236611/search">Find Icons.</a></p>
                 <p>Keep up with build progress on <a href="http://www.codeproject.com/Articles/584534/YouConf-An-Online-Conferencing-Presentation-Tool" title="CodeProject" class="no-button" target="_blank">CodeProject.</a></p>
             </div>
         </div>

@@ -25,7 +25,7 @@
         },
 
         afterRequest: function () {
-            $(this.target).find('input:text').val('');
+            //$(this.target).find('input:text').val('');
         }
     });
 

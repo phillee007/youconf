@@ -393,6 +393,7 @@
     <Content Include="HiddenSettings.config" />
     <None Include="Properties\PublishProfiles\youconf - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\youconf - Web Deploy.pubxml" />
+    <Content Include="Images\icons\ajax-loader.gif" />
     <Content Include="Images\icons\magnifier.png" />
     <Content Include="Images\search.png" />
     <Content Include="Scripts\ajax-solr\ASL-LICENSE" />

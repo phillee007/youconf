@@ -158,6 +158,12 @@ header .content-wrapper {
     color: #EFFFCD;
 }
 
+.search-button {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+}
+
 /*footer {
     clear: both;
     background-color: #e2e2e2;

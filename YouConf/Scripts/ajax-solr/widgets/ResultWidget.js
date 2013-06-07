@@ -3,9 +3,11 @@
     AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget.extend({
         start: 0,
 
-        //beforeRequest: function () {
-        //    $(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
-        //},
+        beforeRequest: function () {
+            $(this.target).html(
+                $("<p style='text-align:center;'></p>")
+                .append($('<img>').attr('src', '/images/icons/ajax-loader.gif')));
+        },
 
         afterRequest: function () {
             $(this.target).empty();
