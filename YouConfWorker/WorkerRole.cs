@@ -78,7 +78,7 @@ namespace YouConfWorker
                         if (messageBodyType == null)
                         {
                             //Should never get here as a messagebodytype should always be set BEFORE putting the message on the queue
-                            Trace.TraceError("Message does not have a messagebodytype specified, message {0}", receivedMessage.MessageId);
+                            Trace.TraceError("Message does not have a messagebodytype specified, message {0}", receivedMessage.ToString());
                             receivedMessage.DeadLetter();
                         }
 
