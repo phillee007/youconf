@@ -3,7 +3,11 @@
 This is the source code for the YouConf website, my entry into the Windows Azure Developer challenge on CodeProject.
 
 It's an MVC 4 website designed to be hosted in Azure, including usage of:
-* Azure Table Storage
+* Azure web sites
+* SQL Azure for storing conference data
+* Azure Table Storage for storing log data
+* Cloud services and a worker role for offline processing
+* Azure service bus for inter-role communication
 * Embedded Google Hangouts and YouTube videos
 * Embedded Twitter chat feeds
 * SignalR
