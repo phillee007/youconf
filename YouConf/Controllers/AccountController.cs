@@ -160,7 +160,9 @@ namespace YouConf.Controllers
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            var userId = WebSecurity.GetUserId(User.Identity.Name);
+            ViewBag.Email = YouConfDbContext.UserProfiles.First(x => x.UserId == userId).Email;
+            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(userId);
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
         }
@@ -172,7 +174,9 @@ namespace YouConf.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {
-            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            var userId = WebSecurity.GetUserId(User.Identity.Name);
+            ViewBag.Email = YouConfDbContext.UserProfiles.First(x => x.UserId == userId).Email;
+            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(userId);
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
             if (hasLocalAccount)
