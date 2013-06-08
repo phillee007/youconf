@@ -28,12 +28,12 @@ namespace YouConfWorker.MessageHandlers
         {
             if (message.Action == SolrIndexAction.Delete)
             {
-                Trace.WriteLine("Deleting conference from Solr: {0}", message.ConferenceId.ToString());
+                Trace.WriteLine(String.Format("Deleting conference: {0}", message.ConferenceId.ToString()));
                 Solr.Delete(message.ConferenceId.ToString());
             }
             else
             {
-                Trace.WriteLine("Updating conference in Solr: {0}", message.ConferenceId.ToString());
+                Trace.WriteLine(String.Format("Updating conference: {0}", message.ConferenceId.ToString()));
                 var conference = Db.Conferences.First(x => x.Id == message.ConferenceId);
                 if (conference.AvailableToPublic)
                 {
