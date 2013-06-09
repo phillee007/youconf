@@ -29,12 +29,12 @@
             }
             else {
                 if (doc.content[0].length > 300) {
-                    snippet += doc.dateline + ' ' + doc.content[0].substring(0, 300);
+                    snippet += doc.content[0].substring(0, 300);
                     snippet += '<span style="display:none;">' + doc.content[0].substring(300);
                     snippet += '</span> <a href="#" class="more">more</a>';
                 }
                 else {
-                    snippet += doc.dateline + ' ' + doc.content[0];
+                    snippet += doc.content[0];
                 }
             }
 
