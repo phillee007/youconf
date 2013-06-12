@@ -26,8 +26,10 @@ namespace YouConfWorker
         // The name of your queue
         const string QueueName = "ProcessingQueue";
         int _currentPollInterval = 5000;
-        int _minPollInterval = 5000;
-        int _maxPollInterval = 300000;
+        //One second
+        int _minPollInterval = 1000;
+        //120 seconds
+        int _maxPollInterval = 120000;
 
         // QueueClient is thread-safe. Recommended that you cache 
         // rather than recreating it on every request
