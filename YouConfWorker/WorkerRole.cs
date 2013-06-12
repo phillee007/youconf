@@ -79,9 +79,10 @@ namespace YouConfWorker
                         var messageBodyType = Type.GetType(receivedMessage.Properties["messageType"].ToString());
                         if (messageBodyType == null)
                         {
-                            //Should never get here as a messagebodytype should always be set BEFORE putting the message on the queue
-                            Trace.TraceError("Message does not have a messagebodytype specified, message {0}", receivedMessage.ToString());
+                            //Should never get here as a messagetype should always be set BEFORE putting the message on the queue
+                            Trace.TraceError("Message does not have a messagetype specified, message {0}", receivedMessage.ToString());
                             receivedMessage.DeadLetter();
+                            continue;
                         }
 
                         //Use reflection to figure out the type of object contained in the message body, and extract it
