@@ -7,7 +7,8 @@
 body {
     background-color: #fff;
     color: #555152;
-    font-size: 15px;
+    font-size: 100%;
+    line-height: 1.4;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
@@ -62,6 +63,7 @@ h4, h5, h6 {
     color: #555152;
     margin-bottom: 0;
     padding-bottom: 0;
+    line-height: 1.2;
 }
 
 h1 {
@@ -371,12 +373,21 @@ ul#menu {
 .landing-panels .box {
     background-color: #fff;
     padding: 4px;
-    height: 420px;
+    height: 450px;
 }
 
-    .landing-panels .box div {
-        padding: 5%;
-    }
+/* Surely there must be nicer way to achieve this?*/
+.landing-panels div:nth-child(2) {
+    padding: 0 10px;
+}
+
+.landing-panels div:nth-child(3) {
+    padding-left: 20px;
+}
+
+.landing-panels .box div {
+    padding: 5%;
+}
 
 
 /* page titles */
@@ -692,7 +703,7 @@ td button {
     background-color: #e8e8e8;
     padding: 0.5em;
     margin-left: 0.5em;
-    width: 20%;
+    width: 25%;
     word-break: break-word;
 }
 
@@ -818,18 +829,61 @@ tr.pager td {
         color: #ffffff;
     }
 
+#video {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
 
-@media only screen and (max-width: 930px) {
+    #video iframe,
+    #video object,
+    #video embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+@media only screen and (max-width: 960px) {
 
     img {
         max-width: 100% !important;
+        height: auto;
+        width: auto; /* for ie 8 */
+    }
+
+    .hero {
+        font-size: 0.8em;
+        padding: 3%;
+    }
+
+    .content-wrapper {
+        margin: 0 1%;
     }
 }
 
 /********************
 *   Mobile Styles   *
 ********************/
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 767px) {
+
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
 
     /* header
     ----------------------------------------------------------*/
@@ -858,14 +912,40 @@ tr.pager td {
         margin-top: 1em;
     }
 
+
     .hero .grid div {
         width: auto;
         float: none;
     }
 
+    .hero .button {
+        padding: 3%;
+    }
 
-    h1 {
-        font-size: 2em;
+    .landing-panels [class*='col-'] {
+        width: auto;
+        float: none;
+        padding: 0;
+    }
+
+    .landing-panels > div{
+        padding: 0 !important;
+    }
+
+    .landing-panels .box {
+        padding: 1em;
+        height: auto;
+    }
+
+    .landing-panels [class*='col-'] img {
+        float: left;
+        width: 40%;
+        margin-right: 1em;
+    }
+
+    .landing-panels .box div {
+        overflow: auto;
+        padding: 0;
     }
 
     /* login */
@@ -914,10 +994,10 @@ tr.pager td {
         background-position: 10px 0;
     }
 
-    .content-wrapper {
+    /*.content-wrapper {
         padding-right: 10px;
         padding-left: 10px;
-    }
+    }*/
 
     .featured .content-wrapper {
         padding: 10px;
@@ -926,7 +1006,7 @@ tr.pager td {
     /* page content */
     article, aside {
         float: none;
-        width: 100%;
+        width: auto;
     }
 
     /* ordered list */
@@ -968,7 +1048,7 @@ tr.pager td {
         }
 
     /* forms */
-    input {
+    input, textarea, select {
         width: 90%;
     }
 
@@ -1010,11 +1090,39 @@ tr.pager td {
 }
 
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 479px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+
     .speaker-box {
         float: none !important;
         width: auto !important;
     }
+
+    .hero .teaser {
+        font-size: 2em;
+    }
+
+    .landing-panels [class*='col-'] img {
+        display: none;
+    }
+
+    .landing-panels .box div {
+        margin-left: 0;
+    }
 }
+
+@media only screen and (max-width: 350px) {
+}
+
 
 /* http://www.colourlovers.com/palette/444487/Curiosity_Killed */

@@ -1,13 +1,13 @@
 ﻿@model Conference
 @{
-    ViewBag.Title = @Model.Name + " Live Broadcast";
+    ViewBag.Title = "Live Broadcast - " + @Model.Name;
 }
 <div class="grid">
     @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
     {
         <div>
             <div id="video">
-                <iframe width="630" height="473" src="//youtube.com/embed/@Model.HangoutId" frameborder="0" allowfullscreen></iframe>
+                <iframe src="//youtube.com/embed/@Model.HangoutId" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     }
