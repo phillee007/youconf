@@ -833,11 +833,11 @@ tr.pager td {
 
     /* header
     ----------------------------------------------------------*/
-    header .float-left,
+    /*header .float-left,
     header .float-right {
         float: none;
         text-align: center;
-    }
+    }*/
 
     /* logo */
     header .site-title {
