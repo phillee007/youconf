@@ -26,8 +26,10 @@ namespace YouConfWorker
         // The name of your queue
         const string QueueName = "ProcessingQueue";
         int _currentPollInterval = 5000;
-        int _minPollInterval = 5000;
-        int _maxPollInterval = 300000;
+        //One second
+        int _minPollInterval = 1000;
+        //120 seconds
+        int _maxPollInterval = 120000;
 
         // QueueClient is thread-safe. Recommended that you cache 
         // rather than recreating it on every request
@@ -77,9 +79,10 @@ namespace YouConfWorker
                         var messageBodyType = Type.GetType(receivedMessage.Properties["messageType"].ToString());
                         if (messageBodyType == null)
                         {
-                            //Should never get here as a messagebodytype should always be set BEFORE putting the message on the queue
-                            Trace.TraceError("Message does not have a messagebodytype specified, message {0}", receivedMessage.ToString());
+                            //Should never get here as a messagetype should always be set BEFORE putting the message on the queue
+                            Trace.TraceError("Message does not have a messagetype specified, message {0}", receivedMessage.ToString());
                             receivedMessage.DeadLetter();
+                            continue;
                         }
 
                         //Use reflection to figure out the type of object contained in the message body, and extract it
