@@ -1084,18 +1084,18 @@ img {
 
     /* footer
     ----------------------------------------------------------*/
-    footer .float-left,
-    footer .float-right {
+    .site-footer .float-left,
+    .site-footer .float-right {
         float: none;
     }
 
-    footer {
+    .site-footer {
         text-align: center;
         height: auto;
         padding: 10px 0;
     }
 
-        footer p {
+        .site-footer p {
             margin: 0;
         }
 }
