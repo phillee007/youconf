@@ -36,33 +36,29 @@
 
     <h2>Speakers</h2>
     <section class="box">
-        <ul class="grid">
-            @for (int i = 0; i < Model.Speakers.Count; i++)
-            {
-                var speaker = Model.Speakers[i];
-                <li class="col-1-2">
-                    <article class="speaker-box">
-                        <header>
-                            <h3 style="line-height: 60px;">@if (!String.IsNullOrWhiteSpace(speaker.AvatarUrl))
-                                                           {
-                                <img src="@speaker.AvatarUrl" alt="@speaker.Name Avatar image" />
-                                                           }
-                                @speaker.Name
-                            </h3>
-                        </header>
-                        <p>@speaker.Bio <a href="@speaker.Url" title="@speaker.Name" class="no-button">Website</a></p>
-                        @if ((bool)ViewBag.CurrentUserCanEdit)
-                        {
-                            <footer>
-                                <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null) |
+        @for (int i = 0; i < Model.Speakers.Count; i++)
+        {
+            var speaker = Model.Speakers[i];
+            <article class="speaker-box">
+                <header>
+                    <h3 style="line-height: 60px;">@if (!String.IsNullOrWhiteSpace(speaker.AvatarUrl))
+                                                   {
+                        <img src="@speaker.AvatarUrl" alt="@speaker.Name Avatar image" />
+                                                   }
+                        @speaker.Name
+                    </h3>
+                </header>
+                <p>@speaker.Bio <a href="@speaker.Url" title="@speaker.Name" class="no-button">Website</a></p>
+                @if ((bool)ViewBag.CurrentUserCanEdit)
+                {
+                    <footer>
+                        <p style="font-size: 0.7em">@Html.ActionLink("Edit", "Edit", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null) |
         @Html.ActionLink("Remove", "Delete", "Speaker", new { id = speaker.Id, conferenceHashTag = Model.HashTag }, null)
-                                </p>
-                            </footer>
-                        }
-                    </article>
-                </li>
-            }
-        </ul>
+                        </p>
+                    </footer>
+                }
+            </article>
+        }
         @if ((bool)ViewBag.CurrentUserCanEdit)
         {
             <hr class='separator' />

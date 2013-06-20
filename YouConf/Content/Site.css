@@ -67,7 +67,7 @@ h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2.4em;
+    font-size: 2.0em;
 }
 
 h2 {
@@ -234,7 +234,7 @@ header .content-wrapper {
 ul#menu {
     font-size: 1.3em;
     font-weight: 600;
-    margin: 35px 0 0;
+    margin: 40px 0 0;
     padding: 0;
     text-align: right;
 }
@@ -829,6 +829,7 @@ tr.pager td {
         color: #ffffff;
     }
 
+/* Responsive video */
 #video {
     position: relative;
     padding-bottom: 56.25%;
@@ -847,15 +848,19 @@ tr.pager td {
         height: 100%;
     }
 
+/* Responsive images */
+img {
+    max-width: 100% !important;
+    height: auto;
+}
 
-
-@media only screen and (max-width: 960px) {
-
+@media \0screen {
     img {
-        max-width: 100% !important;
-        height: auto;
         width: auto; /* for ie 8 */
     }
+}
+
+@media only screen and (max-width: 960px) {
 
     .hero {
         font-size: 0.8em;
@@ -865,13 +870,6 @@ tr.pager td {
     .content-wrapper {
         margin: 0 1%;
     }
-}
-
-/********************
-*   Mobile Styles   *
-********************/
-@media only screen and (max-width: 767px) {
-
 
     h1 {
         font-size: 1.6em;
@@ -884,6 +882,20 @@ tr.pager td {
     h3 {
         font-size: 1.1em;
     }
+
+    ul#menu {
+        font-size: 1.2em;
+    }
+
+    ul#menu li {
+        padding-left:10px;
+    }
+}
+
+/********************
+*   Mobile Styles   *
+********************/
+@media only screen and (max-width: 767px) {
 
     /* header
     ----------------------------------------------------------*/
@@ -912,7 +924,6 @@ tr.pager td {
         margin-top: 1em;
     }
 
-
     .hero .grid div {
         width: auto;
         float: none;
@@ -922,13 +933,13 @@ tr.pager td {
         padding: 3%;
     }
 
-    .landing-panels [class*='col-'] {
+    .landing-panels [class*='col-'], .tablet-block [class*='col-'] {
         width: auto;
         float: none;
         padding: 0;
     }
 
-    .landing-panels > div{
+    .landing-panels > div {
         padding: 0 !important;
     }
 
@@ -1091,16 +1102,20 @@ tr.pager td {
 
 
 @media only screen and (max-width: 479px) {
-    h1 {
-        font-size: 1.3em;
-    }
-
-    h2 {
+    ul#menu {
         font-size: 1.2em;
     }
 
-    h3 {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
         font-size: 1.1em;
+    }
+
+    h3 {
+        font-size: 1.05em;
     }
 
     .speaker-box {
@@ -1109,7 +1124,7 @@ tr.pager td {
     }
 
     .hero .teaser {
-        font-size: 2em;
+        font-size: 1.6em;
     }
 
     .landing-panels [class*='col-'] img {
