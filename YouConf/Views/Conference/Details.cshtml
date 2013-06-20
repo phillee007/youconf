@@ -20,7 +20,7 @@
         <p>
             @if (!String.IsNullOrWhiteSpace(Model.HangoutId))
             {
-                <strong>@Html.ActionLink("View live stream", "Live", new { hashTag = Model.HashTag }, new { @class = "blue-button" })</strong>
+                <strong>@Html.ActionLink("Live stream", "Live", new { hashTag = Model.HashTag }, new { @class = "blue-button" })</strong>
 @*<p><strong><a id="LiveStream" href="#">View live stream</a> </strong></p>*@
             }
             @if ((bool)ViewBag.CurrentUserCanEdit)
