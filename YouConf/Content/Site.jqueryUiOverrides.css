@@ -4,5 +4,5 @@
 }
 
 .ui-button-text-only .ui-button-text {
-    padding: 0.2em 0.5em;
+    padding: 0.2em 0.5em !important;
 }
