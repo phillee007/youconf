@@ -1102,10 +1102,6 @@ img {
 
 
 @media only screen and (max-width: 479px) {
-    .logo {
-        max-width: 80% !important;
-    }
-
     h1 {
         font-size: 1.2em;
     }
@@ -1133,6 +1129,12 @@ img {
 
     .landing-panels .box div {
         margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .logo {
+        max-width: 80% !important;
     }
 }
 
