@@ -22,7 +22,6 @@ namespace YouConf.Controllers
     public class AccountController : BaseController
     {
         public IYouConfDbContext YouConfDbContext { get; set; }
-        public IMailSender MailSender { get; set; }
 
         public AccountController(IYouConfDbContext youConfDbContext, IMailSender mailSender)
         {
@@ -30,13 +29,8 @@ namespace YouConf.Controllers
             {
                 throw new ArgumentNullException("youConfDbContext");
             }
-            if (mailSender == null)
-            {
-                throw new ArgumentNullException("mailSender");
-            }
 
             YouConfDbContext = youConfDbContext;
-            MailSender = mailSender;
         }
 
         //
@@ -105,6 +99,18 @@ namespace YouConf.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email });
                     WebSecurity.Login(model.UserName, model.Password);
+
+                    //Send them an email
+                    UserMailer mailer = new UserMailer();
+                    var mvcMailMessage = mailer.Welcome(model.UserName);
+                    var emailMessage = new SendEmailMessage()
+                    {
+                        Body = mvcMailMessage.Body,
+                        To = model.Email,
+                        Subject = "Welcome to YouConf"
+                    };
+                    SendQueueMessage(emailMessage);
+
                     if (!String.IsNullOrWhiteSpace(returnUrl))
                     {
                         return RedirectToLocal(returnUrl);

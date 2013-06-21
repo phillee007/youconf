@@ -8,13 +8,13 @@ namespace YouConf.Mailers
 		{
 			MasterName="_Layout";
 		}
-		
-		public virtual MvcMailMessage Welcome()
+
+        public virtual MvcMailMessage Welcome(string username)
 		{
-			//ViewBag.Data = someObject;
+            ViewBag.Username = username;
 			return Populate(x =>
 			{
-				x.Subject = "Welcome";
+				x.Subject = "Welcome to YouConf";
 				x.ViewName = "Welcome";
 				x.To.Add("some-email@example.com");
 			});
