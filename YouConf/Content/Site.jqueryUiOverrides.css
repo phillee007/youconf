@@ -6,3 +6,8 @@
 .ui-button-text-only .ui-button-text {
     padding: 0.2em 0.5em !important;
 }
+
+.ui-button {
+    /* In the event the buttons wrap, give them some vertical space in-between*/
+    margin-bottom: 0.2em;
+}
