@@ -1102,8 +1102,8 @@ img {
 
 
 @media only screen and (max-width: 479px) {
-    ul#menu {
-        font-size: 1.2em;
+    .logo {
+        max-width: 80% !important;
     }
 
     h1 {
@@ -1136,8 +1136,6 @@ img {
     }
 }
 
-@media only screen and (max-width: 350px) {
-}
 
 
 /* http://www.colourlovers.com/palette/444487/Curiosity_Killed */
