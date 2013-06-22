@@ -1171,6 +1171,7 @@ img {
 @media only screen and (max-width: 400px) {
     .search-box {
         width: 90%;
+        margin: 0;
     }
 
     #search input[type=button], #search input[type=button]:hover {
