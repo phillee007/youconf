@@ -77,50 +77,16 @@
         padding-top: 1px;
     }
 
-    #search, #pager {
-        padding: 0;
-    }
-
     em {
         font-weight: bold;
         font-style: normal;
     }
 </style>
 <style>
-    .search {
-	padding:6px 15px 6px 30px;
-	margin:3px;
-	background: url('./images/search.png') no-repeat 8px 6px;
-    width: 70%;
-}
-    input[type=text]{
-	color:#bcbcbc;
-}
-
-    input[type=button], input[type=button]:hover {
-	position:relative;
-	left:-6px;
-	border:1px solid #e2e2e2;
-	background: #858585; /* Old browsers */
-	background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#858585), color-stop(100%,#36454F)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #858585 0%,#36454F 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #858585 0%,#36454F 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #858585 0%,#36454F 100%); /* IE10+ */
-	background: linear-gradient(top, #858585 0%,#36454F 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#858585', endColorstr='#36454F',GradientType=0 ); /* IE6-9 */
-	color:#fff;
-	cursor: pointer;
-}
-
-    .lighter, .light, .dark {
-	width:95%;
-	height:50px;
-	padding:40px 25px;
-}
+    
 </style>
 <p>Enter the terms to search for. This could include the name of a conference, presentation, speaker, or other keywords.</p>
-<p id="search"><input id="query" name="query" autocomplete="off" type="text" class="search square"><input type="button" value="Search"></p>
+<p id="search"><input id="query" name="query" autocomplete="off" type="text" class="search-box square"><input type="button" value="Search"></p>
 @*<ul id="search">
     <li>
         <input type="text" id="query" name="query" autocomplete="off">
