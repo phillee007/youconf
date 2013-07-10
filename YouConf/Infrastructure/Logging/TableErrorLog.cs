@@ -39,7 +39,7 @@ namespace YouConf.Infrastructure.Logging
         {
             var table = GetTable(TableName);
             TableQuery<ErrorEntity> query = new TableQuery<ErrorEntity>();
-            TableOperation retrieveOperation = TableOperation.Retrieve<ErrorEntity>("", id);
+            TableOperation retrieveOperation = TableOperation.Retrieve<ErrorEntity>(TableName, id);
 
             TableResult retrievedResult = table.Execute(retrieveOperation);
             if (retrievedResult.Result == null)
@@ -93,11 +93,7 @@ namespace YouConf.Infrastructure.Logging
 
         void Initialize()
         {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-               CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-            var tableClient = storageAccount.CreateCloudTableClient();
-            CloudTable table = tableClient.GetTableReference("Errors");
+            CloudTable table = GetTable(TableName);
             table.CreateIfNotExists();
         }
     }
