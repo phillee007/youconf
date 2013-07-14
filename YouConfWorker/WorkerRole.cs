@@ -174,7 +174,7 @@ namespace YouConfWorker
                 .To<YouConfDbContext>();
             kernel.Bind<IMailSender>()
                 .To<SmtpMailSender>();
-            kernel.Load(new SolrNetModule("http://youconfsearch.cloudapp.net/solr"));
+            kernel.Load(new SolrNetModule("http://youconfsearchv1.cloudapp.net/solr"));
 
             kernel.Bind(x => x.FromThisAssembly()
                   .SelectAllClasses().InheritedFrom(typeof(IMessageHandler<>))
