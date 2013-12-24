@@ -12,7 +12,7 @@ namespace YouConf.SignalRHubs
         public Task UpdateConferenceVideoUrl(string conferenceHashTag, string url)
         {
             //Only update the clients for the specific conference 
-            return Clients.All.updateConferenceVideoUrl(url);
+            return Clients.Group(conferenceHashTag).updateConferenceVideoUrl(url);
         }
 
         public Task Join(string conferenceHashTag)

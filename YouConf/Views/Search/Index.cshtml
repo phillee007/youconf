@@ -2,7 +2,7 @@
     ViewBag.Title = "Search for conferences";
 }
 
-@section Scripts{
+@*@section Scripts{
     @Scripts.Render("~/bundles/ajaxsolr")
 
     <script>
@@ -46,7 +46,7 @@
             });
         })(jQuery);
     </script>
-}
+}*@
 
 <style>
 
@@ -85,20 +85,21 @@
 <style>
     
 </style>
-<p>Enter the terms to search for. This could include the name of a conference, presentation, speaker, or other keywords.</p>
-<p id="search"><input id="query" name="query" autocomplete="off" type="text" class="search-box square"><input type="button" value="Search"></p>
+<p>Sorry, but we've had to disable search to keep within our Azure usage limits, particularly since the site isn't getting any real usage and it isn't worth the cost...</p>
+@*<p>Enter the terms to search for. This could include the name of a conference, presentation, speaker, or other keywords.</p>
+<p id="search"><input id="query" name="query" autocomplete="off" type="text" class="search-box square"><input type="button" value="Search"></p>*@
 @*<ul id="search">
     <li>
         <input type="text" id="query" name="query" autocomplete="off">
     </li>
 </ul>*@
-<div id="result">
+@*<div id="result">
     <div id="docs"></div>
     <hr class="separator" />
     <div id="navigation">
         <ul id="pager"></ul>
         <div id="pager-header"></div>
     </div>
-</div>
+</div>*@
 
 @section Sidebar{}
